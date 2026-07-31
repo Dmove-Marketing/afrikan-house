@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]noclsop/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?noclsop=1"}else{document.location.href=href.replace("#","?noclsop=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&noclsop=1"}else{document.location.href=href.replace("#","&noclsop=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+btoa(t.text)}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{delete Object.assign(arguments[0],{[t(e)]:arguments[0][e]})[e]})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+		<title>Debutante &#8211; Afrikan House</title>
+<meta name='robots' content='max-image-preview:large' />
+
+<link rel="alternate" type="application/rss+xml" title="Feed para Afrikan House &raquo;" href="https://eventos.afrikanhouse.com.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Afrikan House &raquo;" href="https://eventos.afrikanhouse.com.br/comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://eventos.afrikanhouse.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Feventos.afrikanhouse.com.br%2Fdebutante%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://eventos.afrikanhouse.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Feventos.afrikanhouse.com.br%2Fdebutante%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='hello-elementor-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/css/reset.css?ver=1785470861' media='all' />
+<link data-minify="1" rel='stylesheet' id='hello-elementor-theme-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/css/theme.css?ver=1785470861' media='all' />
+<link data-minify="1" rel='stylesheet' id='hello-elementor-header-footer-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/css/header-footer.css?ver=1785470861' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='elementor-post-6-css' href='https://eventos.afrikanhouse.com.br/wp-content/uploads/elementor/css/post-6.css?ver=1773794468' media='all' />
+<link data-minify="1" rel='stylesheet' id='elementor-icons-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1785470861' media='all' />
+<link rel='stylesheet' id='widget-heading-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='widget-divider-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='widget-video-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/widget-video.min.css?ver=3.35.7' media='all' />
+<link data-minify="1" rel='stylesheet' id='swiper-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=1785470861' media='all' />
+<link rel='stylesheet' id='e-swiper-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/conditionals/e-swiper.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='widget-image-carousel-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/widget-image-carousel.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='widget-gallery-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor-pro/assets/css/widget-gallery.min.css?ver=3.35.1' media='all' />
+<link rel='stylesheet' id='elementor-gallery-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/lib/e-gallery/css/e-gallery.min.css?ver=1.2.0' media='all' />
+<link rel='stylesheet' id='e-transitions-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor-pro/assets/css/conditionals/transitions.min.css?ver=3.35.1' media='all' />
+<link rel='stylesheet' id='widget-menu-anchor-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/widget-menu-anchor.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='widget-form-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor-pro/assets/css/widget-form.min.css?ver=3.35.1' media='all' />
+<link rel='stylesheet' id='widget-image-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.35.7' media='all' />
+<link rel='stylesheet' id='elementor-post-847-css' href='https://eventos.afrikanhouse.com.br/wp-content/uploads/elementor/css/post-847.css?ver=1779216033' media='all' />
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://eventos.afrikanhouse.com.br/wp-content/plugins/clsop/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}.wp-embed-responsive .wp-has-aspect-ratio .rll-youtube-player{position:absolute;padding-bottom:0;width:100%;height:100%;top:0;bottom:0;left:0;right:0}
+/*# sourceURL=rocket-lazyload-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='elementor-gf-local-roboto-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1785470861' media='all' />
+<link data-minify="1" rel='stylesheet' id='elementor-gf-local-robotoslab-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1785470861' media='all' />
+<link data-minify="1" rel='stylesheet' id='elementor-gf-local-raleway-css' href='https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/uploads/elementor/google-fonts/css/raleway.css?ver=1785470862' media='all' />
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<link rel="https://api.w.org/" href="https://eventos.afrikanhouse.com.br/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://eventos.afrikanhouse.com.br/wp-json/wp/v2/pages/847" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://eventos.afrikanhouse.com.br/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.5" />
+<link rel="canonical" href="https://eventos.afrikanhouse.com.br/debutante/" />
+<link rel='shortlink' href='https://eventos.afrikanhouse.com.br/?p=847' />
+<meta name="generator" content="performance-lab 4.1.0; plugins: webp-uploads">
+<meta name="generator" content="webp-uploads 2.6.1">
+
+<link rel="preload" as="font" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/Cinzel-Regular.ttf" crossorigin>
+<link rel="preload" as="font" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/Goudy-Titling-W05-Bold.ttf" crossorigin>
+<link rel="preload" as="font" href="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/lib/eicons/fonts/eicons.woff2?5.47.0" crossorigin>
+<link rel="preload" as="font" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/Ar-Berkley.ttf" crossorigin>
+<link rel="preload" as="font" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2" crossorigin>
+<link rel="preload" as="font" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/elementor/google-fonts/fonts/raleway-1ptug8zys_skggpnyc0itw.woff2" crossorigin><meta name="generator" content="Elementor 3.35.7; features: additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+<!-- Google Tag Manager -->
+<script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N62DGMNS');</script>
+<!-- End Google Tag Manager -->
+<script type="rocketlazyloadscript">
+(function(){
+  // ===== CONFIG =====
+  var FIELD_ID    = 'form-field-fonte'; // id comum no Elementor
+  var INTERVAL_MS = 300;                // tenta com mais frequência
+  var MAX_TRIES   = 20;                 // dá mais tempo pro GTM/HTML inicializar
+
+  // ===== HELPERS (ES5) =====
+  function getCookie(name){
+    var m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?|{}()[\]\\/+^])/g,'\\$1') + '=([^;]*)'));
+    return m ? m[1] : ''; // mantém RAW (sem decode aqui)
+  }
+
+  // decode seguro (igual à sua estratégia do n8n)
+  function safeDecode(v){
+    if (v == null) return '';
+    var s = String(v).replace(/\+/g, ' ');
+    try {
+      return decodeURIComponent(s);
+    } catch (e) {
+      return s; // se quebrar, devolve como veio
+    }
+  }
+
+  // lê utms padrão a partir de cookies
+  function collectUtms(){
+    var utms = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+    var out = {}, v, i;
+    for (i=0;i<utms.length;i++){
+      v = getCookie(utms[i]);
+      if (v) out[utms[i]] = v;
+    }
+    return out;
+  }
+
+  function getEventIdFromWindow(){
+    try {
+      if (window.__page_event_id && typeof window.__page_event_id === 'string') {
+        return window.__page_event_id;
+      }
+    } catch(e){}
+    return '';
+  }
+
+  function collectParams(){
+    var p = {}, v;
+
+    // UTM cookies
+    var utmObj = collectUtms();
+    for (var k in utmObj){ if (utmObj.hasOwnProperty(k)) p[k] = utmObj[k]; }
+
+    // Click IDs (normaliza __* -> sem __)
+    v = getCookie('gclid')  || getCookie('__gclid');  if (v) p.gclid  = v;
+    v = getCookie('gbraid') || getCookie('__gbraid'); if (v) p.gbraid = v;
+    v = getCookie('wbraid') || getCookie('__wbraid'); if (v) p.wbraid = v;
+
+    // Meta IDs
+    v = getCookie('fbclid'); if (v) p.fbclid = v;
+    v = getCookie('_fbc');   if (v) p.fbc    = v;
+    v = getCookie('_fbp');   if (v) p.fbp    = v;
+
+    // External ID (aceita ambos)
+    v = getCookie('external_id') || getCookie('_external_id');
+    if (v) p.external_id = v;
+
+    // event_id vindo do GTM/HTML (window.__page_event_id) — não cria, só lê
+    v = getEventIdFromWindow();
+    if (v) p.event_id = v;
+
+    return p;
+  }
+
+  // monta query **decodificada** (sem encodeURIComponent em chave/valor)
+  function toQuery(params){
+    var pairs = [];
+    for (var key in params){
+      if (!params.hasOwnProperty(key)) continue;
+      var val = params[key];
+      if (val !== undefined && val !== null && val !== '') {
+        // aplica safeDecode em CADA valor individual
+        pairs.push(key + '=' + safeDecode(String(val)));
+      }
+    }
+    return pairs.join('&');
+  }
+
+  // ===== Seleciona TODOS os inputs "Fonte" (página + popups) =====
+  function findFonteInputs(){
+    var list = [];
+    try {
+      // 1) pelo id padrão
+      var byId = document.querySelectorAll('#' + CSS.escape(FIELD_ID));
+      if (byId && byId.length) list = list.concat([].slice.call(byId));
+
+      // 2) pelo name padrão do Elementor (form_fields[fonte])
+      var byName = document.querySelectorAll('input[name="form_fields[fonte]"], textarea[name="form_fields[fonte]"]');
+      if (byName && byName.length) list = list.concat([].slice.call(byName));
+
+      // 3) pelo sufixo do name (caso o form renomeie com prefixos)
+      var byNameSuffix = document.querySelectorAll('input[name$="[fonte]"], textarea[name$="[fonte]"]');
+      if (byNameSuffix && byNameSuffix.length) list = list.concat([].slice.call(byNameSuffix));
+
+      // 4) por atributo data-field-shortcode (algumas versões/temas)
+      var byShortcode = document.querySelectorAll('[data-field-shortcode="fonte"]');
+      if (byShortcode && byShortcode.length) list = list.concat([].slice.call(byShortcode));
+
+      // Remove duplicados
+      var seen = new Set();
+      list = list.filter(function(el){
+        if (!el || !el.nodeType) return false;
+        if (seen.has(el)) return false;
+        seen.add(el);
+        return true;
+      });
+    } catch(e){}
+    return list;
+  }
+
+  // Aplica em TODOS os campos "Fonte": preserva prefixo (antes de '?') e substitui a query inteira (já decodificada)
+  function applyWith(params){
+    var inputs = findFonteInputs();
+    var qs = toQuery(params);
+    var hasEventId = !!params.event_id;
+    var hasAny = !!qs;
+
+    if (!inputs.length) return { hasAny: hasAny, hasEventId: hasEventId, updated: 0 };
+
+    var updated = 0;
+    for (var i=0;i<inputs.length;i++){
+      var el = inputs[i];
+      var base = String(el.value || '');
+      var qpos = base.indexOf('?');
+      var prefix = qpos === -1 ? base : base.slice(0, qpos);
+      var newVal = prefix + (qs ? '?' + qs : '');
+      if (el.value !== newVal){
+        el.value = newVal;
+        updated++;
+        try {
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+          el.dispatchEvent(new Event('change', { bubbles: true }));
+        } catch(e){}
+      }
+    }
+
+    return { hasAny: hasAny, hasEventId: hasEventId, updated: updated };
+  }
+
+  function runWithRetries(){
+    var tries = 0;
+
+    function tick(){
+      var params = collectParams();
+      var flags = applyWith(params);
+      tries++;
+
+      var shouldStop = flags.hasEventId || tries >= MAX_TRIES;
+      if (!shouldStop){
+        setTimeout(tick, INTERVAL_MS);
+      }
+    }
+
+    // Reaplica quando o GTM/HTML empurrar 'page_event_id_ready'
+    try {
+      window.dataLayer = window.dataLayer || [];
+      var origPush = window.dataLayer.push;
+      window.dataLayer.push = function(){
+        var res = origPush.apply(this, arguments);
+        try {
+          var arg = arguments[0] || {};
+          if (arg && arg.event === 'page_event_id_ready') {
+            var params = collectParams();
+            applyWith(params);
+          }
+        } catch(e){}
+        return res;
+      };
+    } catch(e){}
+
+    // Reaplica quando o Elementor abrir popup
+    try {
+      if (window.jQuery) {
+        window.jQuery(window).on('elementor/popup/show', function(){
+          var params = collectParams();
+          applyWith(params);
+        });
+      }
+      document.addEventListener('elementor/popup/show', function(){
+        var params = collectParams();
+        applyWith(params);
+      }, true);
+    } catch(e){}
+
+    // Fallback: observar mutações de DOM (inserção do popup)
+    try {
+      var mo = new MutationObserver(function(){
+        var params = collectParams();
+        applyWith(params);
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+      setTimeout(function(){ try{ mo.disconnect(); }catch(e){} }, 20000);
+    } catch(e){}
+
+    tick();
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', runWithRetries);
+  } else {
+    runWithRetries();
+  }
+})();
+</script>
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<link rel="icon" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/cropped-logo-oficial-branco-slogan-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/cropped-logo-oficial-branco-slogan-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/cropped-logo-oficial-branco-slogan-180x180.png" />
+<meta name="msapplication-TileImage" content="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/cropped-logo-oficial-branco-slogan-270x270.png" />
+		<style id="wp-custom-css">
+			/*
+Resolve conflitos de layout e visibilidade com temas.
+*/
+/* 1. Força o container principal (mês e ano) a ter um layout flexível e alinhado. */
+.flatpickr-current-month {
+display: flex !important;
+flex-direction: row !important;
+justify-content: center !important;
+align-items: center !important;
+position: relative !important;
+}
+
+/* 2. Reseta a posição do container do ano e garante que ele seja um bloco em linha. /
+.flatpickr-months .numInputWrapper {
+display: inline-block !important;
+position: static !important; / 		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
+<body class="wp-singular page-template page-template-elementor_canvas page page-id-847 wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-847">
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N62DGMNS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+		<div data-elementor-type="wp-page" data-elementor-id="847" class="elementor elementor-847" data-elementor-post-type="page">
+				<main class="elementor-element elementor-element-519ae90 e-con-full e-flex e-con e-parent" data-id="519ae90" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-bb6ceda elementor-view-default elementor-widget elementor-widget-icon" data-id="bb6ceda" data-element_type="widget" data-e-type="widget" data-widget_type="icon.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-icon-wrapper">
+			<div class="elementor-icon">
+			<svg xmlns="http://www.w3.org/2000/svg" id="Camada_2" data-name="Camada 2" viewBox="0 0 231.91 162.9"><defs><style>      .cls-1 {        fill: #fff;        stroke-width: 0px;      }    </style></defs><g id="Camada_1-2" data-name="Camada 1"><g><path class="cls-1" d="M132.06,70.53c.37-.03.63-.04.88-.07,1.65-.19,2.76-1.34,2.77-3,.03-3.71.01-7.42,0-11.13,0-.1-.03-.2-.04-.3-.58-.15-13.3-.2-14.35-.04-.01.26-.04.54-.04.82,0,3.29-.02,6.58,0,9.87.02,2.44-.14,4.84-1.14,7.17,2.35,1.99,5,2.69,7.97,2.05.23.42-.05.52-.29.63-1.15.54-2.35.92-3.61,1.11-3.98.61-7.5-.51-10.67-2.86-2.65-1.96-4.61-4.52-6.23-7.36-1.32-2.32-2.24-4.81-3.16-7.3-.15-.42-.32-.83-.49-1.28h-10.86c-.1.24-.21.47-.31.71-.64,1.56-1.28,3.11-1.92,4.67-.07.17-.14.34-.2.51-.48,1.41.14,2.47,1.6,2.73.19.04.39.08.74.15-.24.17-.34.3-.46.31-.29.03-.58.02-.87.02-2.63,0-5.26,0-7.9,0-.26,0-.59.13-.79-.3.19-.06.34-.13.5-.15,1.93-.17,3.2-1.23,3.95-2.95,3.26-7.41,6.51-14.83,9.78-22.24.2-.45.21-.81-.01-1.25-.69-1.39-1.44-2.75-2.48-3.92-.91-1.02-1.97-1.81-3.33-2.14-1.05-.25-2.09-.18-3.12.09-.2.05-.4.11-.61.17-.28-.31-.13-.47.16-.59,1.03-.4,2.03-.89,3.09-1.18,3.62-.98,6.81-.14,9.53,2.46,1.72,1.64,3.02,3.59,4.01,5.73,1.18,2.58,2.25,5.21,3.33,7.84,1.8,4.38,3.57,8.77,5.36,13.15.42,1.02.9,2,1.5,2.99.02-.18.06-.37.06-.55,0-7.53,0-15.05,0-22.58,0-1.94-1.11-3.1-3.03-3.22-.15,0-.3-.04-.51-.08.09-.16.12-.33.2-.35.17-.05.36-.03.55-.03,4.16,0,8.32,0,12.47,0,.18,0,.38-.01.55.04.08.02.13.18.25.37-.32.03-.55.05-.78.07-1.55.13-2.63,1.17-2.8,2.71-.02.18-.02.37-.02.55,0,3.55,0,7.11,0,10.66,0,.23.03.46.04.73h14.41v-.87c0-3.39,0-6.79,0-10.18,0-1.87.32-3.67,1.12-5.36,1.72-3.62,4.62-5.48,8.61-5.67.58-.03,1.16,0,1.73.05.18.01.44.13.5.27.12.28-.19.33-.37.4-2.78,1.15-4.06,3.39-4.45,6.22-.2,1.43-.3,2.88-.3,4.32-.03,8,.01,16-.03,24-.01,1.85,1.17,3.38,3.15,3.38.12,0,.24.06.44.11-.12.15-.18.29-.27.31-.2.04-.42.03-.63.03-4.08,0-8.16,0-12.24,0-.21,0-.43.01-.63-.03-.09-.02-.15-.17-.31-.37M93.67,56.73c1.1.18,8.63.13,9.2-.06-1.43-3.82-2.85-7.64-4.34-11.63-1.66,4-3.26,7.83-4.86,11.69"></path><path class="cls-1" d="M94.74,122.52c.13.27.28.55.4.82,2.27,5,4.53,10.01,6.8,15.01.15.33.31.67.51.98.41.65.98,1.09,1.76,1.22.14.03.28.08.48.14-.62.25-5.47.27-6.18.02.17-.06.28-.11.39-.15.93-.3,1.24-.89.89-1.83-.31-.84-.66-1.66-1-2.49-.2-.48-.41-.96-.61-1.44h-7.53c-.29.68-.59,1.38-.89,2.07-.24.56-.49,1.11-.71,1.67-.43,1.1-.15,1.68.96,2.03.07.02.13.07.25.14-.13.06-.21.14-.3.14-2.39-.02-4.79,0-7.18-.08-1.45-.05-2.65-.71-3.63-1.82-1.98-2.22-3.99-4.41-5.99-6.61-.1-.11-.2-.24-.33-.42.18-.23.35-.45.53-.67,1.82-2.15,3.64-4.29,5.47-6.44.05-.06.1-.12.15-.18.67-.81.54-1.18-.49-1.46-.04-.01-.08-.06-.12-.09,0-.02,0-.05,0-.07s.02-.06.03-.06c1.76-.02,3.52-.04,5.28-.05.2,0,.4.03.63.16-.12.05-.24.14-.36.14-1.19.07-2.15.56-2.96,1.45-1.85,2.01-3.73,4-5.6,6-.16.17-.31.35-.49.56.11.15.2.31.32.44,2.38,2.6,4.76,5.2,7.15,7.8.4.43.85.79,1.42.95,1.32.37,2.38-.03,3.12-1.2.11-.18.21-.36.3-.55,2.14-4.6,4.29-9.19,6.42-13.8.35-.76.62-1.55.93-2.32.06-.01.11-.02.17-.04M94.52,125.86c-.57.89-3.28,7.44-3.32,7.98,1.24.15,5.93.09,6.55-.1-1.07-2.62-2.15-5.23-3.23-7.88"></path><path class="cls-1" d="M125.9,93.97c.54.05,1.09.1,1.63.15.62.05,1.24.1,1.87.08-.92-.43-1.92-.4-2.89-.52,1.3-.37,2.61-.29,3.92-.03.36.07.73.14,1.06.3.82.4,1.58.13,2.38-.12-.1-.2-.19-.36-.25-.53-.19-.55-.05-.97.44-1.29.78-.52,1.66-.78,2.58-.93,1.28-.21,2.57-.24,3.85-.08.28.03.56.04.84.06.26-.78.48-1.5.74-2.21.47-1.24,1.07-2.4,1.99-3.38.2-.21.41-.4.64-.58.63-.49,1.08-.45,1.65.14.07.07.14.15.23.26.57-.69,1.01-1.37,1.01-2.33,0-1.66.58-3.18,1.52-4.57-.26,1.02-.51,2.04-.76,3.06.06.02.11.03.17.05.51-1.06.65-2.24,1.05-3.53.53,2.97,1.78,5.36,4.1,7.33h-1.27c-.16.47-.32.92-.49,1.41-.47-1.18-.94-2.25-1.3-3.35-.42-1.24-.74-2.51-1.1-3.78-.06.32-.11.68-.19,1.03-.21.87-.44,1.73-.66,2.6-.06.23-.16.47-.12.69.25,1.63.97,3.03,2.04,4.21.39-.29.7-.56,1.05-.78.24-.15.49-.11.71.12,1.61,1.78,2.53,3.79,2.19,6.25-.01.07-.06.13-.13.25-.2-.22-.37-.42-.55-.59-.69-.65-1.37-1.31-2.08-1.93-1.77-1.56-3.21-3.33-3.88-5.64-.03-.09-.1-.17-.18-.3-.17.27-.3.49-.44.71-1.42,2.27-3.33,3.98-5.8,5.05-.19.08-.37.2-.52.34-2.01,1.82-4.35,2.92-7.04,3.29-.04,0-.08.05-.17.11.05.08.09.17.16.22,1.68,1.29,2.78,3,3.56,4.93.55,1.36,1.07,2.74,1.63,4.18-.27-.06-.55-.1-.8-.18-2.13-.72-3.51-2.24-4.47-4.2-.13-.26-.08-.48.12-.63.33-.25.68-.46,1.09-.72-.04-.1-.08-.28-.16-.43-.66-1.17-1.55-2.12-2.67-2.85-.21-.14-.47-.25-.71-.29-1.19-.18-2.39-.33-3.59-.48-.07,0-.14.02-.32.04.26.18.45.31.64.43,1.12.7,2.14,1.52,3.07,2.46.61.61,1.28,1.16,1.96,1.76h-1.35c-.15.35-.29.69-.52,1.22-1.08-2.96-2.85-5.09-5.45-6.49v.02Z"></path><path class="cls-1" d="M157.35,50.76c1.14,1.11,2.53,1.8,4.03,2.21,1.16.31,2.37.43,3.59.63-.05.35-.5.45-.74.74.19.44.38.88.57,1.33-1.19-.59-2.33-1.12-3.43-1.72-.83-.45-1.6-1-2.4-1.51-.19-.12-.37-.26-.64-.31.08.15.16.29.25.44.49.9.96,1.81,1.47,2.7.18.31.4.63.68.83,1.19.86,2.52,1.36,3.99,1.49.09-.46.16-.86.27-1.25.08-.28.28-.42.6-.39,2.24.19,4.18.99,5.6,2.81.12.16.21.35.38.64-2.4-.32-4.71.12-6.98-.39-1.09-.24-2.13-.58-3.09-1.14-.18-.1-.36-.19-.61-.32,0,.19,0,.31.02.43.56,2.62.36,5.17-.63,7.66-.13.34-.19.71-.27,1.07-.47,2.38-1.5,4.47-3.13,6.27-.11.13-.22.27-.37.47.69.05,1.29.06,1.88.13,1.78.23,3.38.94,4.91,1.85,1.06.63,2.14,1.23,3.2,1.84-.88,1.08-4.61,1.28-6.98-.2q-.1-.71.39-1.65c-.92-.5-1.91-.7-2.93-.79-.29-.03-.58,0-.87-.02-.63-.03-1.16.16-1.68.54-.72.52-1.52.94-2.29,1.39-.2.12-.4.22-.59.41,2.44-.44,4.85.11,7.34.17-.36.27-.72.54-1.09.81.1.33.2.67.34,1.17-.31-.14-.49-.21-.65-.3-2.13-1.2-4.41-1.66-6.84-1.39-.23.03-.53.19-.7-.15,1.12-.35,1.98-1.1,2.89-1.79-1.03.26-1.83.92-2.66,1.53.14-.22.24-.47.41-.65.97-.99,2.07-1.81,3.39-2.24.89-.29,1.49-.84,1.97-1.61-.04-.05-.08-.13-.13-.16-.96-.49-1.15-.86-.67-1.8.38-.74.82-1.49,1.39-2.08.78-.81,1.7-1.48,2.56-2.21.2-.17.42-.3.67-.47-.25-.57-.51-1.11-.73-1.67-.5-1.25-.89-2.53-.88-3.9,0-.18,0-.37.01-.55.08-1.27.39-1.56,1.71-1.52-.02-.76-.05-1.48-.6-2.1-1.09-1.22-1.75-2.67-2.12-4.26-.06-.26-.16-.51.1-.72.08.88.88,2.43,1.56,2.95-.49-1.06-.88-2.08-1.58-2.93.05-.1.09-.2.14-.3,0,0-.02-.02-.02-.02"></path><path class="cls-1" d="M145.53,25.56c-.03-.09-.05-.19-.09-.31,2.87-.05,5.41-.97,7.71-3-.07.57-.11.92-.16,1.31.39.2.81.43,1.28.68-1.64.36-3.16.72-4.69,1.01-.85.16-1.72.19-2.72.29.3.12.47.2.65.27.92.37,1.85.75,2.78,1.12.24.1.49.25.74.24,1.61-.05,3.09-.51,4.4-1.42-.22-.43-.43-.81-.6-1.21-.1-.24-.04-.45.2-.61,1.93-1.31,4.01-1.96,6.34-1.35.13.03.24.09.43.17-.17.14-.29.26-.43.36-.82.65-1.67,1.28-2.47,1.96-1.61,1.36-3.35,2.44-5.44,2.89-.3.06-.6.11-1.01.19.19.19.3.32.43.43,1.99,1.61,3.41,3.63,4.21,6.07.09.27.2.54.35.79,1.26,2.1,1.9,4.38,1.86,6.83,0,.1.01.21.02.31,0,.02.03.04.05.05.05,0,.12.03.14,0,1.85-1.73,4.11-2.59,6.56-3.04,1.08-.2,2.15-.47,3.29-.72-.02.12-.01.29-.08.44-.65,1.51-1.78,2.58-3.21,3.34-.49.26-1,.46-1.52.65-.58.21-.79.12-1.06-.43-.13-.28-.2-.59-.32-.96-1.57.49-2.87,1.36-3.93,2.61-.1.11-.14.28-.18.43-.36,1.26-.71,2.52-1.07,3.8.1-.1.22-.2.32-.32.95-1.14,2.03-2.12,3.23-2.99.68-.49,1.3-1.05,1.98-1.61.13.47-.13.88-.24,1.35.31.19.63.39,1.08.67-.32.1-.48.16-.65.19-2.34.51-4.28,1.69-5.92,3.41-.19.2-.43.37-.64.56.34-1.1.73-2.18.83-3.34-.53.89-.76,1.88-.9,2.88-.02.15.06.3.09.46-.09-.29-.24-.58-.25-.87-.01-1.5.29-2.95,1.03-4.24.47-.83.46-1.63.36-2.54-.18.05-.32.09-.47.12-.68.16-1.11-.05-1.37-.71-.47-1.2-.58-2.45-.42-3.72.12-.99.31-1.96.47-2.97-.52-.27-1.06-.54-1.58-.83-1.06-.59-2.04-1.29-2.84-2.22-.24-.28-.46-.58-.64-.89-.43-.73-.33-1.15.36-1.68.08-.06.15-.13.26-.21-.59-.61-1.14-1.12-2.03-1.27-1.67-.29-3.2-.98-4.45-2.2.27.11.53.2.79.32.71.32,1.41.67,2.22.71-.8-.43-1.64-.8-2.48-1.15-.18-.08-.4-.07-.6-.1"></path><path class="cls-1" d="M78.46,69.74c.04.25.12.5.13.75.03.66.02,1.32.04,1.97.01.28.07.55.19.83.16-1.05.16-2.1.05-3.17.07.17.16.33.21.5.43,1.49.59,3.01.25,4.52-.2.91.06,1.64.44,2.45.13-.1.23-.18.33-.24.63-.38,1.12-.31,1.59.26.82,1.01,1.24,2.2,1.48,3.45.17.9.27,1.81.41,2.78.41.08.85.17,1.28.26,1.29.29,2.54.68,3.66,1.41.37.24.73.52,1.05.83.55.53.57.98.11,1.6-.08.1-.16.19-.28.32.76.47,1.47.82,2.38.71,1.52-.18,2.98.14,4.4.68.07.03.14.07.21.11.04.03.07.07.15.17-1.03-.14-2.01-.43-3.02-.14,1.08.16,2.16.32,3.24.47-2.64.96-4.84,2.49-6.39,4.89-.05-.03-.1-.05-.16-.08-.04-.35-.09-.7-.13-1.09-.44-.08-.9-.16-1.51-.27.26-.15.37-.23.49-.29.57-.27,1.17-.5,1.7-.82,1.35-.83,2.77-1.5,4.3-1.95.12-.04.24-.09.51-.2-.81-.07-1.47-.11-2.13-.18-.52-.05-1.06-.09-1.56-.23-.52-.14-.98-.06-1.45.14-1.29.53-2.4,1.29-3.3,2.36.31.32.62.6.88.91.17.21.23.46.02.72-1.54,1.8-3.39,2.98-5.83,3-.1,0-.2-.03-.33-.04.02-.1.01-.18.05-.23.7-.95,1.44-1.88,2.11-2.85,1.34-1.94,2.94-3.57,5.15-4.51.04-.02.08-.07.17-.15-.21-.11-.4-.21-.59-.3-2.14-.95-3.9-2.36-5.28-4.26-.18-.25-.39-.5-.62-.71-1.95-1.68-3.28-3.75-4.03-6.2-.03-.1-.07-.2-.11-.29,0-.02-.04-.02-.11-.04-.05.06-.12.13-.17.21-1.08,1.89-2.67,3.23-4.53,4.28-1.23.69-2.46,1.38-3.73,2.09-.05-.7.13-1.35.37-1.98.61-1.61,1.72-2.81,3.11-3.78.32-.22.59-.23.84.04.27.28.49.6.77.94.65-.36,1.2-.88,1.67-1.47.37-.47.69-.99,1.02-1.49.32-.48.37-1,.33-1.58-.06-.94-.02-1.89-.01-2.83,0-.21.02-.42-.05-.65-.1.2-.21.4-.3.6-.55,1.29-1.27,2.48-2.12,3.59-.5.66-.93,1.39-1.43,2.13-.3-.39-.09-.88-.19-1.35-.34-.09-.71-.18-1.24-.32.31-.19.49-.32.68-.43,2.23-1.28,3.78-3.14,4.81-5.48.05-.12.06-.25.09-.38,0,0-.02.02-.02.02"></path><path class="cls-1" d="M144.42,24.5c-.18-.14-.4-.25-.53-.43-.89-1.16-1.56-2.45-1.8-3.89-.15-.91-.68-1.49-1.34-2.06-.14.2-.23.38-.37.54-.36.4-.78.48-1.28.23-.94-.46-1.7-1.15-2.3-1.99-.64-.89-1.21-1.83-1.88-2.85-.18.05-.45.13-.72.2-1.61.41-3.23.73-4.9.39-.05-.01-.1-.02-.16-.03-1.24-.28-1.47-.62-1.24-1.95-.76-.05-1.48-.13-2.17.33-1.2.8-2.54,1.24-3.96,1.44-.4.05-.84.22-1.19-.14,1.14.02,2.11-.48,3.06-1.04-1.04.27-2.12.44-3.04,1.06-.07-.02-.14-.04-.31-.08,2.07-2.01,3.37-4.38,3.7-7.35.22.23.36.36.48.51.11.14.19.31.28.47.47-.13.91-.25,1.53-.42-1.71,1.99-2.75,4.27-4.67,5.85-.03.02-.03.09-.03.08,1.25-.43,2.53-.87,3.81-1.32.12-.04.24-.12.33-.2,1.16-1.13,1.94-2.47,2.33-4.09-.61-.09-1.19-.17-1.56-.67.31-2.56,2.16-5.07,4.25-5.71-.05.26-.11.47-.14.69-.17,1.06-.36,2.13-.5,3.19-.31,2.31-1.05,4.44-2.66,6.32.22.03.36.07.49.06,2.33-.14,4.55.28,6.66,1.3.23.12.49.19.74.27,2.39.76,4.4,2.1,6.02,4.02.13.16.27.3.49.54.05-.27.08-.44.11-.6.28-1.8,1.01-3.43,2.09-4.88.99-1.32,2.03-2.61,3.08-3.96.38.87.49,1.77.41,2.69-.12,1.39-.59,2.66-1.35,3.83-.36.56-.5.61-1.09.36-.14-.06-.28-.15-.41-.24-.12-.09-.24-.2-.43-.37-.26.49-.57.92-.73,1.41-.27.82-.46,1.67-.65,2.51-.11.5.03.96.26,1.43.5,1.03.92,2.1,1.42,3.26.05-.67.07-1.26.15-1.84.14-.93.31-1.86.48-2.79.16-.87.34-1.74.54-2.75.27.49.48.89.7,1.28.36-.05.71-.1,1.29-.18-1.95,2.34-2.86,4.88-2.86,7.77-.12-.06-.2-.11-.28-.15-.25-1.08-.78-2.02-1.35-2.95.18,1.05.65,1.98,1.17,2.89"></path><path class="cls-1" d="M76.97,42.16c.26-.05.19.14.21.27-.94.64-1.49,1.61-2.11,2.53.29-.17.55-.38.76-.63.47-.56.92-1.14,1.38-1.72-.15.39-.27.79-.47,1.16-.63,1.17-1.48,2.17-2.53,2.99-.7.54-.94.97-1.12,2.02.15.02.29.04.44.07.69.15.98.52.94,1.23-.07,1.18-.44,2.27-1.02,3.29-.5.86-1.06,1.69-1.63,2.6.13.15.29.35.45.55.86,1,1.65,2.06,2.14,3.29.21.53.36,1.1.46,1.67.15.79-.13,1.16-.92,1.36-.1.03-.2.04-.36.08.28.79.57,1.49,1.34,1.95,1.38.83,2.4,2.04,3.2,3.43.05.09.09.19.13.29,0,.02-.01.05-.05.15-.66-.8-1.31-1.57-2.18-2.09.57.9,1.36,1.59,2.07,2.4-1.31-.32-2.6-.67-3.95-.72-1.38-.04-2.71.2-4.2.66.25-.47.43-.8.61-1.14-.29-.33-.59-.68-.9-1.03.02-.04.05-.07.07-.11.16.04.32.09.49.12.7.14,1.39.3,2.09.39,1.36.17,2.69.49,3.97.97.22.08.43.16.7.15-.23-.2-.47-.39-.69-.6-.66-.64-1.32-1.28-1.95-1.95-.28-.3-.57-.52-.96-.64-1.41-.41-2.82-.58-4.32-.19.17.57.4,1.13.04,1.67-2.27.75-5.54.24-6.95-1.41.11-.04.19-.07.28-.09,1.11-.31,2.23-.6,3.34-.94,1.88-.58,3.78-.94,5.75-.61.41.07.81.16,1.31.25-.1-.23-.15-.39-.23-.54-1.17-2.13-1.69-4.4-1.6-6.83.02-.6-.06-1.2-.09-1.81-.12-2.03.22-3.98,1-5.86.1-.24.2-.48.34-.83-.61.16-1.12.32-1.65.43-1.49.3-2.99.27-4.47-.01-1.55-.29-3.08-.65-4.71-.99.26-.24.49-.49.75-.69,1.7-1.25,3.62-1.59,5.69-1.34.44.05.61.29.63.66.02.36-.04.72-.07,1.13,1.15.22,2.28.05,3.4-.26.83-.23,1.5-.61,2.03-1.36.62-.89,1.42-1.66,2.21-2.56-.3.14-.5.23-.71.33-1.17.56-2.38.97-3.64,1.25-.94.21-1.87.48-2.83.73.05-.46.49-.72.76-1.13-.2-.3-.42-.61-.71-1.04.29.04.45.04.61.08,2.28.46,4.5.26,6.66-.61.29-.12.55-.29.82-.44,0,0-.02.03-.02.03"></path><path class="cls-1" d="M77.24,41.5c-.13-.31-.21-.65-.38-.93-1.23-2-2.89-3.53-5.06-4.48-.12-.05-.23-.11-.5-.24.45-.18.78-.32,1.19-.48v-1.48c.2.23.29.33.37.44.36.48.68,1.01,1.08,1.45,1.11,1.21,2.07,2.52,2.8,3.99.04.09.11.17.26.22-.04-.29-.11-.59-.13-.88-.07-.94-.12-1.89-.19-2.83-.02-.28-.05-.59-.18-.83-.75-1.37-1.81-2.44-3.21-3.24-.15.28-.25.55-.42.77-.17.22-.41.39-.6.56-2.4-.95-4.51-3.71-4.36-5.6,1.47.67,2.96,1.32,4.42,2.04,1.73.85,3.2,2.02,4.29,3.63.04.06.09.12.2.26.08-.24.16-.4.19-.56.47-2.12,1.39-4.01,2.81-5.67.24-.28.47-.57.67-.87,1.3-1.98,3.01-3.5,5.13-4.55.18-.09.35-.2.57-.33-.12-.08-.17-.12-.24-.15-2.08-.79-3.69-2.19-5.04-3.92-.84-1.08-1.68-2.15-2.55-3.26.55-.22,1.15-.13,1.72-.03,1.81.31,3.26,1.27,4.5,2.58.25.26.26.53.07.78-.23.31-.51.58-.83.94.18.18.37.43.61.6.62.44,1.25.87,1.91,1.24.87.48,1.75.67,2.79.36.98-.3,2.05-.33,3.17-.49-.25-.08-.44-.16-.63-.21-1.38-.36-2.69-.88-3.95-1.56-.76-.41-1.57-.73-2.36-1.09.35-.35.89-.25,1.34-.4.04-.38.07-.76.11-1.13.06-.04.12-.07.19-.11.06.12.1.25.18.35,1.53,2.03,3.56,3.32,5.97,4.04.26.08.51.12.47.47-.1-.04-.19-.11-.29-.11-.98.05-1.94.25-2.86.59,1.1.11,2.13-.18,3.15-.51-.23.16-.45.36-.7.47-1.34.6-2.74.97-4.21.86-.92-.07-1.63.27-2.33.75,0,.07-.02.14,0,.16.83.75.68,1.39-.04,2.06-1.01.93-2.2,1.51-3.48,1.94-.52.17-1.05.32-1.55.47-.12,1.08-.16,2.14-.37,3.16-.17.84-.48,1.67-.86,2.43-.52,1.05-.99,1.13-2.1.5-.26.77-.53,1.48-.27,2.34.51,1.66.52,3.35-.07,5.04,0-.52.02-1.04,0-1.57-.03-.51-.12-1.02-.25-1.53-.13.96-.08,1.92,0,2.88.03.27-.05.55-.07.82-.05-.04-.1-.07-.15-.11.02-.03.04-.04.06-.04"></path><path class="cls-1" d="M119.6,14.02c-.09.09-.17.19-.26.28-.93-.68-2.01-1.02-3.09-1.35.95.65,1.93,1.23,3.11,1.33-.22.04-.44.16-.65.12-1.52-.24-2.99-.71-4.21-1.67-.72-.57-1.49-.7-2.4-.69,0,.12-.02.24-.02.36.05.92-.18,1.23-1.09,1.41-1.27.25-2.51.09-3.75-.23-.61-.16-1.21-.35-1.86-.55-.21.2-.43.42-.66.63-.85.79-1.77,1.49-2.88,1.9-1.16.43-1.55.25-2.01-.94-.71.4-1.37.78-1.7,1.61-.57,1.41-1.54,2.56-2.71,3.54-.09.08-.2.13-.37.14.56-.79,1.12-1.58,1.68-2.37-.05-.04-.1-.08-.15-.11-.78.82-1.41,1.76-2.12,2.67.14-1.38.31-2.73.13-4.11-.18-1.37-.62-2.65-1.29-4.05.51.18.86.31,1.21.43.3-.35.59-.7.97-1.14-.04.95-.08,1.75-.12,2.55-.06,1.23-.11,2.46-.2,3.69-.03.44-.16.87-.27,1.37.09-.06.15-.08.18-.12.75-1.05,1.49-2.1,2.23-3.15.08-.11.18-.21.21-.33.36-1.62.29-3.22-.35-4.82-.55.29-1.05.53-1.62.33-1.22-2.17-1.05-5.67.27-7.05.7,1.48,1.42,2.95,2.08,4.45.76,1.73,1.15,3.55.94,5.45,0,.08,0,.16.01.23,0,.02.03.04.08.1.22-.16.46-.31.68-.47,1.95-1.44,4.15-2.24,6.56-2.47.25-.02.5.06.75.09.15.02.31.06.45.03,1.59-.34,3.18-.39,4.78-.14.1.01.21,0,.37,0-.06-.15-.09-.28-.16-.37-1.1-1.57-1.64-3.35-1.83-5.23-.16-1.59-.23-3.19-.34-4.91.28.16.53.28.75.44,1.58,1.14,2.42,2.73,2.84,4.58.02.08.02.16.04.23.18.9-.02,1.18-.93,1.3-.15.02-.31.02-.53.03,0,.15-.02.27,0,.39.27,1.46.92,2.73,1.87,3.85.1.12.23.22.37.28,1.17.52,2.35,1.03,3.59,1.57-.15-.4-.49-.64-.72-.95-.23-.32-.48-.62-.71-.95-.24-.34-.47-.7-.68-1.06-.2-.34-.37-.7-.56-1.04-.2-.37-.4-.74-.63-1.09-.21-.33-.46-.63-.72-.98.55-.12.91.25,1.38.4.23-.27.47-.57.81-.98.05.34.09.53.11.72.17,2.42,1.09,4.53,2.6,6.4.14.17.36.28.54.42l-.03-.03"></path><path class="cls-1" d="M136.97,120.15c.77-.27,5.97-.26,6.66-.02-.22.06-.35.11-.49.12-1.18.16-1.83.86-1.84,2.07-.02,1.26,0,2.53,0,3.79,0,1.16,0,2.32,0,3.47,0,.13.02.25.03.43h12.15c.02-.21.06-.43.06-.65,0-2.26,0-4.53,0-6.79,0-1.53-.51-2.1-2.06-2.34-.07,0-.12-.07-.31-.18.83-.2,1.54-.09,2.25-.11.71-.02,1.42-.02,2.13,0,.71.02,1.43-.1,2.14.22-.19.03-.38.06-.56.1-.96.17-1.58.88-1.63,1.85,0,.16,0,.32,0,.47,0,5.21,0,10.42,0,15.63,0,.21,0,.42.01.63.08.79.62,1.42,1.39,1.64.27.07.54.12.96.21-.23.1-.31.17-.4.17-2,0-4,0-6,0-.06,0-.11-.09-.23-.19.26-.05.46-.08.66-.12.99-.2,1.56-.83,1.66-1.84.02-.18.01-.37.01-.55,0-2.1,0-4.21,0-6.31,0-.26-.02-.51-.04-.82h-12.18c-.01.26-.03.51-.03.77,0,2.13,0,4.26,0,6.39,0,1.58.51,2.16,2.08,2.41.05,0,.09.04.14.07,0,.02.02.04.02.06,0,.03-.02.07-.04.07-.26.03-.51.08-.77.08-1.84,0-3.68-.03-5.52-.05-.03,0-.06-.07-.14-.16.22-.04.42-.08.61-.11,1.05-.21,1.63-.9,1.67-1.99,0-.1,0-.21,0-.32v-15.71c0-.16,0-.32,0-.47-.08-.96-.73-1.66-1.68-1.81-.18-.03-.37-.06-.7-.12"></path><path class="cls-1" d="M111.26,140.72c-.76.23-5.01.23-5.75-.01.27-.06.42-.1.58-.12,1.11-.16,1.61-.71,1.64-1.85.01-.45,0-.89,0-1.34,0-3.34.02-6.68-.01-10.03-.01-1.44-.14-2.89-.21-4.33,0-.16,0-.31,0-.49.37-.07.52.21.72.39,2.4,2.25,4.79,4.51,7.18,6.77,2.36,2.22,4.71,4.44,7.06,6.66.21.2.42.38.73.67.03-.35.06-.57.06-.79,0-3.68,0-7.37,0-11.05,0-1.32-.47-1.83-1.82-1.97-.1,0-.19-.05-.28-.08,0-.06,0-.09.01-.11,0-.02.02-.06.03-.06,1.73-.02,3.47-.04,5.2-.05.09,0,.18.04.28.19-.15.04-.31.09-.46.11-1.1.12-1.64.7-1.66,1.82-.01.76,0,1.53,0,2.29,0,3.05-.02,6.11.01,9.16.02,1.42.15,2.83.22,4.25,0,.15,0,.3,0,.63-.32-.25-.55-.4-.74-.58-2.39-2.26-4.77-4.53-7.16-6.79-2.4-2.28-4.81-4.57-7.21-6.85-.16-.15-.35-.29-.61-.51-.02.37-.04.62-.04.88,0,3.66,0,7.32,0,10.97,0,1.44.41,1.9,1.88,2.08.07,0,.14.05.33.12"></path><path class="cls-1" d="M170.94,141.28c-2.25.01-3.99-.37-5.59-1.25-3.18-1.75-4.86-4.46-4.87-8.08-.02-3.62,1.6-6.42,4.8-8.11,3.49-1.85,7.11-1.86,10.58.04,3.43,1.87,4.99,4.9,4.71,8.78-.27,3.73-2.3,6.29-5.69,7.79-1.36.6-2.75.84-3.95.84M178.5,131.93c-.15-.9-.22-1.83-.46-2.71-.91-3.41-3.82-5.72-7.22-5.8-3.59-.09-6.55,1.99-7.66,5.42-.73,2.25-.68,4.52.22,6.72,2.2,5.37,8.63,6.12,12.21,2.99,1.99-1.75,2.78-4.02,2.91-6.62"></path><path class="cls-1" d="M44.08,131.94c.19-.02.39-.06.58-.07.71-.03,1.42-.03,2.13-.07,1.92-.11,3.14-1.16,3.46-3.06.1-.59.11-1.22.02-1.8-.26-1.58-1.26-2.49-2.78-2.87-.85-.22-3.49-.27-4.52-.09-.01.24-.04.5-.04.75,0,4.58,0,9.16,0,13.73,0,1.44.38,1.88,1.84,2.15.07.01.13.06.21.1-.51.23-5.18.27-5.99-.04.21-.04.41-.08.61-.12.93-.2,1.42-.76,1.42-1.71.01-4.63,0-9.26,0-13.89,0-.98-.54-1.56-1.51-1.69-.17-.02-.34-.06-.52-.21.13-.04.25-.1.38-.1,2.53,0,5.05-.03,7.58.02.78.02,1.57.19,2.31.42,1.7.55,2.84,1.67,3.15,3.49.32,1.91-.27,3.5-1.78,4.69-.56.44-1.29.67-1.95.99-.16.08-.34.1-.6.17.17.18.3.29.41.42.54.61,1.09,1.21,1.61,1.83,1.08,1.29,2.12,2.62,3.2,3.9.76.91,1.68,1.59,2.92,1.71.07,0,.14.07.29.15-.2.07-.33.15-.45.16-2.67.13-4.84-.77-6.37-3.04-.71-1.04-1.46-2.06-2.19-3.09-.21-.3-.43-.6-.67-.88-.74-.88-1.57-1.62-2.79-1.79.02-.05.03-.1.05-.15"></path><path class="cls-1" d="M14.76,133.66H6.69c-.19.46-.38.92-.56,1.38-.49,1.25-.99,2.49-1.44,3.75-.3.83,0,1.46.75,1.71.19.07.39.11.7.19-.54.32-1.03.16-1.49.19-.52.03-1.05,0-1.58,0s-1,.02-1.5,0c-.48-.02-.97.1-1.58-.17.28-.07.42-.12.57-.14,1.21-.19,1.98-.9,2.45-1.99.93-2.2,1.86-4.41,2.79-6.61,1.41-3.34,2.83-6.68,4.23-10.02.32-.77.6-1.57.91-2.38.34.09.36.41.46.65,1.61,3.85,3.22,7.71,4.83,11.57.88,2.11,1.79,4.21,2.63,6.33.54,1.38,1.37,2.35,2.93,2.5.04,0,.07.07.11.1-.53.22-5.92.24-6.67,0,.26-.08.45-.13.63-.19.65-.22.93-.64.88-1.31-.01-.18-.05-.37-.11-.54-.61-1.65-1.23-3.3-1.88-5.01M14.39,132.68c-1.19-3.17-2.35-6.27-3.52-9.36-.05,0-.1.02-.15.03-1.21,3.09-2.42,6.19-3.65,9.34h7.32Z"></path><path class="cls-1" d="M188.6,123.18l-.52.08c-.83.12-1.26.59-1.3,1.42,0,.13,0,.26,0,.39,0,3.03-.03,6.05.02,9.07.02.93.16,1.9.43,2.79.68,2.18,2.45,3.45,4.72,3.54.93.04,1.84-.04,2.72-.34,2.03-.68,3.22-2.1,3.61-4.19.1-.54.14-1.1.14-1.65.01-3.08,0-6.16,0-9.23,0-1.3-.31-1.64-1.62-1.83-.07-.01-.13-.06-.21-.1.44-.24,4.09-.29,5.1-.05-.2.08-.29.14-.39.16-1.16.16-1.48.52-1.48,1.71,0,3.03,0,6.05,0,9.08,0,.42-.01.84-.06,1.26-.31,3.06-2.01,5.04-4.99,5.75-1.66.39-3.34.39-5-.05-3.1-.81-4.85-3.04-4.89-6.24-.02-1.58,0-3.16,0-4.73,0-1.63,0-3.26,0-4.89,0-1.39-.25-1.68-1.63-1.89-.07,0-.12-.07-.2-.11.49-.23,4.73-.27,5.57.06"></path><path class="cls-1" d="M230.16,122.57v3.17c-.06,0-.11.02-.17.03-.04-.17-.08-.34-.11-.52-.11-.85-.61-1.37-1.44-1.38-1.97-.02-3.95,0-5.92,0-.07,0-.15.04-.26.08v7.46c.24.02.47.05.7.05,1.32,0,2.63,0,3.95,0,1.17,0,1.4-.2,1.63-1.34.02-.09.07-.18.13-.3.28.59.28,3.62-.03,4.23-.07-.3-.11-.52-.16-.74-.14-.59-.44-.9-1.02-.91-1.7-.03-3.41,0-5.17,0v7.54c.26.02.49.04.72.04,1.24,0,2.47-.01,3.71,0,2.16.03,3.76-.83,4.66-2.85.09-.19.22-.36.33-.54.07.03.14.07.2.1-.53,1.38-1.06,2.76-1.61,4.2-4.04,0-8.06,0-12.08,0,0-.07,0-.15,0-.22.25-.05.49-.08.74-.14.81-.19,1.27-.72,1.33-1.54.02-.24.01-.47.01-.71v-12.86c0-.16,0-.32,0-.47-.04-1-.54-1.55-1.52-1.69-.18-.03-.37-.07-.54-.18,3.97-.34,7.96.22,11.93-.5"></path><path class="cls-1" d="M23.2,140.7c.38-.07.6-.11.82-.15.9-.19,1.37-.71,1.44-1.62.02-.24.01-.47.01-.71,0-4.23,0-8.47,0-12.7,0-.16,0-.32,0-.47-.05-1.12-.55-1.65-1.69-1.79-.12-.01-.25-.05-.37-.08-.01,0-.02-.04-.07-.16.23-.02.45-.06.65-.06,2.16,0,4.31-.02,6.47,0,1.66.01,3.31-.01,4.93-.42.18.92.14,2.76-.13,3.43-.05-.38-.07-.59-.11-.8-.14-.75-.64-1.26-1.39-1.27-2.08-.03-4.15,0-6.22,0-.18.57-.24,6.33-.09,7.47.04.03.08.08.13.08,1.66.01,3.31.04,4.97.02.73,0,1.09-.37,1.21-1.1.03-.16.07-.32.12-.57.26.56.31,3.2.12,4.18-.35-.08-.2-.38-.24-.57-.14-.62-.45-.98-1.05-.99-1.73-.03-3.46-.01-5.27-.01-.02.29-.04.55-.04.8,0,1.76,0,3.52,0,5.29,0,1.45.41,1.92,1.85,2.13.07,0,.14.05.31.11-.54.34-1.05.15-1.53.18-.52.04-1.05,0-1.58,0s-1.05.02-1.58,0c-.5-.03-1.02.12-1.66-.19"></path><path class="cls-1" d="M205.03,136.24c.02.2.03.4.04.61.08,1.72,1.03,2.94,2.69,3.38,1.18.31,2.35.24,3.48-.22,2.33-.96,2.76-3.8.79-5.36-1.77-1.41-3.56-2.79-5.37-4.15-1.58-1.18-2.23-2.73-1.75-4.63.49-1.92,1.92-2.87,3.78-3.25,1.08-.22,2.15-.06,3.22.04.55.05,1.09.13,1.64.2.19.76.2,2.59-.03,3.31-.1-.3-.19-.47-.21-.65-.15-.93-.7-1.51-1.56-1.82-1.07-.38-2.17-.42-3.25-.06-1.08.36-1.93,1.03-2.13,2.21-.2,1.17.29,2.1,1.21,2.82,1.88,1.44,3.71,2.94,5.64,4.32,1.65,1.18,2.05,3.67,1.32,5.26-.8,1.76-2.23,2.72-4.09,2.97-1.67.22-3.31-.02-4.88-.66-1.1-.45-1.25-.65-1.2-1.82.03-.71.14-1.41.25-2.11.02-.15.15-.29.23-.44.06.02.12.03.18.05"></path><path class="cls-1" d="M119.19,109.52c-.1-.8-.19-1.6-.31-2.4-.1-.68-.23-1.35-.33-2.02-.31-2.12-.13-4.2.78-6.32-1.46.47-2.81.91-4.25,1-1.46.09-2.88-.03-4.37-.42.17-.17.28-.32.41-.41,1.59-1.15,3.26-2.13,5.24-2.44.26-.04.52-.07.78-.07.94,0,1.26.29,1.35,1.25,0,.07.03.15.05.26.84-.2,1.58-.45,2.16-1.16.98-1.2,2.28-2.01,3.72-2.58.26-.1.55-.11,1.01-.19-1.42,2.67-2.03,5.33-1.59,8.27-.3-.22-.59-.44-.89-.66-.39.25-.77.49-1.32.84,1.05-2.38,1.33-4.83,2.68-6.89.02-.04.01-.1.02-.25-.17.14-.3.24-.42.34-.83.64-1.65,1.3-2.5,1.92-.33.24-.59.5-.76.87-.6,1.34-.93,2.72-.82,4.14.49.04.93.03,1.36.11.16.03.38.26.39.41.2,2.45-.32,4.65-2.22,6.37-.03.03-.1.02-.18.03M125.03,94.36c-.04-.05-.08-.11-.12-.16-.96.49-1.81,1.12-2.57,1.89.04.05.07.1.11.15.86-.62,1.72-1.25,2.58-1.87"></path><path class="cls-1" d="M98,90.69c.54.4,1.16.74,1.61,1.23.67.73,1.33,1.51,1.79,2.38.43.82,1.05,1.27,1.78,1.65.08-.04.14-.06.15-.09.36-1.04.75-1.28,1.76-.94.62.21,1.22.49,1.78.83,1.43.87,2.57,2.06,3.69,3.49-1.58.13-2.97-.15-4.34-.58-1.39-.43-2.63-1.16-3.92-2.06.05.51.1.89.12,1.28.1,1.88-.33,3.65-1.05,5.37-.54,1.28-1.07,2.55-1.62,3.87-.1-.11-.23-.23-.32-.38-1.2-2.06-1.15-4.21-.45-6.4.11-.35.4-.42.69-.38.36.05.71.17,1.12.29.06-.17.15-.38.21-.59.27-1.06.26-2.14.14-3.21-.07-.64-.32-1.17-.78-1.67-.76-.83-1.41-1.75-2.19-2.74.15.67.32,1.23.4,1.8.12.78.2,1.56.26,2.35.08,1.07.13,2.14.2,3.33-.35-.36-.67-.69-.98-1.01-.33.14-.68.29-1.16.5.09-.28.12-.4.17-.51,1.04-2.35,1.17-4.77.61-7.26-.05-.21-.25-.44.03-.64.42.87,1.6,2.27,2.3,2.64-.29-.42-.49-.74-.74-1.04-.41-.5-.85-.98-1.27-1.47"></path><path class="cls-1" d="M73.96,140.71c-.8.23-5.5.24-6.36.02.33-.08.5-.13.68-.16,1.03-.21,1.52-.76,1.52-1.79.01-4.57.01-9.15,0-13.72,0-1.06-.55-1.64-1.6-1.8-.15-.02-.29-.06-.44-.08.01-.07.01-.1.02-.12,0-.02.02-.06.03-.06,1.84-.02,3.67-.04,5.51-.05.15,0,.29.03.46.17-.12.05-.23.12-.36.13-1.2.18-1.69.72-1.69,1.95,0,3.26,0,6.52,0,9.78,0,1.18,0,2.37,0,3.55,0,1.34.43,1.84,1.76,2.07.1.02.19.05.47.12"></path><path class="cls-1" d="M57.74,123.18c.71-.3,6.01-.28,6.79-.05-.35.06-.53.11-.71.13-1.24.16-1.8.79-1.8,2.04,0,4.36,0,8.73,0,13.09,0,1.42.49,1.98,1.91,2.19.15.02.3.05.6.11-.68.32-1.25.17-1.8.19-.55.03-1.1,0-1.66,0-.58,0-1.16.02-1.73,0-.53-.02-1.08.12-1.6-.21.27-.05.54-.09.8-.15,1.08-.23,1.57-.83,1.57-1.93,0-4.42,0-8.83,0-13.25,0-1.32-.59-1.96-1.93-2.09-.15-.01-.29-.05-.43-.07"></path><path class="cls-1" d="M78.3,69.72c-.24.8-.77,1.42-1.31,2.03-1.26,1.42-2.81,2.44-4.46,3.33-.3.16-.6.33-.92.46-1.44.61-2.8,1.33-3.78,2.73-.35-.64-.31-1.24-.3-1.78-.69-.39-1.36-.73-1.99-1.14-.18-.12-.36-.46-.32-.66.15-.73.39-1.44.6-2.15-.36-.45-.73-.91-1.16-1.46.56,0,.97.02,1.38,0,.93-.05,1.81-.29,2.67-.64,1.76-.71,3.57-1.23,5.47-1.43,1.13-.12,2.26-.1,3.36.2.33.09.62.34.93.52,0,0,.02-.02.02-.02-.07,0-.13.01-.2.02-.15-.34-.45-.2-.69-.19-2.31.08-4.53.57-6.66,1.48-1.71.74-3.23,1.76-4.45,3.18-.12.14-.21.32-.35.54,1.32.12,2.52.07,3.7-.21,3-.7,5.52-2.26,7.8-4.28.21-.19.44-.36.66-.54"></path><path class="cls-1" d="M119.6,14.02l.03.03c-1.49-2.08-2.05-4.46-2.2-6.96-.05-.87-.03-1.74-.07-2.6-.03-.6-.07-1.21-.2-1.8-.13-.58-.37-1.14-.6-1.84.62.19,1.18.37,1.74.54.6-.41,1.23-.85,1.97-1.37.43-.13.75.36,1.15.62.41.27.77.62,1.2.97.49-.21,1.03-.44,1.67-.37-.24.57-.56,1.07-.68,1.62-.22,1-.36,2.01-.46,3.03-.18,1.73-.44,3.45-1.13,5.06-.38.89-.9,1.71-1.39,2.55-.12.21-.37.35-.56.52.74-1.89,1.36-3.81,1.57-5.84.23-2.17.09-4.31-.73-6.36-.11-.28-.25-.55-.44-.95-.55.79-.86,1.53-1.11,2.29-.81,2.43-.84,4.91-.41,7.41.21,1.21.58,2.4.87,3.6-.07-.05-.14-.09-.21-.14"></path><path class="cls-1" d="M125.89,93.95c.09.12.17.27.28.35,1.37,1,2.36,2.32,3.1,3.82.54,1.11,1.03,2.25,1.41,3.42.49,1.5.94,3.01,2.23,4.2-.71.23-1.29.14-1.84.04-.46.63-.87,1.26-1.36,1.82-.14.16-.53.25-.73.18-.7-.24-1.38-.57-2.04-.86-.48.29-.97.58-1.56.94.01-.28,0-.42.03-.55.21-1.02.21-2.04-.03-3.05-.38-1.59-.68-3.18-.75-4.82-.06-1.45.05-2.89.53-4.27.12-.34.32-.65.48-.97,0,.24,0,.47-.03.71-.21,1.74-.09,3.46.2,5.18.39,2.26,1.19,4.35,2.65,6.15.19.23.4.43.71.75.29-1.25.41-2.33.34-3.43-.22-3.38-1.56-6.34-3.48-9.07-.09-.12-.27-.18-.41-.27.1-.09.19-.17.28-.26,0,0-.01-.02-.01-.02"></path><path class="cls-1" d="M162.69,82.5c-.44.35-.88.71-1.3,1.05,0,.71.03,1.47-.02,2.21-.02.23-.24.55-.45.63-.7.26-1.43.43-2.11.62-.2.55-.4,1.08-.6,1.62-.12-.05-.18-.06-.2-.09-.6-1.3-1.57-2.28-2.7-3.13-1.43-1.08-2.72-2.32-3.79-3.78-.78-1.06-1.41-2.2-1.75-3.69.2.22.3.31.38.41.08.1.15.21.23.32,1.3,1.88,2.84,3.52,4.72,4.83,1.51,1.05,3.15,1.78,4.98,2.09.1.02.21.02.31.03.02,0,.05-.02.12-.06-.07-.18-.13-.37-.22-.54-1.1-2.08-2.75-3.63-4.72-4.87-1.52-.96-3.16-1.66-4.88-2.19-.17-.05-.34-.11-.51-.24.49-.12.98-.11,1.48-.05,1.45.18,2.82.63,4.12,1.29.84.43,1.69.87,2.47,1.4,1.36.92,2.7,1.83,4.46,2.12"></path><path class="cls-1" d="M97.17,90.56c.34.38.33.87.36,1.33.1,1.54-.18,3.04-.68,4.49-.37,1.06-.79,2.12-1.3,3.12-.68,1.35-1.29,2.7-1.26,4.32-.67-.21-.98-.73-1.3-1.14-.82.11-1.58.21-2.44.33-.46-.08-.51-.63-.73-1.01-.25-.43-.42-.9-.64-1.38-.51-.12-1.08-.27-1.66-.41.04-.12.04-.19.08-.22,1.18-.75,2.02-1.8,2.71-3,.87-1.51,1.9-2.9,3.14-4.12.83-.82,1.73-1.53,2.8-2.02.28-.13.59-.18.89-.27-1.37,1.12-2.59,2.38-3.64,3.81-1.36,1.88-2.35,3.92-2.68,6.24-.07.48-.12.96-.03,1.55.34-.22.58-.37.81-.54,1.2-.89,2.17-1.99,2.96-3.24,1.3-2.05,2.09-4.29,2.51-6.67.07-.38.07-.77.1-1.15"></path><path class="cls-1" d="M157.41,50.29c.39-.38.74-.8,1.18-1.12,1.58-1.15,3.39-1.76,5.28-2.17.85-.18,1.7-.33,2.56-.44,1.14-.14,2.2-.5,3.15-1.14.08-.05.17-.1.42-.24-.12.71-.2,1.26-.31,1.9.67.59,1.39,1.27,1.69,2.13-.45.75-.85,1.41-1.29,2.14.28.42.56.93.58,1.58-.11,0-.19,0-.25-.02-1.22-.52-2.48-.62-3.79-.49-2.03.19-4.05.15-6.02-.38-.93-.25-1.81-.69-2.71-1.05-.19-.08-.38-.16-.57-.24,0,0,.02.02.02.02.02-.17.04-.35.06-.52-.09.33.18.32.37.37,2.86.74,5.75.94,8.65.29,1.44-.32,2.79-.88,4.05-1.81-.23-.11-.38-.2-.54-.26-1.26-.49-2.58-.71-3.93-.72-2.75-.02-5.35.68-7.83,1.83-.26.12-.53.22-.79.33"></path><path class="cls-1" d="M145.22,24.88c-.03-.3-.12-.6-.07-.89.23-1.45.78-2.79,1.59-4,.73-1.09,1.51-2.16,2.38-3.14,1.02-1.15,2.02-2.28,2.4-3.93.54.46.77,1,.96,1.53.79.08,1.53.14,2.27.26.2.03.36.28.49.39.12.81.24,1.59.35,2.36.49.26.99.53,1.61.87-.3.13-.45.21-.61.27-1.07.37-1.97.98-2.77,1.77-1.3,1.28-2.7,2.43-4.28,3.33-1.06.61-2.17,1.06-3.37,1.29-.34.07-.67.13-.96-.13.22-.05.46-.06.65-.15,1.96-.93,3.74-2.12,5.29-3.65,1.33-1.3,2.38-2.79,3.04-4.54.11-.28.17-.58.29-.97-.3.07-.47.1-.63.16-1.41.48-2.65,1.25-3.78,2.22-1.96,1.69-3.4,3.77-4.51,6.09-.13.28-.22.58-.33.87"></path><path class="cls-1" d="M93.85,20.33c-.6-.24-1.24-.42-1.8-.73-1.39-.78-2.53-1.88-3.54-3.09-.47-.56-.93-1.14-1.34-1.75-.89-1.34-1.77-2.67-3.4-3.44.61-.39,1.14-.52,1.75-.53.26-.73.48-1.46.79-2.16.09-.19.43-.39.66-.38.75.02,1.49.13,2.19.2.4-.43.78-.84,1.18-1.26.09.1.11.12.12.14.13,1.67.89,3.09,1.7,4.52.97,1.69,1.7,3.5,1.99,5.44.15,1.01.27,2.03-.07,3.03-.06-.31-.11-.62-.18-.92-.5-2.19-1.28-4.27-2.5-6.18-1-1.57-2.26-2.9-3.85-3.89-.14-.09-.31-.13-.53-.21.1,1.93.65,3.64,1.54,5.25,1.18,2.12,2.77,3.88,4.65,5.41.22.18.43.38.65.57"></path><path class="cls-1" d="M77.24,41.5s-.04.01-.06.04c-.22-.12-.45-.22-.65-.37-1.17-.9-2.42-1.68-3.75-2.31-2-.94-4.09-1.51-6.31-1.47-.59.01-1.18.05-1.87.3.48.44.86.83,1.29,1.17,1.97,1.56,4.25,2.38,6.7,2.75,1.53.24,3.08.41,4.63.16-.08.13-.16.26-.24.39,0,0,.02-.03.02-.02-.1,0-.22-.03-.3,0-2.16.74-4.35.62-6.54.2-.87-.17-1.74-.4-2.59-.65-1.47-.42-1.98-.47-3.88-.32.12-.61.15-.66.84-1.48-.25-.74-.5-1.46-.78-2.26.04-.47.54-.68.9-.99.38-.32.81-.57,1.19-.84.03-.55.05-1.12.09-1.8.21.14.32.19.4.27.8.83,1.77,1.38,2.84,1.78.86.32,1.72.65,2.55,1.03,2.2,1.02,4.14,2.37,5.53,4.42"></path><path class="cls-1" d="M159.17,153.99v-3.48c.28-.06.52-.1.83-.16v9.93c-1.15.35-2.3.54-3.48.22-1.11-.3-1.79-1.06-2.11-2.15-.24-.83-.23-1.66-.01-2.49.46-1.77,2.08-2.68,3.84-2.17.27.08.54.18.93.31M159.17,159.75c0-1.6,0-3.04,0-4.48,0-.28-.13-.45-.37-.55-.27-.11-.53-.24-.81-.3-1.36-.31-2.44.33-2.7,1.71-.12.63-.1,1.31.01,1.95.19,1.05.91,1.65,1.96,1.75.59.06,1.19-.04,1.9-.07"></path><path class="cls-1" d="M67.03,153.94c1.06-.38,2.17-.5,3.3-.26,1.16.24,1.89.99,2.24,2.1.3.95.27,1.92-.05,2.87-.55,1.62-2.19,2.38-3.9,1.83-.22-.07-.43-.17-.76-.3v2.66c-.32.02-.54.03-.76.04-.18-.58-.23-7.79-.07-8.94M67.89,154.57c-.02.19-.04.37-.04.55,0,1.18.02,2.37-.01,3.55-.02.51.18.79.64.93.25.08.5.17.76.21,1.2.21,2.18-.36,2.44-1.55.15-.67.16-1.42.05-2.1-.15-.93-.78-1.55-1.72-1.74-.69-.13-1.41-.13-2.11.15"></path><path class="cls-1" d="M35.31,160.2v2.63c-.3.02-.55.04-.85.05v-8.93c1.32-.44,2.68-.64,4.01-.03,1.07.49,1.59,1.45,1.69,2.58.06.67,0,1.38-.17,2.02-.47,1.72-2.18,2.52-3.95,1.94-.22-.07-.43-.16-.73-.27M35.31,154.58c0,1.36,0,2.67,0,3.98,0,.77.08.88.81,1.12.25.08.51.14.77.16.97.1,1.8-.38,2.14-1.26.35-.91.38-1.85.04-2.77-.29-.8-.9-1.29-1.75-1.41-.65-.09-1.31-.09-2.02.18"></path><path class="cls-1" d="M22.96,151.43h5.15c.02.21.05.42.08.72h-4.34c-.06,1.07-.04,2.07-.01,3.15h3.8v.79h-3.76v3.59h4.58v.77h-5.5v-9.02Z"></path><path class="cls-1" d="M190.03,160.45h-.84v-9.91c.09-.04.2-.1.32-.13.12-.03.25-.03.49-.04v3.4c.67-.07,1.24-.18,1.81-.18,1.57-.01,2.44.72,2.54,2.29.1,1.49.02,2.99.02,4.56-.22.01-.46.03-.77.05-.02-.32-.03-.58-.04-.84,0-.87,0-1.74,0-2.6,0-.34,0-.69-.05-1.02-.17-1.22-.73-1.71-1.97-1.66-.49.02-.97.15-1.51.24v5.84Z"></path><path class="cls-1" d="M109.88,160.22c-1.12.48-2.17.53-3.23.2-.74-.23-1.3-.7-1.6-1.42-.54-1.3-.57-2.61.07-3.88.61-1.22,1.83-1.79,3.16-1.51.89.18,1.51.71,1.82,1.56.24.65.32,1.32.18,2.11h-4.59c-.13,1.4.53,2.35,1.78,2.48.71.08,1.44-.05,2.24-.09.03.09.09.28.17.54M105.69,156.46c.78.15,3.13.12,3.69-.04.03-1.26-.57-2.03-1.61-2.08-1.19-.06-2.03.79-2.09,2.12"></path><path class="cls-1" d="M162.17,157.27c0,2.09,1.41,3.07,4.03,2.27.07.2.14.4.2.59-.11.09-.16.16-.23.18-.89.35-1.8.4-2.71.18-.9-.21-1.58-.73-1.92-1.6-.46-1.17-.49-2.37,0-3.54.53-1.29,1.64-1.93,3.02-1.79,1.01.1,1.71.63,2.08,1.58.25.65.3,1.33.19,2.12h-4.66ZM165.91,156.51c.09-1.3-.54-2.13-1.61-2.17-1.2-.04-2.06.86-2.05,2.17h3.66Z"></path><path class="cls-1" d="M96.98,160.32c-1.12.24-2.2.43-3.31.21-1.04-.21-1.62-.88-1.65-1.9-.03-1.06.45-1.73,1.48-2.04.83-.25,1.66-.2,2.49-.05.41-1.27-.2-2.18-1.47-2.19-.52,0-1.04.08-1.63.14-.03-.19-.06-.41-.1-.63.86-.36,1.7-.38,2.53-.22.88.16,1.44.74,1.6,1.63.06.33.09.68.1,1.02.01,1.1,0,2.21,0,3.31,0,.23-.02.46-.04.73M96.1,157.36c-.82-.25-1.62-.29-2.41,0-.58.21-.79.62-.77,1.24.03.61.3.97.9,1.14.75.21,1.5.15,2.27-.04v-2.34Z"></path><path class="cls-1" d="M52.27,157.09c.13-.56.19-1.14.4-1.67.48-1.23,1.52-1.89,2.83-1.87,1.25.02,2.26.71,2.73,1.91.34.85.4,1.73.19,2.63-.37,1.62-1.61,2.65-3.12,2.56-1.59-.09-2.77-1.3-2.92-2.99-.02-.18,0-.37,0-.55-.03,0-.07-.01-.1-.02M57.7,157.06c-.16-.55-.25-1.14-.49-1.65-.34-.72-.96-1.07-1.79-1.07-.82,0-1.43.36-1.78,1.08-.53,1.08-.52,2.19-.03,3.28.35.77,1,1.15,1.83,1.15.83,0,1.49-.39,1.82-1.17.21-.5.29-1.05.44-1.62"></path><path class="cls-1" d="M45.03,156.55c-.04-.47-.03-.89-.14-1.28-.17-.59-.62-.92-1.23-.92-.6,0-1.2.06-1.88.1-.04-.15-.08-.36-.14-.59.89-.38,1.75-.4,2.61-.23.81.16,1.34.69,1.53,1.52.04.15.09.31.09.46,0,1.55,0,3.09,0,4.69-1.13.27-2.23.45-3.37.22-.98-.2-1.56-.87-1.62-1.86-.06-.99.43-1.73,1.38-2.05.87-.29,1.75-.23,2.76-.06M44.98,157.36c-.8-.25-1.55-.27-2.29-.05-.66.2-.93.65-.89,1.31.04.62.35.97,1.01,1.14.73.18,1.44.11,2.18-.06v-2.34Z"></path><path class="cls-1" d="M87.81,156.54c-.04-.46-.02-.88-.13-1.27-.16-.59-.61-.92-1.23-.92-.6,0-1.19.06-1.88.1-.04-.15-.09-.36-.15-.6.92-.36,1.8-.39,2.68-.2.78.17,1.28.7,1.46,1.49.04.15.09.31.09.46,0,1.55,0,3.09,0,4.7-1.15.28-2.28.46-3.43.21-.94-.21-1.49-.88-1.55-1.84-.06-.97.4-1.69,1.3-2.03.71-.26,1.44-.27,2.18-.2.18.02.35.05.66.1M87.74,159.7v-2.36c-.8-.23-1.55-.26-2.29-.02-.62.19-.89.63-.86,1.25.02.64.32,1,.96,1.17.73.19,1.45.13,2.2-.04"></path><path class="cls-1" d="M198.96,153.55c.89.03,1.79.57,2.33,1.66.51,1.04.55,2.13.22,3.22-.4,1.34-1.51,2.18-2.85,2.21-1.36.03-2.51-.82-2.94-2.19-.32-1.04-.3-2.08.13-3.08.5-1.18,1.51-1.83,3.11-1.82M200.89,157.1c-.16-.57-.25-1.15-.49-1.66-.33-.72-.94-1.09-1.76-1.1-.81,0-1.44.33-1.8,1.04-.57,1.12-.57,2.27-.01,3.4.36.73,1,1.07,1.79,1.07.79,0,1.45-.35,1.78-1.08.23-.51.33-1.09.49-1.67"></path><path class="cls-1" d="M177.75,153.55c1.63-.01,2.67.7,3.15,1.96.36.94.38,1.9.1,2.86-.4,1.37-1.52,2.25-2.89,2.27-1.36.02-2.5-.83-2.92-2.21-.32-1.07-.3-2.13.18-3.15.53-1.13,1.43-1.71,2.38-1.73M180.37,157.08c-.16-.57-.26-1.14-.49-1.65-.33-.72-.95-1.08-1.77-1.08-.82,0-1.43.34-1.79,1.05-.56,1.12-.56,2.27,0,3.4.36.73,1.01,1.06,1.8,1.05.79,0,1.44-.36,1.77-1.1.23-.51.32-1.09.48-1.67"></path><path class="cls-1" d="M151.17,157.19c-.06.35-.1.83-.24,1.27-.41,1.35-1.52,2.17-2.86,2.18-1.36,0-2.51-.86-2.92-2.22-.27-.88-.27-1.76,0-2.64.44-1.48,1.61-2.31,3.13-2.23,1.39.07,2.51,1.1,2.78,2.57.06.31.07.63.12,1.06M150.33,157.08c-.17-.57-.27-1.17-.52-1.7-.32-.7-.93-1.02-1.71-1.04-.81-.01-1.44.31-1.81,1.03-.58,1.12-.58,2.27-.03,3.4.35.72.99,1.08,1.78,1.08.83,0,1.49-.38,1.82-1.14.22-.49.3-1.04.46-1.62"></path><path class="cls-1" d="M77.59,156.55c-.05-.49-.04-.88-.13-1.25-.13-.56-.59-.92-1.21-.94-.6-.01-1.2.06-1.89.1-.04-.13-.1-.33-.19-.62,1.06-.34,2.05-.44,3.05-.06.74.28,1.15.91,1.17,1.64.06,1.62.02,3.24.02,4.9-1.12.25-2.19.43-3.3.21-1.04-.21-1.6-.87-1.66-1.91-.05-1,.49-1.74,1.5-2.04.82-.25,1.66-.2,2.65-.03M77.54,157.36c-.8-.26-1.55-.27-2.29-.05-.65.19-.95.67-.9,1.31.04.61.36.99,1.01,1.14.73.17,1.45.14,2.19-.09v-2.3Z"></path><path class="cls-1" d="M115.13,156.53c.15-.5.1-.96-.1-1.4-.22-.5-.63-.78-1.18-.78-.6,0-1.2.06-1.88.1-.03-.15-.08-.36-.13-.62.94-.33,1.84-.39,2.74-.15.92.25,1.42.94,1.45,2.01.04,1.18.02,2.36.02,3.54,0,.34,0,.67,0,1.07-1.17.28-2.3.46-3.45.2-.92-.21-1.45-.86-1.51-1.77-.07-1.05.36-1.75,1.29-2.09.71-.26,1.44-.27,2.18-.19.18.02.35.05.56.08M115.17,157.37c-.8-.27-1.6-.29-2.39-.02-.57.2-.83.65-.8,1.23.03.62.34,1.01.97,1.17.73.19,1.46.13,2.22-.06v-2.32Z"></path><path class="cls-1" d="M132.48,160.32c-1.14.24-2.19.43-3.27.22-1.07-.2-1.64-.84-1.69-1.86-.05-1.1.45-1.8,1.5-2.1.82-.24,1.66-.19,2.49-.05.37-1.36-.24-2.2-1.6-2.18-.49,0-.98.09-1.52.15-.03-.19-.07-.39-.09-.55.07-.08.09-.14.14-.15.73-.28,1.49-.29,2.25-.19,1.05.14,1.72.87,1.77,1.99.05,1.1.02,2.2.03,3.31,0,.47,0,.93,0,1.42M131.61,157.4c-.78-.28-1.84-.3-2.39-.07-.59.25-.86.69-.81,1.3.05.6.34.96.94,1.11.75.19,1.49.16,2.25-.08v-2.26Z"></path><path class="cls-1" d="M139.75,154.49c-.03-.19-.06-.39-.09-.58.09-.07.15-.14.22-.15.65-.07,1.3-.2,1.95-.17,1.16.05,1.91.78,1.99,1.94.07.94.03,1.89.04,2.83,0,.63,0,1.25,0,1.95-1.19.29-2.34.47-3.51.19-.91-.22-1.41-.89-1.45-1.82-.04-1.02.37-1.69,1.28-2.02.71-.26,1.44-.27,2.18-.2.18.02.36.06.54.08.36-1.37-.25-2.2-1.61-2.19-.49,0-.98.09-1.52.14M142.98,157.36c-.85-.24-1.65-.29-2.43,0-.55.21-.82.67-.78,1.23.04.59.33.99.9,1.14.77.21,1.53.17,2.31-.06v-2.31Z"></path><path class="cls-1" d="M183.22,154.54v5.91h-.82v-6.48c1.05-.38,2.14-.49,3.24-.34,1.02.14,1.64.78,1.86,1.78.07.31.12.62.13.94.01,1.34,0,2.68,0,4.09-.28.02-.52.04-.82.06-.02-.29-.05-.53-.05-.75,0-.95,0-1.89,0-2.84,0-.39-.03-.79-.11-1.17-.2-.92-.66-1.3-1.58-1.35-.34-.02-.69,0-1.03.02-.23.02-.46.08-.82.15"></path><path class="cls-1" d="M49.39,161.3c.06-.25.11-.45.17-.65-.1-.05-.16-.09-.23-.12-1.45-.44-2.19-1.34-2.32-2.83-.06-.79-.04-1.58.29-2.32.51-1.14,1.37-1.77,2.62-1.82.63-.02,1.26-.01,1.9.32-.05.22-.1.43-.15.61-.61-.05-1.15-.13-1.69-.13-.91,0-1.54.49-1.85,1.34-.3.84-.31,1.71-.07,2.56.3,1.1,1.26,1.69,2.5,1.57.39-.04.77-.15,1.22-.25.06.2.11.41.2.7-.63.16-1.2.31-1.88.48.22.2.36.33.5.47.27.25.39.56.3.92-.1.4-.37.65-.76.71-.36.05-.73.04-1.1,0-.32-.03-.35-.26-.2-.58.26,0,.54.02.82-.01.13-.02.35-.13.36-.22.02-.15-.08-.34-.18-.46-.09-.11-.26-.17-.45-.28"></path><path class="cls-1" d="M136.79,160.85c.18.16.33.26.45.39.54.58.32,1.43-.45,1.6-.37.08-.79.05-1.17,0-.34-.04-.31-.29-.14-.57.23,0,.5.03.75-.01.16-.03.39-.12.43-.24.04-.12-.09-.32-.2-.45-.09-.11-.26-.17-.43-.27.05-.23.1-.45.15-.71-1.02-.21-1.82-.71-2.23-1.69-.48-1.14-.47-2.31-.06-3.46.54-1.49,2.21-2.46,4.56-1.55-.05.2-.11.41-.17.63-1.37-.22-2.73-.52-3.47,1.05-.42.89-.4,1.85-.12,2.78.41,1.33,1.61,1.73,3.7,1.23.06.21.13.42.18.59-.52.5-1.28.21-1.79.68"></path><path class="cls-1" d="M125.83,154.45h-3.49v-.71h4.5c.18.41.03.7-.21,1.02-1.01,1.34-2,2.71-2.99,4.07-.17.23-.3.49-.52.86,1.34.09,2.59,0,3.88.07.02.23.03.42.05.68h-4.89c-.22-.42-.03-.75.17-1.05.85-1.26,1.72-2.52,2.59-3.77.24-.34.51-.66.91-1.17"></path><path class="cls-1" d="M33.1,153.87c-.08.29-.13.48-.18.67-.55-.08-1.03-.16-1.52-.21-.21-.02-.42,0-.63.05-.44.09-.79.32-.88.79-.09.47.13.83.53,1.05.37.2.77.35,1.14.53.38.18.77.34,1.12.57.61.4.83,1,.74,1.71-.08.7-.49,1.15-1.14,1.38-1.11.39-2.21.33-3.37-.13.05-.23.1-.45.15-.69.14,0,.25,0,.34.03.73.25,1.48.36,2.25.16.43-.12.79-.3.86-.79.08-.51-.09-.87-.63-1.15-.59-.3-1.21-.53-1.79-.82-.56-.28-1.01-.67-1.09-1.35-.1-.9.31-1.61,1.18-1.91.95-.33,1.9-.25,2.92.13"></path><path class="cls-1" d="M174.07,153.87c-.07.27-.12.46-.17.67-.12,0-.19,0-.27,0-.52-.07-1.03-.19-1.55-.19-.68,0-1.11.33-1.22.8-.11.47.17.92.79,1.22.52.25,1.07.45,1.59.7.54.25.97.63,1.13,1.24.23.87-.16,1.73-1.01,2.07-1.15.45-2.3.38-3.5-.1.08-.26.15-.47.22-.71.4.09.75.24,1.11.25.54.02,1.1-.02,1.63-.1.35-.05.61-.31.67-.69.07-.42-.03-.8-.4-1.04-.26-.17-.55-.3-.84-.44-.47-.23-.97-.42-1.42-.67-.64-.35-.92-.91-.85-1.64.07-.74.48-1.22,1.15-1.46.95-.34,1.9-.26,2.94.12"></path><path class="cls-1" d="M206.48,153.87c-.06.25-.11.45-.15.65-.1,0-.18.03-.25.02-.6-.06-1.19-.18-1.79-.17-.55,0-.9.34-.99.75-.1.49.07.88.62,1.15.58.3,1.21.52,1.79.81.71.35,1.15.89,1.12,1.74-.02.71-.33,1.23-.96,1.5-1.17.5-2.34.42-3.57-.05.07-.26.13-.48.2-.72.41.1.76.24,1.12.25.54.02,1.1-.02,1.63-.11.39-.06.64-.36.68-.78.04-.39-.08-.74-.42-.96-.24-.16-.5-.28-.76-.4-.45-.21-.92-.39-1.36-.62-.79-.42-1.11-1.01-.99-1.8.12-.79.61-1.26,1.36-1.46.89-.23,1.76-.18,2.72.19"></path><path class="cls-1" d="M63.33,153.87c-.09.28-.15.47-.21.67-.11,0-.19,0-.26-.01-.6-.06-1.19-.17-1.79-.16-.55.02-.88.36-.96.78-.08.46.09.82.59,1.09.39.21.82.36,1.22.55.33.16.68.3.98.5.6.4.82.99.74,1.71-.08.71-.49,1.13-1.12,1.39-.96.38-2.23.33-3.31-.14-.01-.06-.05-.14-.03-.21.03-.15.09-.29.15-.47.12.01.22,0,.32.03.74.24,1.48.37,2.24.15.58-.16.85-.42.89-.87.04-.5-.21-.86-.65-1.07-.35-.17-.72-.32-1.08-.49-.31-.14-.62-.28-.92-.45-.65-.37-1.01-.93-.91-1.69.09-.75.54-1.25,1.25-1.47.93-.29,1.86-.22,2.86.15"></path><path class="cls-1" d="M119.4,159.89c-.04.26-.07.44-.1.61-.1.02-.17.07-.25.06-1.02-.09-1.43-.55-1.47-1.58,0-.03,0-.05,0-.08,0-2.66,0-5.31,0-7.97,0-.13.02-.26.03-.43.23-.05.45-.09.72-.15.04.15.09.27.09.39,0,1.89,0,3.79,0,5.68,0,.74.01,1.47,0,2.21-.02.65.15,1.15.97,1.26"></path><path class="cls-1" d="M83.53,153.77c-.05.24-.09.43-.13.66-.86-.05-1.7-.22-2.57.15v5.86c-.31.02-.55.03-.82.04-.03-.25-.06-.43-.06-.6,0-1.76,0-3.52,0-5.27,0-.62.01-.64.62-.81.97-.27,1.95-.36,2.97-.02"></path><path class="cls-1" d="M101.69,154.59v5.84c-.27.03-.49.05-.68.06-.21-.23-.26-5.32-.1-6.44,1.12-.56,2.46-.64,3.5-.22-.02.1-.02.2-.05.3-.02.1-.06.19-.1.31-.84-.05-1.68-.23-2.58.16"></path><path class="cls-1" d="M166.08,59.89c-1,.92-2.09,1.21-3.32.89-.25.37-.48.7-.81,1.18-.11-1.26-.21-2.33-.3-3.38.65.31,1.32.71,2.04.93.73.22,1.52.25,2.38.38"></path><path class="cls-1" d="M159.67,70.23c.05.57.08.97.12,1.42,1.25.34,1.99,1.19,2.33,2.45-1.38-.81-2.82-1.24-4.48-1.01.69-.96,1.3-1.83,2.03-2.86"></path><path class="cls-1" d="M76.51,32.74c-.75-1.53-1.97-2.43-3.58-3.08,1.4-.53,2.51-.32,3.51.47.37-.23.72-.45,1.2-.75-.4,1.18-.74,2.2-1.13,3.36"></path><path class="cls-1" d="M143.35,12.21c-1.07,1.68-1.3,1.49-1.81,4.29-.76-.73-1.52-1.47-2.32-2.24.41-.24.83-.03,1.28.04.52-1.21,1.46-1.86,2.85-2.09"></path><path class="cls-1" d="M137.94,94.46c.05.5-.43.73-.64,1.11.78,1.06.85,2.2.3,3.56-.58-1.64-1.38-2.94-2.89-3.76,1.14-.32,2.17-.61,3.23-.91"></path><path class="cls-1" d="M117.92,104.41c-1.13-.92-1.66-1.92-1.53-3.24-.38-.19-.75-.38-1.23-.63,1.2-.31,2.24-.57,3.38-.87-.87,1.45-.94,2.98-.61,4.73"></path><path class="cls-1" d="M160.53,39.26c1.18-.62,2.31-.5,3.57.24-1.71.33-3.1.91-4.17,2.26-.14-1.18-.26-2.25-.39-3.33.47.01.63.47.99.83"></path><path class="cls-1" d="M70.06,61.28c.14-.44.26-.83.43-1.36.47,1.15.87,2.14,1.26,3.11-.75-.09-1.52-.26-2.28-.25-.74,0-1.49.2-2.21.31.34-1,1.27-1.63,2.8-1.81"></path><path class="cls-1" d="M78.35,78.62c.47,1.07.9,2.07,1.35,3.09-.48.11-.77-.32-1.18-.49-.94.9-2.05,1.16-3.51.79,1.58-.8,2.75-1.79,3.35-3.39"></path><path class="cls-1" d="M81.24,19.17c1.01,1.27,2.18,2.27,3.83,2.61-.96.61-1.88,1.19-2.79,1.76q-.07-.5.26-1.18c-1.05-.78-1.44-1.86-1.31-3.19"></path><path class="cls-1" d="M111.49,10.29h-3.18c.11-.53.61-.62.95-.92-.41-1.24-.15-2.34.69-3.4.18.84.25,1.6.51,2.3.25.7.68,1.34,1.03,2.02"></path><path class="cls-1" d="M102.83,97.69c1.05.57,1.98,1.08,2.95,1.6-.32.37-.79.24-1.23.32-.18,1.32-.93,2.18-2.27,2.81.72-1.6,1.06-3.11.55-4.74"></path><path class="cls-1" d="M85.64,89.07c-.13-.4-.51-.74-.37-1.21.95.54,1.88,1.08,2.92,1.67-1.62.45-2.76,1.47-3.65,2.9-.27-1.43,0-2.21,1.1-3.36"></path><path class="cls-1" d="M100.97,10.93c.4.06.81.11,1.21.17l.03.15c-.49.26-.99.51-1.46.79-.46.28-.9.61-1.44.98.37-1.68.09-3.18-.72-4.62,1.18.22,1.87.98,2.38,2.52"></path><path class="cls-1" d="M155.95,29.48c.04.45.07.85.11,1.38-.88-.88-1.64-1.65-2.46-2.47,1.65-.04,3.04-.69,4.25-1.82,0,1.28-.56,2.13-1.9,2.91"></path><path class="cls-1" d="M146.99,89.14c-.48.1-.85.17-1.34.27.73-.99,1.38-1.86,2.06-2.78.24,1.67,1.12,2.92,2.33,4.01-1.32.05-2.36-.4-3.05-1.49"></path><path class="cls-1" d="M70.21,51.99c-.22-.5-.38-.87-.49-1.14-.68-.21-1.35-.34-1.94-.63-.44-.22-.78-.66-1.13-1.09,1.59.26,3.12.32,4.64-.49-.36,1.12-.68,2.14-1.07,3.35"></path><path class="cls-1" d="M130.47,6.79c.78,1.11.95,2.23.44,3.41.32.31.63.61,1.01.97-1.24-.06-2.32-.12-3.38-.17,1.47-1.97,1.21-1.44,1.93-4.21"></path><path class="cls-1" d="M121.12,160.45h-.8v-6.69c.22-.02.45-.04.76-.07.07,2.27.02,4.49.04,6.76"></path><path class="cls-1" d="M143.67,151.26c-.55,1.02-1,1.19-2,.79-.02,0-.05-.02-.07-.03q-.91-.38-1.58.26c-.07-.02-.15-.04-.21-.08-.06-.04-.11-.1-.16-.15.45-.99.99-1.22,1.94-.83.17.07.33.15.5.22.35.14.67.14.92-.18.2-.27.4-.3.66,0"></path><path class="cls-1" d="M209.02,159.87c.02.44-.29.77-.71.77-.4,0-.69-.29-.71-.69-.02-.44.28-.76.71-.76.42,0,.69.26.71.68"></path><path class="cls-1" d="M121.32,151.69c0,.36-.29.63-.65.62-.37,0-.6-.27-.59-.66,0-.39.25-.63.63-.62.36,0,.62.29.61.66"></path></g></g></svg>			</div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-39beaff elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="39beaff" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Aqui, cada festa de 15 anos ganha personalidade e brilho próprio. </h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-f9d63aa elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor" data-id="f9d63aa" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Conheça nossos três espaços e escolha o cenário ideal para viver esse momento.</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-5fa6033 elementor-widget elementor-widget-button" data-id="5fa6033" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+					<a class="elementor-button elementor-button-link elementor-size-sm" href="#contato">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">Solicitar Orçamento</span>
+					</span>
+					</a>
+				</div>
+								</div>
+				</div>
+				</main>
+		<div class="elementor-element elementor-element-04330d1 e-flex e-con-boxed e-con e-parent" data-id="04330d1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-cc1551d elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-heading" data-id="cc1551d" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default"> Há 22 anos criando experiências inesquecíveis. </h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-b159a96 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="b159a96" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-ef0cd73 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="ef0cd73" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p><span style="font-weight: 400;">O Afrikan House nasceu há 22 anos, inicialmente como uma casa de campo para reunir amigos e familiares. Após uma inspiradora temporada na África do Sul, a família trouxe itens nativos de decoração, que foram usados para adornar os mais de 14 mil m² do Afrikan House Garden. Hoje, são três espaços distintos: Afrikan House Garden, Lounge e Village, cada um com suas características e harmonizações únicas, projetados para atender às preferências e necessidades de cada evento.</span></p>								</div>
+				</div>
+		<div class="elementor-element elementor-element-91edb46 e-con-full e-flex e-con e-child" data-id="91edb46" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-842e67a elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-video" data-id="842e67a" data-element_type="widget" data-e-type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+							<div class="e-hosted-video elementor-wrapper elementor-open-inline">
+					<video class="elementor-video" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/0303-1.mp4" controls="" preload="metadata" controlsList="nodownload" poster="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/pista-de-danca-7-1.avif"></video>
+				</div>
+						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-8a521e4 e-flex e-con-boxed e-con e-parent" data-id="8a521e4" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-9eb5024 e-con-full e-flex e-con e-child" data-id="9eb5024" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-b0d0116 elementor-widget elementor-widget-heading" data-id="b0d0116" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Garden</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-08b2a15 elementor-widget elementor-widget-heading" data-id="08b2a15" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">AFRIKAN HOUSE</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-29da541 elementor-widget elementor-widget-heading" data-id="29da541" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Festa no campo</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-cc0a0b6 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="cc0a0b6" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<div class="flex flex-col text-sm"><article class="text-token-text-primary w-full focus:outline-none [--shadow-height:45px] has-data-writing-block:pointer-events-none has-data-writing-block:-mt-(--shadow-height) has-data-writing-block:pt-(--shadow-height) [&amp;:has([data-writing-block])&gt;*]:pointer-events-auto scroll-mt-[calc(var(--header-height)+min(200px,max(70px,20svh)))]" dir="auto" tabindex="-1" data-turn-id="request-WEB:5daad097-5c62-4199-b9d1-603a08553be7-0" data-testid="conversation-turn-2" data-scroll-anchor="true" data-turn="assistant"><div class="text-base my-auto mx-auto pb-10 [--thread-content-margin:--spacing(4)] @w-sm/main:[--thread-content-margin:--spacing(6)] @w-lg/main:[--thread-content-margin:--spacing(16)] px-(--thread-content-margin)"><div class="[--thread-content-max-width:40rem] @w-lg/main:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 group/turn-messages focus-visible:outline-hidden relative flex w-full min-w-0 flex-col agent-turn" tabindex="-1"><div class="flex max-w-full flex-col grow"><div class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 text-start break-words whitespace-normal [.text-message+&amp;]:mt-1" dir="auto" data-message-author-role="assistant" data-message-id="346be967-1052-4c75-abfa-4556014ae9b4" data-message-model-slug="gpt-5-2"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[1px]"><div class="markdown prose dark:prose-invert w-full wrap-break-word dark markdown-new-styling"><p data-start="0" data-end="371" data-is-last-node="" data-is-only-node="">Localizado em Itapecerica da Serra, a apenas 30 minutos da zona sul de São Paulo e com mais de 14 mil m², o Afrikan House Garden possui jardins paradisíacos, criados por renomados paisagistas, ambientes para cerimônias cobertas e ao ar livre, além de salão principal com pé-direito de 11 metros. É o espaço ideal para debutantes que sonham em celebrar em meio à natureza.</p></div></div></div></div></div></div></article></div>								</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-64de1da elementor-widget__width-initial elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel" data-id="64de1da" data-element_type="widget" data-e-type="widget" data-settings="{&quot;slides_to_show_mobile&quot;:&quot;1&quot;,&quot;navigation&quot;:&quot;arrows&quot;,&quot;slides_to_show&quot;:&quot;4&quot;,&quot;slides_to_scroll&quot;:&quot;1&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}" data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel" aria-label="Carrossel de imagens" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
+								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 11"><figure class="swiper-slide-inner"><img width="1202" height="797" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201202%20797'%3E%3C/svg%3E" alt="" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/0fa7727d-4caa-47b4-b660-37142d3f42fb.avif" /><noscript><img width="1202" height="797" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/0fa7727d-4caa-47b4-b660-37142d3f42fb.avif" alt="" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="b4455e09-b1ac-49c5-879d-103e1af58b88" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/b4455e09-b1ac-49c5-879d-103e1af58b88.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/b4455e09-b1ac-49c5-879d-103e1af58b88.jpg" alt="b4455e09-b1ac-49c5-879d-103e1af58b88" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Salão principal (15)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-15.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-15.jpg" alt="Salão principal (15)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 11"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Salão principal (11)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-11.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-11.jpg" alt="Salão principal (11)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Salão principal (9) (1)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-9-1.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-9-1.jpg" alt="Salão principal (9) (1)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 11"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Mesa de doces (14)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-14.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-14.jpg" alt="Mesa de doces (14)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Mesa de doces (10)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-10.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-10.jpg" alt="Mesa de doces (10)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Salão principal (7)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-7.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-7.jpg" alt="Salão principal (7)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Salão principal (5)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-5.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Salao-principal-5.jpg" alt="Salão principal (5)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 11"><figure class="swiper-slide-inner"><img width="1202" height="802" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201202%20802'%3E%3C/svg%3E" alt="" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-3.jpg" /><noscript><img width="1202" height="802" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-3.jpg" alt="" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 11"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Mesa de doces (4)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-4.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-4.jpg" alt="Mesa de doces (4)" /></noscript></figure></div>			</div>
+												<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-left"></i>					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-right"></i>					</div>
+				
+									</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-2a85b5c e-flex e-con-boxed e-con e-parent" data-id="2a85b5c" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-c49cb25 e-con-full e-flex e-con e-child" data-id="c49cb25" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-e90fadf elementor-widget elementor-widget-heading" data-id="e90fadf" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Lounge</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-59ec0f9 elementor-widget elementor-widget-heading" data-id="59ec0f9" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">AFRIKAN HOUSE</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-871aeef elementor-widget elementor-widget-heading" data-id="871aeef" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Aniversário  rústico sofisticado</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-5e3d8e7 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="5e3d8e7" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Localizado na Chácara Santo Antônio, zona sul de São Paulo, o Lounge é um espaço rústico e sofisticado que encanta pela imponência externa, com enormes tamareiras e jardim vertical. Internamente, a harmonia entre decoração rústica e chique impressiona. Destaques como a queda d&#8217;água, pé direito de sete metros, espelhos decorativos e uma árvore interna fazem do Lounge um ícone de sofisticação e admiração.</p>								</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-dd98622 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel" data-id="dd98622" data-element_type="widget" data-e-type="widget" data-settings="{&quot;slides_to_show_mobile&quot;:&quot;1&quot;,&quot;navigation&quot;:&quot;arrows&quot;,&quot;slides_to_show&quot;:&quot;4&quot;,&quot;slides_to_scroll&quot;:&quot;1&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}" data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel" aria-label="Carrossel de imagens" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
+								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 13"><figure class="swiper-slide-inner"><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" alt="tenda lounge (2)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/tenda-lounge-2.jpg" /><noscript><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/tenda-lounge-2.jpg" alt="tenda lounge (2)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 13"><figure class="swiper-slide-inner"><img width="1069" height="714" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201069%20714'%3E%3C/svg%3E" alt="Snapinsta.app_439343982_18429327748000534_7329828859900339520_n_1080" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinsta.app_439343982_18429327748000534_7329828859900339520_n_1080.jpg" /><noscript><img width="1069" height="714" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinsta.app_439343982_18429327748000534_7329828859900339520_n_1080.jpg" alt="Snapinsta.app_439343982_18429327748000534_7329828859900339520_n_1080" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 13"><figure class="swiper-slide-inner"><img width="1067" height="712" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201067%20712'%3E%3C/svg%3E" alt="Snapinsta.app_438685990_18429327739000534_3343487779329753430_n_1080" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinsta.app_438685990_18429327739000534_3343487779329753430_n_1080-1.jpg" /><noscript><img width="1067" height="712" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinsta.app_438685990_18429327739000534_3343487779329753430_n_1080-1.jpg" alt="Snapinsta.app_438685990_18429327739000534_3343487779329753430_n_1080" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 13"><figure class="swiper-slide-inner"><img width="1066" height="711" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201066%20711'%3E%3C/svg%3E" alt="Snapinsta.app_439227136_18429327757000534_9073839196600155236_n_1080 - Editado" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinsta.app_439227136_18429327757000534_9073839196600155236_n_1080-Editado.jpg" /><noscript><img width="1066" height="711" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinsta.app_439227136_18429327757000534_9073839196600155236_n_1080-Editado.jpg" alt="Snapinsta.app_439227136_18429327757000534_9073839196600155236_n_1080 - Editado" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 13"><figure class="swiper-slide-inner"><img width="1024" height="623" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20623'%3E%3C/svg%3E" alt="salão com mesas (7)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-7.jpg" /><noscript><img width="1024" height="623" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-7.jpg" alt="salão com mesas (7)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 13"><figure class="swiper-slide-inner"><img width="1024" height="691" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20691'%3E%3C/svg%3E" alt="salão com mesas (27)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-27.jpg" /><noscript><img width="1024" height="691" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-27.jpg" alt="salão com mesas (27)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 13"><figure class="swiper-slide-inner"><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" alt="salão com mesas (26)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-26.jpg" /><noscript><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-26.jpg" alt="salão com mesas (26)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 13"><figure class="swiper-slide-inner"><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" alt="salão com mesas (30)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-30.jpg" /><noscript><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-30.jpg" alt="salão com mesas (30)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 13"><figure class="swiper-slide-inner"><img width="800" height="447" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20447'%3E%3C/svg%3E" alt="pista de dança (5)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/pista-de-danca-5.jpg" /><noscript><img width="800" height="447" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/pista-de-danca-5.jpg" alt="pista de dança (5)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 13"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="mesa de doces (12)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/mesa-de-doces-12.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/mesa-de-doces-12.jpg" alt="mesa de doces (12)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 13"><figure class="swiper-slide-inner"><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" alt="salão com mesas (4)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-4.jpg" /><noscript><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/salao-com-mesas-4.jpg" alt="salão com mesas (4)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="12 de 13"><figure class="swiper-slide-inner"><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" alt="lounge (2)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/lounge-2.jpg" /><noscript><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/lounge-2.jpg" alt="lounge (2)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="13 de 13"><figure class="swiper-slide-inner"><img width="1024" height="576" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="6e7d5545-0035-4ed9-96bc-f9f945153c80" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/6e7d5545-0035-4ed9-96bc-f9f945153c80.jpg" /><noscript><img width="1024" height="576" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/6e7d5545-0035-4ed9-96bc-f9f945153c80.jpg" alt="6e7d5545-0035-4ed9-96bc-f9f945153c80" /></noscript></figure></div>			</div>
+												<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-left"></i>					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-right"></i>					</div>
+				
+									</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-174ba45 e-flex e-con-boxed e-con e-parent" data-id="174ba45" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-d3854b2 e-con-full e-flex e-con e-child" data-id="d3854b2" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-49511b6 elementor-widget elementor-widget-heading" data-id="49511b6" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Village</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-1cbae92 elementor-widget elementor-widget-heading" data-id="1cbae92" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">AFRIKAN HOUSE</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-7c84a3d elementor-widget elementor-widget-heading" data-id="7c84a3d" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Espaço requintado e moderno</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-d413792 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor" data-id="d413792" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Também localizado na Chácara Santo Antônio, zona sul de São Paulo, o Village traz para seu ambiente o requinte e a modernidade da cidade grande. Já decorado com dois jardins verticais, é um espaço ideal para festas compactas, de modo com que todos se sintam confortáveis, apreciem cada detalhe do espaço e interajam com a festa.</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-dddcc96 elementor-widget__width-initial elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel" data-id="dddcc96" data-element_type="widget" data-e-type="widget" data-settings="{&quot;slides_to_show_mobile&quot;:&quot;1&quot;,&quot;navigation&quot;:&quot;arrows&quot;,&quot;slides_to_show&quot;:&quot;4&quot;,&quot;slides_to_scroll&quot;:&quot;1&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}" data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel" aria-label="Carrossel de imagens" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
+								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 17"><figure class="swiper-slide-inner"><img width="2560" height="1707" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202560%201707'%3E%3C/svg%3E" alt="EHG02305" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02305-scaled.avif" /><noscript><img width="2560" height="1707" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02305-scaled.avif" alt="EHG02305" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 17"><figure class="swiper-slide-inner"><img width="2560" height="1707" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202560%201707'%3E%3C/svg%3E" alt="EHG02257" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02257-scaled.avif" /><noscript><img width="2560" height="1707" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02257-scaled.avif" alt="EHG02257" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 17"><figure class="swiper-slide-inner"><img decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02276-scaled.avif" /><noscript><img decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02276-scaled.avif" alt="" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 17"><figure class="swiper-slide-inner"><img width="1600" height="1066" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201600%201066'%3E%3C/svg%3E" alt="WhatsApp Image 2025-04-30 at 13.54.25" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/WhatsApp-Image-2025-04-30-at-13.54.25.avif" /><noscript><img width="1600" height="1066" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/WhatsApp-Image-2025-04-30-at-13.54.25.avif" alt="WhatsApp Image 2025-04-30 at 13.54.25" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 17"><figure class="swiper-slide-inner"><img width="2560" height="1707" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202560%201707'%3E%3C/svg%3E" alt="EHG02357" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02357-scaled.avif" /><noscript><img width="2560" height="1707" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/EHG02357-scaled.avif" alt="EHG02357" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 17"><figure class="swiper-slide-inner"><img width="1080" height="1350" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201080%201350'%3E%3C/svg%3E" alt="Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080.jpg" /><noscript><img width="1080" height="1350" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080.jpg" alt="Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 17"><figure class="swiper-slide-inner"><img width="1024" height="521" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20521'%3E%3C/svg%3E" alt="Mesas no salão (28)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-28.jpg" /><noscript><img width="1024" height="521" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-28.jpg" alt="Mesas no salão (28)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 17"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Mesas no salão (27)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-27.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-27.jpg" alt="Mesas no salão (27)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 17"><figure class="swiper-slide-inner"><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20681'%3E%3C/svg%3E" alt="Mesas no salão (14)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-14.jpg" /><noscript><img width="1024" height="681" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-14.jpg" alt="Mesas no salão (14)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 17"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Mesas no salão (12)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-12.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-12.jpg" alt="Mesas no salão (12)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 17"><figure class="swiper-slide-inner"><img width="1282" height="858" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201282%20858'%3E%3C/svg%3E" alt="Mesas no salão (29)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-29-1.jpg" /><noscript><img width="1282" height="858" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-29-1.jpg" alt="Mesas no salão (29)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="12 de 17"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Mesa de doces (8)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-8.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-8.jpg" alt="Mesa de doces (8)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="13 de 17"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Mesa de doces (14) (1)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-14-1.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-14-1.jpg" alt="Mesa de doces (14) (1)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="14 de 17"><figure class="swiper-slide-inner"><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" alt="Mesas no salão (3)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-3.jpg" /><noscript><img width="1024" height="683" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-3.jpg" alt="Mesas no salão (3)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="15 de 17"><figure class="swiper-slide-inner"><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20684'%3E%3C/svg%3E" alt="Mesas no salão (11)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-11.jpg" /><noscript><img width="1024" height="684" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesas-no-salao-11.jpg" alt="Mesas no salão (11)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="16 de 17"><figure class="swiper-slide-inner"><img width="2002" height="1153" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202002%201153'%3E%3C/svg%3E" alt="Mesa de doces (3) (1)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-3-1.jpg" /><noscript><img width="2002" height="1153" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Mesa-de-doces-3-1.jpg" alt="Mesa de doces (3) (1)" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="17 de 17"><figure class="swiper-slide-inner"><img width="2002" height="1130" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202002%201130'%3E%3C/svg%3E" alt="Hall de entrada (7)" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Hall-de-entrada-7.jpg" /><noscript><img width="2002" height="1130" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/Hall-de-entrada-7.jpg" alt="Hall de entrada (7)" /></noscript></figure></div>			</div>
+												<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-left"></i>					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-right"></i>					</div>
+				
+									</div>
+						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-e099b8c e-flex e-con-boxed e-con e-parent" data-id="e099b8c" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-ef53273 e-con-full e-flex e-con e-child" data-id="ef53273" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-d5c01ff elementor-widget elementor-widget-heading" data-id="d5c01ff" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">SABORES QUE ENCANTAM</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-0e22809 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="0e22809" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-d164a89 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor" data-id="d164a89" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p><span style="font-weight: 400;">Com gastronomia própria e cardápios especialmente montados pelos renomados chefs João Gomes e Ricardo Paulillo, proporcionamos variados estilos de menus que vão desde um agradável brunch até um sofisticado coquetel com jantar, passando por estilos alternativos como finger food, ilhas temáticas e muito mais.</span>Localizado na Chácara Santo Antônio, zona sul de São Paulo, o Lounge é um espaço rústico e sofisticado que encanta pela imponência externa, com enormes tamareiras e jardim vertical. Internamente, a harmonia entre decoração rústica e chique impressiona. Destaques como a queda d&#8217;água, pé direito de sete metros, espelhos decorativos e uma árvore interna fazem do Lounge um ícone de sofisticação e admiração.</p>								</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-307fd65 elementor-widget__width-initial elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel" data-id="307fd65" data-element_type="widget" data-e-type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;4&quot;,&quot;slides_to_scroll&quot;:&quot;1&quot;,&quot;navigation&quot;:&quot;arrows&quot;,&quot;slides_to_show_mobile&quot;:&quot;1&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}" data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel" aria-label="Carrossel de imagens" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
+								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 20"><figure class="swiper-slide-inner"><img width="827" height="550" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20827%20550'%3E%3C/svg%3E" alt="1" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/1.jpg" /><noscript><img width="827" height="550" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/1.jpg" alt="1" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 20"><figure class="swiper-slide-inner"><img width="826" height="550" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20826%20550'%3E%3C/svg%3E" alt="2" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/2.jpg" /><noscript><img width="826" height="550" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/2.jpg" alt="2" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="3" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/3.jpg" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/3.jpg" alt="3" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="4" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/4.jpg" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/4.jpg" alt="4" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="5" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/5.jpg" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/5.jpg" alt="5" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="6" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/6.jpg" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/6.jpg" alt="6" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="7" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/7.jpg" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/7.jpg" alt="7" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="8" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/8.jpg" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/8.jpg" alt="8" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 20"><figure class="swiper-slide-inner"><img width="1080" height="718" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201080%20718'%3E%3C/svg%3E" alt="buffet serviço" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/buffet-servico.jpg" /><noscript><img width="1080" height="718" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/buffet-servico.jpg" alt="buffet serviço" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-38" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-38.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-38.jpg" alt="gastronomia-38" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-39" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-39.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-39.jpg" alt="gastronomia-39" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="12 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-45" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-45.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-45.jpg" alt="gastronomia-45" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="13 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-47" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-47.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-47.jpg" alt="gastronomia-47" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="14 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-53" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-53.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-53.jpg" alt="gastronomia-53" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="15 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-54" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-54.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-54.jpg" alt="gastronomia-54" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="16 de 20"><figure class="swiper-slide-inner"><img width="900" height="601" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20601'%3E%3C/svg%3E" alt="gastronomia-62" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-62.jpg" /><noscript><img width="900" height="601" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-62.jpg" alt="gastronomia-62" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="17 de 20"><figure class="swiper-slide-inner"><img width="900" height="600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3C/svg%3E" alt="gastronomia-67" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-67.jpg" /><noscript><img width="900" height="600" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-67.jpg" alt="gastronomia-67" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="18 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="gastronomia-50" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-50.png" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-50.png" alt="gastronomia-50" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="19 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="gastronomia-40" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-40.png" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-40.png" alt="gastronomia-40" /></noscript></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="20 de 20"><figure class="swiper-slide-inner"><img width="853" height="568" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20853%20568'%3E%3C/svg%3E" alt="gastronomia-57" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-57.png" /><noscript><img width="853" height="568" decoding="async" class="swiper-slide-image" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/gastronomia-57.png" alt="gastronomia-57" /></noscript></figure></div>			</div>
+												<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-left"></i>					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-right"></i>					</div>
+				
+									</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-a0b8f56 e-con-full e-flex e-con e-parent" data-id="a0b8f56" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-924b771 elementor-widget elementor-widget-heading" data-id="924b771" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Uma festa que vai marcar a sua história.</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-cffa07f elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="cffa07f" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-917f979 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="917f979" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Estrutura completa e equipe preparada, com cada detalhe organizado para que você curta sua festa do começo ao fim.</p>								</div>
+				</div>
+		<div class="elementor-element elementor-element-9026013 e-flex e-con-boxed e-con e-child" data-id="9026013" data-element_type="container" data-e-type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-a9eb275 e-flex e-con-boxed e-con e-child" data-id="a9eb275" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-4b38644 elementor-widget elementor-widget-heading" data-id="4b38644" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Equipe Operacional</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-1409183 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="1409183" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-b06a71d e-flex e-con-boxed e-con e-child" data-id="b06a71d" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-406d91c elementor-widget elementor-widget-heading" data-id="406d91c" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Alta Gastronomia</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-41cf636 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="41cf636" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-f97595f e-flex e-con-boxed e-con e-child" data-id="f97595f" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-c73df8f elementor-widget elementor-widget-heading" data-id="c73df8f" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Bar de Drinks</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-1c583e4 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="1c583e4" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-67a9826 e-flex e-con-boxed e-con e-child" data-id="67a9826" data-element_type="container" data-e-type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-4060e2d e-flex e-con-boxed e-con e-child" data-id="4060e2d" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-875fdd4 elementor-widget elementor-widget-heading" data-id="875fdd4" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Mobiliário Completo</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-34b707e elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="34b707e" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-685441b e-flex e-con-boxed e-con e-child" data-id="685441b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-b1c837d elementor-widget elementor-widget-heading" data-id="b1c837d" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Decoração e Cenografia</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-8d4422a elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="8d4422a" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-a8b8ed2 e-flex e-con-boxed e-con e-child" data-id="a8b8ed2" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-e28e8b8 elementor-widget elementor-widget-heading" data-id="e28e8b8" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">Tecnologia de<br> Som e Luz</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-e36c835 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="e36c835" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-f94dcf5 e-con-full e-flex e-con e-parent" data-id="f94dcf5" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-4e1de30 elementor-widget elementor-widget-heading" data-id="4e1de30" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">REGISTROS QUE INSPIRAM</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-430989e elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="430989e" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-6a74263 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="6a74263" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Veja as debutantes que brilharam no Afrikan House.</p>								</div>
+				</div>
+				<div class="elementor-element elementor-element-ad33ed3 elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-gallery" data-id="ad33ed3" data-element_type="widget" data-e-type="widget" data-settings="{&quot;columns&quot;:3,&quot;gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:30,&quot;sizes&quot;:[]},&quot;aspect_ratio&quot;:&quot;1:1&quot;,&quot;gallery_layout&quot;:&quot;grid&quot;,&quot;columns_tablet&quot;:2,&quot;columns_mobile&quot;:1,&quot;gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;link_to&quot;:&quot;file&quot;,&quot;overlay_background&quot;:&quot;yes&quot;,&quot;content_hover_animation&quot;:&quot;fade-in&quot;}" data-widget_type="gallery.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-gallery__container">
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-10-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (10)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzOCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMTAtanBnLmF2aWYiLCJzbGlkZXNob3ciOiJhZDMzZWQzIn0%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-10-jpg.avif" data-width="1080" data-height="1350" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-2-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (2)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzMCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMi1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-2-jpg.avif" data-width="1042" data-height="679" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-3-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (3)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzMSwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMy1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-3-jpg.avif" data-width="1046" data-height="684" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-1-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (1)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTU0MCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMS1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-1-jpg.avif" data-width="1080" data-height="1350" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-6-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (6)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtNi1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-6-jpg.avif" data-width="1066" data-height="711" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-8-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (8)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNiwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtOC1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-8-jpg.avif" data-width="1024" data-height="682" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-7-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (7)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNSwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtNy1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-7-jpg.avif" data-width="1065" data-height="710" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-9-scaled.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (9)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNywidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtOS1zY2FsZWQuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-9-scaled.avif" data-width="2560" data-height="1707" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-11-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (11)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzOSwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMTEtanBnLmF2aWYiLCJzbGlkZXNob3ciOiJhZDMzZWQzIn0%3D">
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="https://eventos.afrikanhouse.com.br/wp-content/uploads/2025/05/Galeria-afrikan-debutante-11-jpg.avif" data-width="1080" data-height="1350" aria-label="" role="img" ></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</a>
+					</div>
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-8632fb9 e-flex e-con-boxed e-con e-parent" data-id="8632fb9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1821,&quot;url&quot;:&quot;https:\/\/eventos.afrikanhouse.com.br\/wp-content\/uploads\/2026\/03\/EHG02303-scaled.avif&quot;}],&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-e176ebb e-con-full e-flex e-con e-child" data-id="e176ebb" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-0f6aac4 elementor-widget elementor-widget-heading" data-id="0f6aac4" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+					<h2 class="elementor-heading-title elementor-size-default">VENHA TRANSFORMAR <BR>O SEU DIA DE DEBUTANTE NO AFRIKAN HOUSE</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-38c5b57 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="38c5b57" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-417c900 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="417c900" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									Preencha o formulário para</br>
+receber nosso contato.								</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-899b6be elementor-widget elementor-widget-menu-anchor" data-id="899b6be" data-element_type="widget" data-e-type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-menu-anchor" id="contato"></div>
+						</div>
+				</div>
+		<div class="elementor-element elementor-element-5ed3ac7 e-con-full e-flex e-con e-child" data-id="5ed3ac7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-6e4af32 elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="6e4af32" data-element_type="widget" data-e-type="widget" data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
+				<div class="elementor-widget-container">
+							<form class="elementor-form" method="post" id="form_debutantes" name="form_debutantes" aria-label="form_debutantes">
+			<input type="hidden" name="post_id" value="847"/>
+			<input type="hidden" name="form_id" value="6e4af32"/>
+			<input type="hidden" name="referer_title" value="Debutante" />
+
+							<input type="hidden" name="queried_id" value="847"/>
+			
+			<div class="elementor-form-fields-wrapper elementor-labels-above">
+								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-nome elementor-col-50 elementor-sm-50 elementor-field-required">
+												<label for="form-field-nome" class="elementor-field-label">
+								Nome:							</label>
+														<input size="1" type="text" name="form_fields[nome]" id="form-field-nome" class="elementor-field elementor-size-sm  elementor-field-textual" required="required">
+											</div>
+								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-sobrenome elementor-col-50 elementor-sm-50 elementor-field-required">
+												<label for="form-field-sobrenome" class="elementor-field-label">
+								Sobrenome:							</label>
+														<input size="1" type="text" name="form_fields[sobrenome]" id="form-field-sobrenome" class="elementor-field elementor-size-sm  elementor-field-textual" required="required">
+											</div>
+								<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-sm-50 elementor-field-required">
+												<label for="form-field-email" class="elementor-field-label">
+								E-mail:							</label>
+														<input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" required="required">
+											</div>
+								<div class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-telefone elementor-col-50 elementor-sm-50 elementor-field-required">
+												<label for="form-field-telefone" class="elementor-field-label">
+								Telefone:							</label>
+						<span class="ccfef-editor-intl-input" data-id="form-field-telefone" data-field-id="e196ef8" data-default-country="br" data-include-countries="" data-exclude-countries="" data-dial-code-visibility="show" data-strict-mode="" style="display: none;"></span>		<input size="1" type="tel" name="form_fields[telefone]" id="form-field-telefone" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder=" " required="required" pattern="[0-9()#&amp;+*-=.]+" title="Apenas números e caracteres de telefone (#, -, *, etc.) são aceitos.">
+
+						</div>
+								<div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-tipo elementor-col-50 elementor-field-required">
+												<label for="form-field-tipo" class="elementor-field-label">
+								Selecione o tipo de evento:							</label>
+								<div class="elementor-field elementor-select-wrapper remove-before ">
+			<div class="select-caret-down-wrapper">
+				<i aria-hidden="true" class="eicon-caret-down"></i>			</div>
+			<select name="form_fields[tipo]" id="form-field-tipo" class="elementor-field-textual elementor-size-sm" required="required">
+									<option value=""></option>
+									<option value="Casamento">Casamento</option>
+									<option value="Corporativo">Corporativo</option>
+									<option value="Debutante">Debutante</option>
+									<option value="Aniversário">Aniversário</option>
+									<option value="Bodas">Bodas</option>
+									<option value="Bar/bat mitzvah">Bar/bat mitzvah</option>
+									<option value="Formatura">Formatura</option>
+							</select>
+		</div>
+						</div>
+								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-data elementor-col-50 elementor-field-required">
+												<label for="form-field-data" class="elementor-field-label">
+								Data pretendida para seu evento:							</label>
+														<input size="1" type="text" name="form_fields[data]" id="form-field-data" class="elementor-field elementor-size-sm  elementor-field-textual" required="required">
+											</div>
+								<div class="elementor-field-type-number elementor-field-group elementor-column elementor-field-group-convidados elementor-col-50 elementor-field-required">
+												<label for="form-field-convidados" class="elementor-field-label">
+								Número de convidados aproximado:							</label>
+									<input type="number" name="form_fields[convidados]" id="form-field-convidados" class="elementor-field elementor-size-sm  elementor-field-textual" required="required" min="" max="" >
+						</div>
+								<div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-etapa elementor-col-100 elementor-field-required">
+												<label for="form-field-etapa" class="elementor-field-label">
+								Etapa do planejamento							</label>
+								<div class="elementor-field elementor-select-wrapper remove-before ">
+			<div class="select-caret-down-wrapper">
+				<i aria-hidden="true" class="eicon-caret-down"></i>			</div>
+			<select name="form_fields[etapa]" id="form-field-etapa" class="elementor-field-textual elementor-size-sm" required="required">
+									<option value="">Em qual etapa do planejamento do seu evento você se encontra hoje?</option>
+									<option value="Estou iniciando as pesquisas, sem visitas realizadas">Estou iniciando as pesquisas, sem visitas realizadas</option>
+									<option value="Já estou visitando espaços e pretendo definir em até 90 dias">Já estou visitando espaços e pretendo definir em até 90 dias</option>
+									<option value="Já visitei algumas opções e quero definir o espaço em até 30 dias">Já visitei algumas opções e quero definir o espaço em até 30 dias</option>
+							</select>
+		</div>
+						</div>
+								<div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_aa107ba elementor-col-100">
+					<div class="elementor-field-group" style="margin-bottom: 0px;">
+    <label class="elementor-field-label">
+        Desenvolvemos projetos personalizados de alto padrão, com investimento médio orientativo entre R$ 70 mil e R$ 150 mil, dependendo da data, da quantidade de convidados e da experiência desejada.
+    </label>
+</div>				</div>
+								<div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-budget elementor-col-100 elementor-field-required">
+												<label for="form-field-budget" class="elementor-field-label">
+								Budget							</label>
+								<div class="elementor-field elementor-select-wrapper remove-before ">
+			<div class="select-caret-down-wrapper">
+				<i aria-hidden="true" class="eicon-caret-down"></i>			</div>
+			<select name="form_fields[budget]" id="form-field-budget" class="elementor-field-textual elementor-size-sm" required="required">
+									<option value="">Qual faixa melhor representa o investimento planejado para seu evento?</option>
+									<option value="Até R$ 70 mil">Até R$ 70 mil</option>
+									<option value="De R$ 70 mil a R$ 90 mil">De R$ 70 mil a R$ 90 mil</option>
+									<option value="De R$ 90 mil a R$ 120 mil">De R$ 90 mil a R$ 120 mil</option>
+									<option value="De R$ 120 mil a R$ 150 mil">De R$ 120 mil a R$ 150 mil</option>
+									<option value="Acima de R$ 150 mil">Acima de R$ 150 mil</option>
+							</select>
+		</div>
+						</div>
+								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-fonte elementor-col-100">
+													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-sm  elementor-field-textual" value="LP /debutantes">
+											</div>
+								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-url elementor-col-100">
+													<input size="1" type="hidden" name="form_fields[url]" id="form-field-url" class="elementor-field elementor-size-sm  elementor-field-textual">
+											</div>
+								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+					<button class="elementor-button elementor-size-lg" type="submit">
+						<span class="elementor-button-content-wrapper">
+																						<span class="elementor-button-text">Enviar Solicitação</span>
+													</span>
+					</button>
+				</div>
+			</div>
+		</form>
+						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-6e31c63 e-flex e-con-boxed e-con e-parent" data-id="6e31c63" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-16920d2 elementor-widget elementor-widget-image" data-id="16920d2" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="231" height="162" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20231%20162'%3E%3C/svg%3E" class="attachment-full size-full wp-image-37" alt="" data-lazy-src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/Logotipo.svg" /><noscript><img decoding="async" width="231" height="162" src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2024/06/Logotipo.svg" class="attachment-full size-full wp-image-37" alt="" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-c4cc42e elementor-widget__width-auto elementor-widget-mobile__width-initial elementor-widget elementor-widget-text-editor" data-id="c4cc42e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<p>Copyright © 2026 Afrikan House &#8211; Todos os direitos reservados</p>								</div>
+				</div>
+					</div>
+				</div>
+				</div>
+		<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/hello-elementor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script type="rocketlazyloadscript">
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<link rel='stylesheet' id='ccfef-country-code-library-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/intl-tel-input/css/intlTelInput.min.css?ver=1.6.2' media='all' />
+<link rel='stylesheet' id='ccfef-country-code-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/css/country-code-style.min.css?ver=1.6.2' media='all' />
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/js/hello-frontend.js?ver=1785470862" id="hello-theme-frontend-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.35.7" id="elementor-webpack-runtime-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.35.7" id="elementor-frontend-modules-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js" defer></script>
+<script type="rocketlazyloadscript" id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.35.7","is_static":false,"experimentalFeatures":{"additional_custom_breakpoints":true,"container":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"e_components":true,"e_interactions":true,"e_editor_one":true,"import-export-customization":true,"e_pro_variables":true},"urls":{"assets":"https:\/\/eventos.afrikanhouse.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/eventos.afrikanhouse.com.br\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/eventos.afrikanhouse.com.br\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"31576cc72f"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":847,"title":"Debutante%20%E2%80%93%20Afrikan%20House","excerpt":"","featuredImage":false}};
+//# sourceURL=elementor-frontend-js-before
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.35.7" id="elementor-frontend-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5" id="swiper-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor/assets/lib/e-gallery/js/e-gallery.min.js?ver=1.2.0" id="elementor-gallery-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.35.1" id="elementor-pro-webpack-runtime-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script type="rocketlazyloadscript" id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script type="rocketlazyloadscript" id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/eventos.afrikanhouse.com.br\/wp-admin\/admin-ajax.php","nonce":"27f9d94894","urls":{"assets":"https:\/\/eventos.afrikanhouse.com.br\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/eventos.afrikanhouse.com.br\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":false},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/eventos.afrikanhouse.com.br\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+//# sourceURL=elementor-pro-frontend-js-before
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.35.1" id="elementor-pro-frontend-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=3.35.1" id="pro-elements-handlers-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/wp-content/plugins/country-code-field-for-elementor-form/assets/intl-tel-input/js/intlTelInput.js?ver=1785470862" id="ccfef-country-code-library-script-js" defer></script>
+<script id="ccfef-country-code-script-js-extra">
+var CCFEFCustomData = {"pluginDir":"https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/","errorMap":["The phone number you entered is not valid. Please check the format and try again.","The country code you entered is not recognized. Please ensure it is correct and try again.","The phone number you entered is too short. Please enter a complete phone number, including the country code.","The phone number you entered is too long. Please ensure it is in the correct format and try again.","The phone number you entered is not valid. Please check the format and try again."]};
+//# sourceURL=ccfef-country-code-script-js-extra
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/js/country-code-script.min.js?ver=1.6.2" id="ccfef-country-code-script-js" defer></script>
+<script id="ccfef-country-code-script-hello-js-extra">
+var CCFEFCustomData = {"pluginDir":"https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/","errorMap":["The phone number you entered is not valid. Please check the format and try again.","The country code you entered is not recognized. Please ensure it is correct and try again.","The phone number you entered is too short. Please enter a complete phone number, including the country code.","The phone number you entered is too long. Please ensure it is in the correct format and try again.","The phone number you entered is not valid. Please check the format and try again."]};
+//# sourceURL=ccfef-country-code-script-hello-js-extra
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/js/country-code-script-hello.min.js?ver=1.6.2" id="ccfef-country-code-script-hello-js" defer></script>
+<link data-minify="1" rel="stylesheet" href="https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/flatpickr/dist/flatpickr.min.css?ver=1785470862">
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/cache/min/1/flatpickr/dist/flatpickr.min.js?ver=1785470863" defer></script>
+
+<script type="rocketlazyloadscript">
+function inicializarCalendariosPersonalizados() {
+const portugueseLocale = {
+weekdays: { shorthand: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"], longhand: ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"] },
+months: { shorthand: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"], longhand: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"] },
+firstDayOfWeek: 1,
+rangeSeparator: " até ",
+ordinal: () => "º"
+};
+
+const camposDeData = document.querySelectorAll('input[name="form_fields[data]"]');
+
+camposDeData.forEach(function(campo) {
+    if (campo._flatpickr) {
+        // Se já tem um calendário, não faz nada para não criar loops.
+        return;
+    }
+    flatpickr(campo, {
+        "disableMobile": true,
+        "dateFormat": "d/m/Y",
+        "locale": portugueseLocale
+    });
+});
+
+}
+
+// Gatilho para o carregamento inicial da página
+window.addEventListener('load', inicializarCalendariosPersonalizados);
+
+// --- NOVO GATILHO UNIVERSAL ---
+// Cria um "vigia" que executa a nossa função sempre que novos elementos
+// são adicionados à página (como um popup ou widget de chat).
+const observer = new MutationObserver(function(mutations) {
+// Para evitar execuções múltiplas e desnecessárias, esperamos um instante.
+let timer;
+clearTimeout(timer);
+timer = setTimeout(inicializarCalendariosPersonalizados, 200);
+});
+
+// Coloca o "vigia" a observar o corpo inteiro do site.
+observer.observe(document.body, {
+childList: true,
+subtree: true
+});
+</script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script type="rocketlazyloadscript" data-no-minify="1" async data-rocket-src="https://eventos.afrikanhouse.com.br/wp-content/plugins/clsop/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>	<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script></body>
+</html>
+
+<!-- Performance optimized by AccelerateWP. - Debug: cached@1785508583 -->

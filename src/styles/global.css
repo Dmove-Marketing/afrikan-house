@@ -48,38 +48,38 @@ button {
 
 /* === CSS Variables (customizar por projeto) === */
 :root {
-  /* Cores — ajuste para o cliente */
-  --color-primary: #C3161C;
-  --color-primary-dark: #990C11;
-  --color-secondary: #C3161C;
-  --color-accent: #C3161C;
+  /* Cores — ajuste para o cliente (Neutro Base) */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #6b7280;
+  --color-accent: #10b981;
 
   /* Backgrounds */
-  --bg-primary: #000000;
-  --bg-secondary: #0E0604;
-  --bg-card: #111111;
-  --bg-elevated: #1a1a1a;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-elevated: #f1f5f9;
 
   /* Texto */
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-muted: #999999;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
 
   /* Gradientes */
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   --gradient-subtle: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-  --gradient-glow: radial-gradient(ellipse at center, rgba(195, 22, 28, 0.15), transparent 70%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15), transparent 70%);
 
   /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.08);
   --glass-blur: blur(20px);
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 30px rgba(195, 22, 28, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
 
   /* Border radius */
   --radius-sm: 8px;
@@ -219,7 +219,7 @@ p {
 
 .form-input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(195, 22, 28, 0.15);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .form-input::placeholder {
@@ -292,23 +292,23 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* === Light Mode === */
-[data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-elevated: #f1f5f9;
+/* === Dark Mode === */
+[data-theme="dark"] {
+  --bg-primary: #090d16;
+  --bg-secondary: #0f172a;
+  --bg-card: #1e293b;
+  --bg-elevated: #334155;
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
 
-  --glass-bg: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* === Text Utilities === */
@@ -411,3 +411,162 @@ html.lenis body {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* === Suporte a Elementor Gallery (4 colunas Desktop, 2 Tablet, 1 Mobile) === */
+.elementor-gallery__container {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+  .elementor-gallery__container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .elementor-gallery__container {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+.e-gallery-item {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  width: 100% !important;
+}
+
+/* Swiper Nav Arrows Display & Styling */
+.elementor-swiper-button,
+.elementor-swiper-button-prev,
+.elementor-swiper-button-next,
+.swiper-button-prev,
+.swiper-button-next {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 28px !important;
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  z-index: 20 !important;
+  cursor: pointer !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.elementor-swiper-button:hover,
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.65) !important;
+  transform: none !important;
+}
+
+.elementor-swiper-button-prev::after,
+.swiper-button-prev::after {
+  content: '‹' !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+  margin-top: -3px !important;
+}
+
+.elementor-swiper-button-next::after,
+.swiper-button-next::after {
+  content: '›' !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 36px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+  margin-top: -3px !important;
+}
+
+.elementor-swiper-button i {
+  display: none !important;
+}
+
+/* === Form Caret Icon Fallback (Elementor Font replacement) === */
+.select-caret-down-wrapper i.eicon-caret-down {
+  display: inline-block !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 5px solid transparent !important;
+  border-right: 5px solid transparent !important;
+  border-top: 5px solid currentColor !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  opacity: 0.6 !important;
+}
+
+/* === Custom Flatpickr Styling (Afrikan House Gold Theme) === */
+.flatpickr-calendar {
+  background: #ffffff !important;
+  border: 1px solid #997840 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  font-family: 'Raleway', 'Montserrat', sans-serif !important;
+}
+
+.flatpickr-calendar .flatpickr-months {
+  background: #997840 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.flatpickr-calendar .flatpickr-month {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months {
+  color: #ffffff !important;
+  background: #997840 !important;
+}
+
+.flatpickr-calendar .flatpickr-monthDropdown-month {
+  background-color: #997840 !important;
+  color: #ffffff !important;
+}
+
+.flatpickr-calendar .flatpickr-weekday {
+  background: #997840 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+.flatpickr-calendar .flatpickr-day.selected,
+.flatpickr-calendar .flatpickr-day.selected:hover {
+  background: #997840 !important;
+  border-color: #997840 !important;
+  color: #ffffff !important;
+}
+
+.flatpickr-calendar .flatpickr-day:hover {
+  background: #f0e6d2 !important;
+  border-color: #f0e6d2 !important;
+  color: #4e3c1d !important;
+}
+
+.flatpickr-calendar .flatpickr-day.today {
+  border-color: #997840 !important;
+}
+
+.flatpickr-calendar .flatpickr-months .flatpickr-prev-month,
+.flatpickr-calendar .flatpickr-months .flatpickr-next-month {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover {
+  color: #f0e6d2 !important;
+  fill: #f0e6d2 !important;
+}
+
+

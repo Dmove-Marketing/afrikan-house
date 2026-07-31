@@ -7,6 +7,12 @@
     "gtm_id": "GTM-XXXXXXX",
     "enabled": true
   },
+  "whatsapp": {
+    "phone": "5511999999999",
+    "display_name": "Nome do Cliente",
+    "avatar": "/images/whatsapp-avatar.jpg",
+    "enabled": true
+  },
   "forms": {
     "lead-form": {
       "id": "lead-form",

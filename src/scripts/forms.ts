@@ -73,6 +73,42 @@ export function initForms() {
         }
       });
 
+      // Validação de formato: email
+      form.querySelectorAll<HTMLInputElement>('input[type="email"]').forEach((field) => {
+        if (!field.value) return; // campo vazio já capturado pelo required acima
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value);
+        if (!ok) {
+          isValid = false;
+          (field as HTMLElement).style.borderColor = '#ef4444';
+          (field as HTMLElement).style.outline = '2px solid #ef4444';
+          if (!firstInvalid) firstInvalid = field;
+          const clear = () => {
+            (field as HTMLElement).style.removeProperty('border-color');
+            (field as HTMLElement).style.removeProperty('outline');
+            field.removeEventListener('input', clear);
+          };
+          field.addEventListener('input', clear);
+        }
+      });
+
+      // Validação de formato: telefone (mínimo 10 dígitos — DDD + número)
+      form.querySelectorAll<HTMLInputElement>('[name="telefone"]').forEach((field) => {
+        if (!field.value) return;
+        const digits = field.value.replace(/\D/g, '');
+        if (digits.length < 10) {
+          isValid = false;
+          (field as HTMLElement).style.borderColor = '#ef4444';
+          (field as HTMLElement).style.outline = '2px solid #ef4444';
+          if (!firstInvalid) firstInvalid = field;
+          const clear = () => {
+            (field as HTMLElement).style.removeProperty('border-color');
+            (field as HTMLElement).style.removeProperty('outline');
+            field.removeEventListener('input', clear);
+          };
+          field.addEventListener('input', clear);
+        }
+      });
+
       if (!isValid) {
         firstInvalid!.scrollIntoView({ behavior: 'smooth', block: 'center' });
         (firstInvalid as HTMLElement).focus();

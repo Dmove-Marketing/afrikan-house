@@ -10,6 +10,20 @@ import '@fontsource/montserrat/800.css';
 import GTMHead from '../components/tracking/GTMHead.astro';
 import GTMBody from '../components/tracking/GTMBody.astro';
 import UTMCapture from '../components/tracking/UTMCapture.astro';
+import WhatsAppModal from '../components/layout/WhatsAppModal.astro';
+
+interface WhatsAppStep1Field {
+  name: string;
+  type: 'text' | 'email' | 'tel' | 'number' | 'select' | 'textarea' | 'date' | 'radio';
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+  options?: { value: string; label: string; disabled?: boolean; selected?: boolean }[];
+  value?: string;
+  min?: string;
+  max?: string;
+  rows?: number;
+}
 
 interface Props {
   title: string;
@@ -19,6 +33,10 @@ interface Props {
   noIndex?: boolean;
   theme?: 'dark' | 'light';
   jsonLd?: Record<string, any>;
+  /** Campos da etapa 1 do popup WhatsApp — mesmas opções do LeadForm da página */
+  whatsAppStep1Fields?: WhatsAppStep1Field[];
+  /** Mensagem de boas-vindas do popup WhatsApp (use \n para quebrar linha) */
+  whatsAppMessage?: string;
 }
 
 const {
@@ -29,6 +47,8 @@ const {
   noIndex = false,
   theme = 'dark',
   jsonLd,
+  whatsAppStep1Fields,
+  whatsAppMessage,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -75,6 +95,9 @@ const defaultJsonLd = {
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd || defaultJsonLd)} />
 
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
     <slot name="head" />
   </head>
   <body>
@@ -86,6 +109,31 @@ const defaultJsonLd = {
 
     <!-- Conteúdo da página -->
     <slot />
+
+    <!-- WhatsApp Flutuante — configurar em config.json > whatsapp -->
+    <WhatsAppModal
+      step1Fields={whatsAppStep1Fields}
+      welcomeMessage={whatsAppMessage}
+    />
+
+    <!-- Flatpickr Datepicker & Portuguese Locale -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const dateInputs = document.querySelectorAll('#form-field-data, [name="form_fields[data]"], .flatpickr-input-date');
+        if (dateInputs.length > 0 && typeof flatpickr !== 'undefined') {
+          dateInputs.forEach(dateInput => {
+            flatpickr(dateInput, {
+              locale: 'pt',
+              dateFormat: 'd/m/Y',
+              allowInput: true,
+              disableMobile: "true"
+            });
+          });
+        }
+      });
+    </script>
 
     <!-- Scripts adicionais -->
     <slot name="scripts" />

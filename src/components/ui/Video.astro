@@ -1,18 +1,20 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
-  /** URL pública do .mp4 (VPS ou CDN — ex: Bunny.net) */
+  /** URL pública do .mp4 */
   src: string;
   /** URL da imagem de poster */
   poster: string;
-  /** Título do vídeo (obrigatório para SEO/VideoObject) */
+  /** Título do vídeo */
   title: string;
   /** Descrição curta para o schema */
   description?: string;
-  /** Data de upload ISO 8601 (ex: "2025-01-01") */
+  /** Data de upload ISO 8601 */
   uploadDate?: string;
-  /** Duração ISO 8601 (ex: "PT2M30S" = 2min30s) */
+  /** Duração ISO 8601 */
   duration?: string;
-  /** Mostra controles nativos após play (padrão: true) */
+  /** Mostra controles nativos */
   controls?: boolean;
   class?: string;
 }
@@ -28,8 +30,6 @@ const {
   class: className,
 } = Astro.props;
 
-const videoId = `video-${Math.random().toString(36).slice(2, 8)}`;
-
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -42,58 +42,20 @@ const schema = {
 };
 ---
 
-<div class:list={['video-wrap', className]} id={videoId}>
+<div class:list={['video-wrap', className]}>
   <video
     class="video-wrap__player"
     poster={poster}
-    preload="none"
+    preload="metadata"
     playsinline
     controls={controls}
-    data-src={src}
+    src={src}
     aria-label={title}
   >
-    <source data-src={src} type="video/mp4" />
+    <source src={src} type="video/mp4" />
     Seu navegador não suporta vídeo HTML5.
   </video>
-
-  <button class="video-wrap__play" type="button" aria-label={`Reproduzir ${title}`}>
-    <svg viewBox="0 0 80 80" width="72" height="72" aria-hidden="true">
-      <circle cx="40" cy="40" r="40" fill="rgba(0,0,0,.55)"/>
-      <polygon points="32,22 62,40 32,58" fill="#fff"/>
-    </svg>
-  </button>
 </div>
-
-<script define:vars={{ videoId }}>
-  const wrap = document.getElementById(videoId);
-  if (!wrap) throw new Error();
-
-  const video = wrap.querySelector('video');
-  const btn = wrap.querySelector('.video-wrap__play');
-  const source = video.querySelector('source');
-
-  const load = () => {
-    if (!video.src) {
-      video.src = video.dataset.src;
-      source.src = source.dataset.src;
-      video.load();
-    }
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) { load(); observer.disconnect(); }
-  }, { rootMargin: '200px' });
-  observer.observe(wrap);
-
-  btn.addEventListener('click', () => {
-    load();
-    video.play();
-    btn.style.display = 'none';
-  });
-
-  video.addEventListener('pause', () => { btn.style.display = ''; });
-  video.addEventListener('ended', () => { btn.style.display = ''; });
-</script>
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
@@ -104,6 +66,7 @@ const schema = {
     overflow: hidden;
     border-radius: inherit;
     aspect-ratio: 16 / 9;
+    width: 100%;
   }
   .video-wrap__player {
     width: 100%;
@@ -111,16 +74,4 @@ const schema = {
     object-fit: cover;
     display: block;
   }
-  .video-wrap__play {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 72px;
-    height: 72px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform .15s, opacity .15s;
-  }
-  .video-wrap__play:hover { transform: scale(1.1); opacity: .9; }
 </style>
