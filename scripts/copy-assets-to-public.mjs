@@ -23,33 +23,24 @@ const srcImages = 'src/assets/images';
 const destImages = 'public/images';
 if (fs.existsSync(srcImages)) {
   copyDirSync(srcImages, destImages);
-  console.log('✅ Coopiou imagens de src/assets/images para public/images');
+  console.log('✅ Copiou imagens de src/assets/images para public/images');
 }
 
-// 2. Scan Astro pages and update data-thumbnail, data-bg, and poster props
-const astroPages = [
-  'src/pages/debutante.astro',
-  'src/pages/casamentos.astro',
-  'src/pages/casamentos-visitas.astro',
-  'src/pages/eventos-corporativos.astro'
-];
+// 2. Scan all Astro pages dynamically and update any /src/assets/images/ to /images/
+const pagesDir = 'src/pages';
+const astroPages = fs.readdirSync(pagesDir)
+  .filter(f => f.endsWith('.astro'))
+  .map(f => path.join(pagesDir, f));
 
 astroPages.forEach(file => {
-  if (!fs.existsSync(file)) return;
   let content = fs.readFileSync(file, 'utf8');
 
-  // Replace data-thumbnail="/src/assets/images/... -> data-thumbnail="/images/...
-  content = content.replace(/data-thumbnail="\/src\/assets\/images\//g, 'data-thumbnail="/images/');
-  
-  // Replace poster="/src/assets/images/... -> poster="/images/...
-  content = content.replace(/poster="\/src\/assets\/images\//g, 'poster="/images/');
-
-  // Replace data-bg="/src/assets/images/... -> data-bg="/images/...
-  content = content.replace(/data-bg="\/src\/assets\/images\//g, 'data-bg="/images/');
-
-  // Replace href="/src/assets/images/... -> href="/images/...
-  content = content.replace(/href="\/src\/assets\/images\//g, 'href="/images/');
-
-  fs.writeFileSync(file, content, 'utf8');
-  console.log(`Updated non-compile attributes to /images/ in: ${file}`);
+  // Replace any instance of /src/assets/images/ with /images/
+  // This handles inline style backgrounds, data-bg, data-thumbnail, hrefs, posters etc.
+  const regex = /\/src\/assets\/images\//g;
+  if (regex.test(content)) {
+    content = content.replace(regex, '/images/');
+    fs.writeFileSync(file, content, 'utf8');
+    console.log(`✅ Updated asset paths to /images/ in: ${path.basename(file)}`);
+  }
 });

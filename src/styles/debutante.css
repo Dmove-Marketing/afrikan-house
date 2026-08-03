@@ -226,217 +226,81 @@ align-items: center !important;
 position: relative !important;
 }
 
-/* 2. Reseta a posição do container do ano e garante que ele seja um bloco em linha. /
+/* 2. Reseta a posição do container do ano e garante que ele seja um bloco em linha. */
 .flatpickr-months .numInputWrapper {
-display: inline-block !important;
-position: static !important; /
+  display: inline-block !important;
+  position: static !important;
+}
 
 .rll-youtube-player, [data-lazy-src]{display:none !important;}
 
 .cls-1 {        fill: #fff;        stroke-width: 0px;      }
 
-/* === Regras Padrão Afrikan House === */
-
-/* Custom CSS para imagens de carrossel (altura 400px / 300px mobile e sem espaçamento) */
-.elementor-image-carousel-wrapper img,
-.elementor-image-carousel img,
-.elementor-widget-image-carousel img,
-.elementor-image-carousel-wrapper .swiper-slide img {
-  height: 400px !important;
-  object-fit: cover !important;
-  width: 100% !important;
-  display: block !important;
-}
-
-@media (max-width: 700px) {
-  .elementor-image-carousel-wrapper img,
-  .elementor-image-carousel img,
-  .elementor-widget-image-carousel img,
-  .elementor-image-carousel-wrapper .swiper-slide img {
-    height: 300px !important;
-    object-fit: cover !important;
-    width: 100% !important;
-  }
-}
-
-.elementor-image-carousel-wrapper .swiper-slide {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Footer Padrão (2 metades: logo à esquerda, copyright à direita) */
-.elementor-element-6e31c63 {
-  background-color: #997840 !important;
-  padding: 10px 40px !important;
-  min-height: auto !important;
-  width: 100% !important;
-}
-
-.elementor-element-6e31c63 .e-con-inner {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 20px !important;
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-}
-
-.elementor-element-16920d2 {
-  text-align: left !important;
-  margin: 0 !important;
-}
-
-.elementor-element-16920d2 img {
-  max-width: 120px !important;
-  width: 120px !important;
-  height: auto !important;
-  margin: 0 !important;
-  display: block !important;
-}
-
-.elementor-element-c4cc42e,
-.elementor-element-c4cc42e p {
-  color: #F8F8F8 !important;
-  font-size: 14px !important;
-  margin: 0 !important;
-  text-align: right !important;
-}
-
-@media (max-width: 767px) {
-  .elementor-element-6e31c63 .e-con-inner {
-    flex-direction: column !important;
-    text-align: center !important;
-  }
-
-  .elementor-element-16920d2 {
-    text-align: center !important;
-  }
-
-  .elementor-element-16920d2 img {
-    margin: 0 auto !important;
-  }
-
-
-  .elementor-element-c4cc42e,
-  .elementor-element-c4cc42e p {
-    text-align: center !important;
-  }
-}
-
-/* === Seção Formulário: background slideshow do Elementor → imagem fixa === */
-.elementor-element-8632fb9 {
-  background-image: url('/images/EHG02303-scaled.avif') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  position: relative !important;
-}
-
-.elementor-element-8632fb9::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background-color: rgba(2, 1, 1, 0.6) !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-}
-
-.elementor-element-8632fb9 > .e-con-inner {
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* === Fix 1: Logo hero (SVG inline) — forçar fill branco === */
-.elementor-element-519ae90 .elementor-icon svg path,
-.elementor-element-519ae90 .elementor-icon svg .cls-1,
-.elementor-element-bb6ceda .elementor-icon svg path,
-.elementor-element-bb6ceda .elementor-icon svg .cls-1 {
-  fill: #ffffff !important;
-}
-
-/* === Fix 2: Cores de textos por fundo === */
-/* Fundo branco → textos #383838 */
-.elementor-element-04330d1 .elementor-heading-title,
-.elementor-element-04330d1 p,
-.elementor-element-04330d1 .elementor-widget-text-editor,
-.elementor-element-2a85b5c .elementor-heading-title,
-.elementor-element-2a85b5c p,
-.elementor-element-2a85b5c .elementor-widget-text-editor,
-.elementor-element-e099b8c .elementor-heading-title,
-.elementor-element-e099b8c p,
-.elementor-element-e099b8c .elementor-widget-text-editor,
-.elementor-element-f94dcf5 .elementor-heading-title,
-.elementor-element-f94dcf5 p,
-.elementor-element-f94dcf5 .elementor-widget-text-editor {
+/* Ajustes de cores dos textos da página Debutante */
+.elementor-847 .elementor-element.elementor-element-ef0cd73,
+.elementor-847 .elementor-element.elementor-element-ef0cd73 *,
+.elementor-847 .elementor-element.elementor-element-5e3d8e7,
+.elementor-847 .elementor-element.elementor-element-5e3d8e7 *,
+.elementor-847 .elementor-element.elementor-element-d164a89,
+.elementor-847 .elementor-element.elementor-element-d164a89 *,
+.elementor-847 .elementor-element.elementor-element-6a74263,
+.elementor-847 .elementor-element.elementor-element-6a74263 * {
   color: #383838 !important;
 }
 
-/* Fundo dourado (#997840) → textos #F8F8F8 */
-.elementor-element-8a521e4 .elementor-heading-title,
-.elementor-element-8a521e4 p,
-.elementor-element-8a521e4 .elementor-widget-text-editor,
-.elementor-element-174ba45 .elementor-heading-title,
-.elementor-element-174ba45 p,
-.elementor-element-174ba45 .elementor-widget-text-editor,
-.elementor-element-a0b8f56 .elementor-heading-title,
-.elementor-element-a0b8f56 p,
-.elementor-element-a0b8f56 .elementor-widget-text-editor {
+.elementor-847 .elementor-element.elementor-element-f9d63aa,
+.elementor-847 .elementor-element.elementor-element-f9d63aa *,
+.elementor-847 .elementor-element.elementor-element-cc0a0b6,
+.elementor-847 .elementor-element.elementor-element-cc0a0b6 *,
+.elementor-847 .elementor-element.elementor-element-d413792,
+.elementor-847 .elementor-element.elementor-element-d413792 *,
+.elementor-847 .elementor-element.elementor-element-917f979,
+.elementor-847 .elementor-element.elementor-element-917f979 *,
+.elementor-847 .elementor-element.elementor-element-417c900,
+.elementor-847 .elementor-element.elementor-element-417c900 *,
+.elementor-847 .elementor-element.elementor-element-c4cc42e,
+.elementor-847 .elementor-element.elementor-element-c4cc42e * {
   color: #F8F8F8 !important;
 }
 
-/* === Fix 3: Galeria 3×3 — imagens quadradas com espaçamento e bordas arredondadas === */
-.elementor-element-ad33ed3 .elementor-gallery__container {
+/* Galeria Debutante em 3 colunas */
+.elementor-847 .elementor-element.elementor-element-ad33ed3 .elementor-gallery__container {
   grid-template-columns: repeat(3, 1fr) !important;
-  gap: 15px !important;
-}
-
-.elementor-element-ad33ed3 .e-gallery-item {
-  aspect-ratio: 1 / 1 !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  width: 100% !important;
-}
-
-.elementor-element-ad33ed3 .e-gallery-item img,
-.elementor-element-ad33ed3 .e-gallery-item .e-gallery-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-}
-
-.elementor-element-ad33ed3 .e-gallery-item {
-  position: relative !important;
 }
 
 @media (max-width: 1024px) {
-  .elementor-element-ad33ed3 .elementor-gallery__container {
+  .elementor-847 .elementor-element.elementor-element-ad33ed3 .elementor-gallery__container {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media (max-width: 640px) {
-  .elementor-element-ad33ed3 .elementor-gallery__container {
+  .elementor-847 .elementor-element.elementor-element-ad33ed3 .elementor-gallery__container {
     grid-template-columns: repeat(1, 1fr) !important;
   }
 }
 
-/* Títulos específicos na cor dourada (#7C5D2F) */
-.elementor-element-cc1551d .elementor-heading-title,
-.elementor-element-e90fadf .elementor-heading-title,
-.elementor-element-59ec0f9 .elementor-heading-title,
-.elementor-element-4e1de30 .elementor-heading-title {
-  color: #7C5D2F !important;
+/* Imagem de Fundo da Seção de Contato - Debutante */
+.elementor-847 .elementor-element.elementor-element-8632fb9:not(.elementor-motion-effects-element-type-background),
+.elementor-847 .elementor-element.elementor-element-8632fb9 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: url("/src/assets/images/debutante/EHG02303-scaled.avif") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
-/* Subtítulo da Hero em branco (#ffffff) */
-.elementor-element-f9d63aa,
-.elementor-element-f9d63aa p,
-.elementor-element-f9d63aa span {
-  color: #ffffff !important;
+.elementor-847 .elementor-element.elementor-element-8632fb9::before {
+  background-color: rgba(2, 1, 1, 0.6) !important;
+  opacity: 0.6 !important;
+}
+
+/* Formato das fotos da galeria para 4 por 4 (1:1) */
+.elementor-847 .elementor-element.elementor-element-ad33ed3 .e-gallery-image,
+.elementor-847 .elementor-element.elementor-element-ad33ed3 .elementor-gallery-item__image {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
 }

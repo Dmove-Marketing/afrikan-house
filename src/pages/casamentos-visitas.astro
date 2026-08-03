@@ -14,8 +14,19 @@ import '../styles/casamentos-visitas.css';
 -->
 <Base
   title="Casamentos visitas &#8211; Afrikan House"
+  description="Agende uma visita aos espaços do Afrikan House para o seu casamento — há 22 anos criando experiências inesquecíveis em São Paulo."
   ogImage="/images/og-casamentos-visitas.jpg"
   canonical="https://eventos.afrikanhouse.com.br/casamentos-visitas/"
+  whatsAppMessage="Olá! 💍 Que lindo que você quer visitar o Afrikan House para o seu casamento!\nPreencha as informações abaixo e nossa equipe entrará em contato pelo WhatsApp."
+  whatsAppStep1Fields={[
+    {
+      name: 'data',
+      type: 'text',
+      label: 'Data de preferência para a visita',
+      placeholder: 'Ex: 15/11/2026',
+      required: true,
+    },
+  ]}
 >
 <Fragment slot="head">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" />
@@ -93,13 +104,13 @@ import '../styles/casamentos-visitas.css';
 														<input size="1" type="text" name="form_fields[field_informacao]" id="form-field-field_informacao" class="elementor-field elementor-size-md  elementor-field-textual">
 											</div>
 								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-fonte elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-md  elementor-field-textual" value="LP /visitas">
+													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-md  elementor-field-textual" value="Landing Page/visitas">
 											</div>
 								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-url elementor-col-100">
 													<input size="1" type="hidden" name="form_fields[url]" id="form-field-url" class="elementor-field elementor-size-md  elementor-field-textual">
 											</div>
 								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-					<button class="elementor-button elementor-size-lg" type="submit">
+					<button class="elementor-button elementor-size-lg" type="button">
 						<span class="elementor-button-content-wrapper">
 																						<span class="elementor-button-text">Enviar Solicitação</span>
 													</span>
@@ -136,7 +147,7 @@ import '../styles/casamentos-visitas.css';
 				<div class="elementor-element elementor-element-8bff71e elementor-widget elementor-widget-video" data-id="8bff71e" data-element_type="widget" data-e-type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
 				<div class="elementor-widget-container">
 							<div class="e-hosted-video elementor-wrapper elementor-open-inline">
-					<Video src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/04/espaco-garden-afrikan.mp4" poster="/images/casamentos-visitas/DECORA-AFRIKAN-GARDFEN-31-scaled.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
+					<Video src="https://media.dmove.com.br/clients/afrikan-house/videos/espaco-garden_casamentos.webm" poster="/images/casamentos-visitas/DECORA-AFRIKAN-GARDFEN-31-scaled.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
 				</div>
 						</div>
 				</div>
@@ -145,7 +156,7 @@ import '../styles/casamentos-visitas.css';
 				<div class="elementor-element elementor-element-dee2fff elementor-widget elementor-widget-video" data-id="dee2fff" data-element_type="widget" data-e-type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
 				<div class="elementor-widget-container">
 							<div class="e-hosted-video elementor-wrapper elementor-open-inline">
-					<Video src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/04/espaco-lougue-afrikan.mp4" poster="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.21-1-1.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
+					<Video src="https://media.dmove.com.br/clients/afrikan-house/videos/espaco-lounge_casamentos.webm" poster="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.21-1-1.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
 				</div>
 						</div>
 				</div>
@@ -154,7 +165,7 @@ import '../styles/casamentos-visitas.css';
 				<div class="elementor-element elementor-element-725fb7b elementor-widget elementor-widget-video" data-id="725fb7b" data-element_type="widget" data-e-type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
 				<div class="elementor-widget-container">
 							<div class="e-hosted-video elementor-wrapper elementor-open-inline">
-					<Video src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/04/espaco-village-afrikan.mp4" poster="/images/casamentos-visitas/IMGC0453-scaled.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
+					<Video src="https://media.dmove.com.br/clients/afrikan-house/videos/espaco-village_casamentos.webm" poster="/images/casamentos-visitas/IMGC0453-scaled.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
 				</div>
 						</div>
 				</div>
@@ -544,75 +555,51 @@ ACONTECEM NO AFRIKAN HOUSE</h2>				</div>
 				<div class="elementor-widget-container">
 							<div class="elementor-gallery__container">
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="2560" data-height="1707" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/1021_F_SR7560_-scaled.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/1021_F_SR7560_-scaled.avif" data-width="2560" data-height="1707" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/1021_F_SR7560_-scaled.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="2560" data-height="1707" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/1037_F_SR8751_-scaled.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/1037_F_SR8751_-scaled.avif" data-width="2560" data-height="1707" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/1037_F_SR8751_-scaled.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1080" data-height="1350" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/casamento-afrikan-house-lounge.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/casamento-afrikan-house-lounge.avif" data-width="1080" data-height="1350" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/casamento-afrikan-house-lounge.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="2560" data-height="1707" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/MCD_9452-scaled.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/MCD_9452-scaled.avif" data-width="2560" data-height="1707" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/MCD_9452-scaled.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/noiva-fachada-veu.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/noiva-fachada-veu.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/noiva-fachada-veu.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.18.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.18.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.18.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.19-3.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.19-3.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.19-3.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.19.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.19.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.19.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.20-1.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.20-1.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.20-1.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.21-1.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.21-1.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.21-1.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.22.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.22.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-04-30-at-13.59.22.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 							<div class="e-gallery-item elementor-gallery-item elementor-animated-content">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1600" data-height="1066" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/casamentos-visitas/WhatsApp-Image-2025-10-15-at-12.49.47-2.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/casamentos-visitas/WhatsApp-Image-2025-10-15-at-12.49.47-2.avif" data-width="1600" data-height="1066" aria-label="" role="img"  style="background-image: url('/images/casamentos-visitas/WhatsApp-Image-2025-10-15-at-12.49.47-2.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</div>
 					</div>
@@ -655,9 +642,6 @@ ACONTECEM NO AFRIKAN HOUSE</h2>				</div>
 				</div>
 		
 			
-			<link rel='stylesheet' id='ccfef-country-code-library-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/intl-tel-input/css/intlTelInput.min.css?ver=1.6.2' media='all' />
-<link rel='stylesheet' id='ccfef-country-code-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/css/country-code-style.min.css?ver=1.6.2' media='all' />
-
 
 
 
@@ -699,7 +683,6 @@ ACONTECEM NO AFRIKAN HOUSE</h2>				</div>
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
-        autoplay: { delay: 3500, disableOnInteraction: false },
         navigation: {
           nextEl: el.querySelector('.elementor-swiper-button-next'),
           prevEl: el.querySelector('.elementor-swiper-button-prev'),
@@ -723,7 +706,6 @@ ACONTECEM NO AFRIKAN HOUSE</h2>				</div>
         spaceBetween: 24,
         speed: 1200,
         loop: true,
-        autoplay: { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true },
         navigation: {
           nextEl: container.querySelector('.elementor-swiper-button-next'),
           prevEl: container.querySelector('.elementor-swiper-button-prev'),
@@ -745,7 +727,6 @@ ACONTECEM NO AFRIKAN HOUSE</h2>				</div>
         new Swiper(el, {
           slidesPerView: 1,
           loop: true,
-          autoplay: { delay: 4000 },
           navigation: {
             nextEl: container.querySelector('.elementor-swiper-button-next, .swiper-button-next'),
             prevEl: container.querySelector('.elementor-swiper-button-prev, .swiper-button-prev'),

@@ -1,40 +1,51 @@
 {
-  "project_name": "Nome do Projeto",
-  "project_slug": "slug-do-projeto",
-  "client": "Nome do Cliente",
-  "environment": "development",
+  "project_name": "Afrikan House",
+  "project_slug": "afrikan-house",
+  "client": "Afrikan House",
+  "environment": "production",
   "tracking": {
-    "gtm_id": "GTM-XXXXXXX",
+    "gtm_id": "GTM-N62DGMNS",
     "enabled": true
   },
   "whatsapp": {
     "phone": "5511999999999",
-    "display_name": "Nome do Cliente",
+    "display_name": "Afrikan House",
     "avatar": "/images/whatsapp-avatar.jpg",
-    "enabled": true
+    "enabled": false
   },
   "forms": {
     "lead-form": {
       "id": "lead-form",
       "redirect_on_success": "",
       "webhooks": [
-        "https://n8n.dmove.com.br/webhook/SLUG-DO-PROJETO"
+        "https://n8n.dmove.com.br/webhook/afrikan2025-LP"
       ],
       "fields_required": [
         "nome",
         "email",
         "telefone"
       ]
+    },
+    "cadastro-manual": {
+      "id": "cadastro-manual",
+      "redirect_on_success": "",
+      "webhooks": [
+        "https://n8n.dmove.com.br/webhook/afrikan-cadastro-manual"
+      ],
+      "fields_required": [
+        "nome",
+        "telefone"
+      ]
     }
   },
   "deploy": {
     "user": "root",
-    "server": "",
-    "remote_path": "/var/www/dominio.com.br"
+    "server": "157.173.197.116",
+    "remote_path": "/var/www/eventos.afrikanhouse.com.br/"
   },
   "meta": {
     "created_at": "YYYY-MM-DD",
     "last_updated": "YYYY-MM-DD",
-    "owner": "Responsável"
+    "owner": "Dmove Marketing"
   }
 }

@@ -1,18 +1,3 @@
-function applyPhoneMask(input: HTMLInputElement) {
-  input.addEventListener('input', () => {
-    let v = input.value.replace(/\D/g, '');
-    if (v.length > 11) v = v.slice(0, 11);
-    if (v.length > 7) {
-      v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
-    } else if (v.length > 2) {
-      v = `(${v.slice(0, 2)}) ${v.slice(2)}`;
-    } else if (v.length > 0) {
-      v = `(${v}`;
-    }
-    input.value = v;
-  });
-}
-
 export function initForms() {
   const forms = document.querySelectorAll<HTMLFormElement>('form[data-form-id]');
   forms.forEach((form) => {
@@ -22,8 +7,6 @@ export function initForms() {
     let started = false;
     const formId  = form.dataset.formId!;
     const project = form.dataset.project || window.location.hostname;
-
-    form.querySelectorAll<HTMLInputElement>('[name="telefone"]').forEach(applyPhoneMask);
 
     const submitUrl   = form.dataset.submitUrl;
     const redirectUrl = form.dataset.redirect;
@@ -42,8 +25,15 @@ export function initForms() {
       }
     });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    // O botão é type="button" (não type="submit") de propósito: sem evento submit nativo,
+    // o listener de captura do GTM ("Form Submission" automático) não tem o que interceptar,
+    // então não dispara gtm.formSubmit em cliques que falham na validação.
+    const submitBtn = form.querySelector<HTMLButtonElement>('.form-submit, button');
+
+    let isSubmitting = false;
+
+    async function handleSubmit() {
+      if (isSubmitting) return;
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
@@ -92,7 +82,7 @@ export function initForms() {
       });
 
       // Validação de formato: telefone (mínimo 10 dígitos — DDD + número)
-      form.querySelectorAll<HTMLInputElement>('[name="telefone"]').forEach((field) => {
+      form.querySelectorAll<HTMLInputElement>('[name="telefone"], [name="form_fields[telefone]"]').forEach((field) => {
         if (!field.value) return;
         const digits = field.value.replace(/\D/g, '');
         if (digits.length < 10) {
@@ -115,7 +105,8 @@ export function initForms() {
         return;
       }
 
-      const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit, [type="submit"]');
+      isSubmitting = true;
+
       const btnText    = submitBtn?.querySelector<HTMLElement>('.btn-text');
       const btnLoading = submitBtn?.querySelector<HTMLElement>('.btn-loading');
 
@@ -136,54 +127,35 @@ export function initForms() {
 
       if (msgEl) msgEl.style.display = 'none';
 
-      const formData = new FormData(form);
-      const rawData: Record<string, string> = {};
-      formData.forEach((v, k) => { if (k !== 'website') rawData[k] = v.toString(); });
-
-      const trackingRaw = sessionStorage.getItem('dmove_tracking');
-      const tracking: Record<string, string> = trackingRaw ? JSON.parse(trackingRaw) : {};
-
-      const now = new Date();
-      const dateStr = now.toLocaleDateString('pt-BR');
-      const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-      const capitalizedFields: Record<string, string> = {};
-      let fonteBase = rawData['fonte'] || project;
-      Object.entries(rawData).forEach(([key, val]) => {
-        if (key === 'fonte') return;
-        const capKey = key.charAt(0).toUpperCase() + key.slice(1);
-        capitalizedFields[capKey] = val;
+      // Chave de cada campo = texto do <label> associado (com os ":" originais do Elementor).
+      // Campos ocultos sem <label> (ex: "fonte", "url") caem no fallback: nome do campo capitalizado.
+      // "Fonte" chega aqui já com a query string de tracking anexada pelo script legado da página
+      // (cookies de UTM/click IDs) — não precisa ser remontada aqui.
+      const labeledFields: Record<string, string> = {};
+      form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[name^="form_fields["]').forEach((field) => {
+        const label = field.id ? form.querySelector<HTMLLabelElement>(`label[for="${field.id}"]`) : null;
+        let key = label?.textContent?.trim() || '';
+        if (!key) {
+          const match = field.name.match(/^form_fields\[(.+)\]$/);
+          const inner = match ? match[1] : field.name;
+          key = inner.charAt(0).toUpperCase() + inner.slice(1);
+        }
+        labeledFields[key] = field.value;
       });
 
-      const trackingParamKeys = [
-        'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
-        'utm_content', 'utm_id', 'gclid', 'gbraid', 'wbraid',
-        'fbclid', 'ttclid', 'msclkid', 'sck',
-        'fbc', 'fbp', 'external_id', 'event_id',
-      ];
-      const qs = new URLSearchParams();
-      trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
-      const fonte = qs.toString() ? `${fonteBase}?${qs.toString()}` : fonteBase;
-
-      // Campos Meta CAPI — enviados também como campos flat para uso direto no n8n
-      const metaCapi: Record<string, string> = {};
-      if (tracking['fbc'])         metaCapi['fbc']         = tracking['fbc'];
-      if (tracking['fbp'])         metaCapi['fbp']         = tracking['fbp'];
-      if (tracking['external_id']) metaCapi['external_id'] = tracking['external_id'];
-      if (tracking['event_id'])    metaCapi['event_id']    = tracking['event_id'];
+      const now = new Date();
+      const formIdField = form.querySelector<HTMLInputElement>('[name="form_id"]');
 
       const payload: Record<string, string> = {
-        ...capitalizedFields,
-        Fonte: fonte,
-        Data: dateStr,
-        'Horário': timeStr,
+        ...labeledFields,
+        Data: now.toLocaleDateString('pt-BR'),
+        'Horário': now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
         'URL da página': window.location.href,
         'Agente de usuário': navigator.userAgent,
         'IP remoto': '',
         'Desenvolvido por': 'Dmove',
-        form_id: formId,
-        form_name: formId,
-        ...metaCapi,
+        form_id: formIdField?.value || formId,
+        form_name: form.name || formId,
       };
 
       try {
@@ -198,7 +170,7 @@ export function initForms() {
         let json: any = {};
         try { json = await res.json(); } catch {}
 
-        (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...capitalizedFields });
+        (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...labeledFields });
 
         const redir = redirectUrl || json.redirect;
         if (redir) {
@@ -239,7 +211,22 @@ export function initForms() {
             submitBtn.innerHTML = submitBtn.dataset.originalText;
           }
         }
+      } finally {
+        isSubmitting = false;
       }
+    }
+
+    submitBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleSubmit();
+    });
+
+    form.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'TEXTAREA' || target.tagName === 'BUTTON') return;
+      e.preventDefault();
+      handleSubmit();
     });
   });
 }

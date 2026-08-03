@@ -48,9 +48,9 @@ button {
 
 /* === CSS Variables (customizar por projeto) === */
 :root {
-  /* Cores — ajuste para o cliente (Neutro Base) */
-  --color-primary: #3b82f6;
-  --color-primary-dark: #1d4ed8;
+  /* Cores — dourado da marca Afrikan House (mesmo tom usado nos botões e no calendário do site) */
+  --color-primary: #997840;
+  --color-primary-dark: #7c5d2f;
   --color-secondary: #6b7280;
   --color-accent: #10b981;
 
@@ -68,7 +68,7 @@ button {
   /* Gradientes */
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   --gradient-subtle: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-  --gradient-glow: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15), transparent 70%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(153, 120, 64, 0.15), transparent 70%);
 
   /* Glass */
   --glass-bg: rgba(0, 0, 0, 0.03);
@@ -438,6 +438,17 @@ html.lenis body {
   border-radius: 8px !important;
   width: 100% !important;
 }
+
+.e-gallery-image,
+.elementor-gallery-item__image {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
 
 /* Swiper Nav Arrows Display & Styling */
 .elementor-swiper-button,

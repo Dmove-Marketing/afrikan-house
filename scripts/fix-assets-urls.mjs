@@ -23,6 +23,21 @@ const pages = [
     astro: 'src/pages/eventos-corporativos.astro',
     css: 'src/styles/eventos-corporativos.css',
     imgFolder: 'eventos-corporativos'
+  },
+  {
+    astro: 'src/pages/bio.astro',
+    css: 'src/styles/bio.css',
+    imgFolder: 'bio'
+  },
+  {
+    astro: 'src/pages/cadastro-manual.astro',
+    css: 'src/styles/cadastro-manual.css',
+    imgFolder: 'cadastro-manual'
+  },
+  {
+    astro: 'src/pages/index.astro',
+    css: 'src/styles/index.css',
+    imgFolder: 'index'
   }
 ];
 

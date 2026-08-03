@@ -37,6 +37,8 @@ interface Props {
   whatsAppStep1Fields?: WhatsAppStep1Field[];
   /** Mensagem de boas-vindas do popup WhatsApp (use \n para quebrar linha) */
   whatsAppMessage?: string;
+  /** Ocultar o botão flutuante de WhatsApp nesta página */
+  hideWhatsApp?: boolean;
 }
 
 const {
@@ -49,6 +51,7 @@ const {
   jsonLd,
   whatsAppStep1Fields,
   whatsAppMessage,
+  hideWhatsApp = false,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -111,10 +114,12 @@ const defaultJsonLd = {
     <slot />
 
     <!-- WhatsApp Flutuante — configurar em config.json > whatsapp -->
-    <WhatsAppModal
-      step1Fields={whatsAppStep1Fields}
-      welcomeMessage={whatsAppMessage}
-    />
+    {!hideWhatsApp && (
+      <WhatsAppModal
+        step1Fields={whatsAppStep1Fields}
+        welcomeMessage={whatsAppMessage}
+      />
+    )}
 
     <!-- Flatpickr Datepicker & Portuguese Locale -->
     <script is:inline src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -130,8 +135,41 @@ const defaultJsonLd = {
               allowInput: true,
               disableMobile: "true"
             });
+
+            // Máscara em tempo real (dd/mm/aaaa) para quando o usuário digita manualmente
+            // em vez de usar o calendário — o flatpickr com allowInput não formata sozinho.
+            dateInput.addEventListener('input', () => {
+              let v = dateInput.value.replace(/\D/g, '');
+              if (v.length > 8) v = v.slice(0, 8);
+              if (v.length > 4) {
+                v = `${v.slice(0, 2)}/${v.slice(2, 4)}/${v.slice(4)}`;
+              } else if (v.length > 2) {
+                v = `${v.slice(0, 2)}/${v.slice(2)}`;
+              }
+              dateInput.value = v;
+            });
           });
         }
+      });
+    </script>
+
+    <!-- Máscara de telefone/WhatsApp — cobre os campos "form_fields[telefone]" das páginas migradas do Elementor -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[name="form_fields[telefone]"]').forEach((input) => {
+          input.addEventListener('input', () => {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 7) {
+              v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+            } else if (v.length > 2) {
+              v = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+            } else if (v.length > 0) {
+              v = `(${v}`;
+            }
+            input.value = v;
+          });
+        });
       });
     </script>
 

@@ -3,48 +3,147 @@
 
 <script>
   (function() {
-    const params = new URLSearchParams(window.location.search);
+    // Chaves de "primeiro toque": só persistem quando aparecem na URL desta página
+    // (landing page de anúncio). Não devem ser sobrescritas em páginas internas sem esses params.
+    const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id'];
+    const CLICK_ID_KEYS = ['gclid', 'gbraid', 'wbraid', 'fbclid', 'sck', 'ttclid', 'msclkid'];
 
-    const utmKeys = [
-      'utm_source', 'utm_medium', 'utm_campaign',
-      'utm_content', 'utm_term'
-    ];
+    // Alguns provedores gravam esses IDs em cookie com prefixo "__" (auto-tagging do Google Ads)
+    // antes mesmo de o usuário navegar para a página com o param na URL.
+    const COOKIE_FALLBACKS: Record<string, string[]> = {
+      gclid: ['gclid', '__gclid'],
+      gbraid: ['gbraid', '__gbraid'],
+      wbraid: ['wbraid', '__wbraid'],
+    };
 
-    const clickIdKeys = ['gclid', 'fbclid', 'sck', 'ttclid', 'msclkid'];
-
-    const trackingData: Record<string, string> = {};
-
-    utmKeys.forEach(key => {
-      const value = params.get(key);
-      if (value) trackingData[key] = value;
-    });
-
-    clickIdKeys.forEach(key => {
-      const value = params.get(key);
-      if (value) trackingData[key] = value;
-    });
-
-    if (document.referrer && !document.referrer.includes(window.location.hostname)) {
-      trackingData['referrer'] = document.referrer;
+    function getCookie(name: string): string {
+      const escaped = name.replace(/([.$?|{}()[\]\\/+^])/g, '\\$1');
+      const match = document.cookie.match(new RegExp('(?:^|; )' + escaped + '=([^;]*)'));
+      if (!match) return '';
+      try {
+        return decodeURIComponent(match[1].replace(/\+/g, ' '));
+      } catch (e) {
+        return match[1];
+      }
     }
 
-    trackingData['landing_page'] = window.location.pathname;
-    trackingData['landing_url'] = window.location.href.split('?')[0];
+    function getEventId(): string {
+      try {
+        const w = window as any;
+        if (w.__page_event_id && typeof w.__page_event_id === 'string') return w.__page_event_id;
+      } catch (e) {}
+      return '';
+    }
+
+    function mergeIntoSession(data: Record<string, string>) {
+      if (Object.keys(data).length === 0) return;
+      const existingRaw = sessionStorage.getItem('dmove_tracking');
+      const existing: Record<string, string> = existingRaw ? JSON.parse(existingRaw) : {};
+      sessionStorage.setItem('dmove_tracking', JSON.stringify({ ...existing, ...data }));
+    }
+
+    // ===== Captura de primeiro toque (UTMs + click IDs) — roda uma vez, na carga da página =====
+    const params = new URLSearchParams(window.location.search);
+    const firstTouch: Record<string, string> = {};
+
+    UTM_KEYS.forEach((key) => {
+      const value = params.get(key);
+      if (value) firstTouch[key] = value;
+    });
+
+    CLICK_ID_KEYS.forEach((key) => {
+      let value = params.get(key) || '';
+      if (!value && COOKIE_FALLBACKS[key]) {
+        for (const cookieName of COOKIE_FALLBACKS[key]) {
+          value = getCookie(cookieName);
+          if (value) break;
+        }
+      }
+      if (value) firstTouch[key] = value;
+    });
+
+    const hasFirstTouchParams = Object.keys(firstTouch).length > 0;
+
+    const pageMeta: Record<string, string> = {};
+    if (document.referrer && !document.referrer.includes(window.location.hostname)) {
+      pageMeta['referrer'] = document.referrer;
+    }
+    pageMeta['landing_page'] = window.location.pathname;
+    pageMeta['landing_url'] = window.location.href.split('?')[0];
 
     if (!sessionStorage.getItem('dmove_first_visit')) {
       sessionStorage.setItem('dmove_first_visit', new Date().toISOString());
     }
 
-    const hasNewParams = utmKeys.some(k => trackingData[k]) || clickIdKeys.some(k => trackingData[k]);
-    if (hasNewParams) {
-      sessionStorage.setItem('dmove_tracking', JSON.stringify(trackingData));
+    // Só grava landing_page/landing_url/referrer/UTMs quando esta página É o primeiro toque
+    // (preserva o primeiro toque real ao navegar por páginas internas sem esses params).
+    if (hasFirstTouchParams) {
+      mergeIntoSession({ ...firstTouch, ...pageMeta });
     }
 
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({
       event: 'page_meta',
       page_path: window.location.pathname,
-      ...trackingData
+      ...firstTouch,
+      ...pageMeta,
     });
+
+    // ===== Captura oportunista (fbc/fbp/external_id/event_id) — pode aparecer em qualquer página, =====
+    // ===== a qualquer momento (cookies do Pixel/GTM nem sempre estão prontos no DOMContentLoaded) =====
+    function collectAsyncTrackingIds(): Record<string, string> {
+      const data: Record<string, string> = {};
+
+      const fbp = getCookie('_fbp');
+      if (fbp) data.fbp = fbp;
+
+      let fbc = getCookie('_fbc');
+      if (!fbc) {
+        // fbclid pode estar na URL desta página ou já salvo no sessionStorage de uma página anterior
+        const existingRaw = sessionStorage.getItem('dmove_tracking');
+        const existing: Record<string, string> = existingRaw ? JSON.parse(existingRaw) : {};
+        const fbclid = params.get('fbclid') || existing.fbclid || '';
+        if (fbclid) fbc = `fb.1.${Date.now()}.${fbclid}`;
+      }
+      if (fbc) data.fbc = fbc;
+
+      const externalId = getCookie('external_id') || getCookie('_external_id');
+      if (externalId) data.external_id = externalId;
+
+      const eventId = getEventId();
+      if (eventId) data.event_id = eventId;
+
+      return data;
+    }
+
+    let tries = 0;
+    const MAX_TRIES = 20;
+    const INTERVAL_MS = 300;
+
+    function retry() {
+      tries++;
+      const asyncData = collectAsyncTrackingIds();
+      mergeIntoSession(asyncData);
+      if (!asyncData.event_id && tries < MAX_TRIES) {
+        setTimeout(retry, INTERVAL_MS);
+      }
+    }
+    retry();
+
+    // Reaplica assim que o GTM avisar que o event_id está pronto (mesmo padrão usado nos scripts de página)
+    try {
+      const dl = (window as any).dataLayer;
+      const origPush = dl.push;
+      dl.push = function (...args: any[]) {
+        const result = origPush.apply(this, args);
+        try {
+          const arg = args[0] || {};
+          if (arg && arg.event === 'page_event_id_ready') {
+            mergeIntoSession(collectAsyncTrackingIds());
+          }
+        } catch (e) {}
+        return result;
+      };
+    } catch (e) {}
   })();
 </script>

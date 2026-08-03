@@ -12,8 +12,76 @@ import '../styles/eventos-corporativos.css';
 -->
 <Base
   title="Corporativo &#8211; Afrikan House"
+  description="Eventos corporativos de alto padrão no Afrikan House. Grandes empresas contam com nossa experiência e estrutura em São Paulo. Solicite um orçamento."
   ogImage="/images/og-eventos-corporativos.jpg"
   canonical="https://eventos.afrikanhouse.com.br/eventos-corporativos/"
+  whatsAppMessage="Olá! 🏢 Quer realizar seu evento corporativo no Afrikan House?\nPreencha as informações abaixo e nossa equipe entrará em contato pelo WhatsApp."
+  whatsAppStep1Fields={[
+    {
+      name: 'empresa',
+      type: 'text',
+      label: 'Empresa',
+      placeholder: 'Nome da sua empresa',
+      required: true,
+    },
+    {
+      name: 'tipo',
+      type: 'select',
+      label: 'Tipo de evento',
+      required: true,
+      options: [
+        { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+        { value: 'Casamento', label: 'Casamento' },
+        { value: 'Corporativo', label: 'Corporativo' },
+        { value: 'Debutante', label: 'Debutante' },
+        { value: 'Aniversário', label: 'Aniversário' },
+        { value: 'Bodas', label: 'Bodas' },
+        { value: 'Bar/bat mitzvah', label: 'Bar/bat mitzvah' },
+        { value: 'Formatura', label: 'Formatura' },
+        { value: 'Outro', label: 'Outro' },
+      ],
+    },
+    {
+      name: 'data',
+      type: 'text',
+      label: 'Data pretendida para o evento',
+      placeholder: 'Ex: 15/11/2026',
+      required: true,
+    },
+    {
+      name: 'convidados',
+      type: 'number',
+      label: 'Número de convidados aproximado',
+      placeholder: 'Ex: 100',
+      required: true,
+    },
+    {
+      name: 'etapa',
+      type: 'select',
+      label: 'Etapa do planejamento',
+      required: true,
+      options: [
+        { value: '', label: 'Em qual etapa você está hoje?', disabled: true, selected: true },
+        { value: 'Estou iniciando as pesquisas, sem visitas realizadas', label: 'Iniciando pesquisas' },
+        { value: 'Já estou visitando espaços e pretendo definir em até 90 dias', label: 'Visitando espaços (até 90 dias)' },
+        { value: 'Já visitei algumas opções e quero definir o espaço em até 30 dias', label: 'Pronto para decidir (até 30 dias)' },
+      ],
+    },
+    {
+      name: 'budget',
+      type: 'select',
+      label: 'Budget',
+      required: true,
+      options: [
+        { value: '', label: 'Qual o investimento planejado?', disabled: true, selected: true },
+        { value: 'Até R$ 70 mil', label: 'Até R$ 70 mil' },
+        { value: 'De R$ 70 mil a R$ 90 mil', label: 'De R$ 70 mil a R$ 90 mil' },
+        { value: 'De R$ 90 mil a R$ 120 mil', label: 'De R$ 90 mil a R$ 120 mil' },
+        { value: 'De R$ 120 mil a R$ 150 mil', label: 'De R$ 120 mil a R$ 150 mil' },
+        { value: 'Acima de R$ 150 mil', label: 'Acima de R$ 150 mil' },
+      ],
+    },
+  ]}
 >
 <Fragment slot="head">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -167,79 +235,94 @@ import '../styles/eventos-corporativos.css';
 					<div class="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
 				<div class="swiper-wrapper">
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-9-1.jpg" alt="Garden 9 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-9-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 9 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-3-1.jpg" alt="Garden 3 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-3-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 3 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-20-1.jpg" alt="Garden 20 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-20-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 20 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-adc.jpg" alt="Garden adc" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-adc.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden adc" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-1-1.jpg" alt="Garden 1 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-1-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 1 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-8-1.jpg" alt="Garden 8 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-8-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 8 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-01.jpg" alt="Garden 01" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-01.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 01" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-02.jpg" alt="Garden 02" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-02.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 02" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-03.jpg" alt="Garden 03" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-03.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 03" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-04.jpg" alt="Garden 04" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-04.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 04" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-05.jpg" alt="Garden 05" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-05.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 05" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Salao-principal-5.jpg" alt="Salão principal (5)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Salao-principal-5.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Salão principal (5)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Jardim-6.jpg" alt="Jardim (6)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Jardim-6.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Jardim (6)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/c291a5ee-fc42-455e-b00b-9a13baaf3abe.jpg" alt="c291a5ee-fc42-455e-b00b-9a13baaf3abe" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/c291a5ee-fc42-455e-b00b-9a13baaf3abe.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="c291a5ee-fc42-455e-b00b-9a13baaf3abe" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/4d891009-1934-44d0-82af-3da071d280a5.jpg" alt="4d891009-1934-44d0-82af-3da071d280a5" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/4d891009-1934-44d0-82af-3da071d280a5.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="4d891009-1934-44d0-82af-3da071d280a5" style="">
+
+			
+					</div>
 								</div>
 									</div>
 															<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="Anterior">
@@ -262,79 +345,94 @@ import '../styles/eventos-corporativos.css';
 					<div class="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
 				<div class="swiper-wrapper">
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-9-1.jpg" alt="Garden 9 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-9-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 9 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-3-1.jpg" alt="Garden 3 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-3-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 3 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-20-1.jpg" alt="Garden 20 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-20-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 20 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-adc.jpg" alt="Garden adc" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-adc.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden adc" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-1-1.jpg" alt="Garden 1 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-1-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 1 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-8-1.jpg" alt="Garden 8 (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-8-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 8 (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-01.jpg" alt="Garden 01" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-01.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 01" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-02.jpg" alt="Garden 02" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-02.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 02" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-03.jpg" alt="Garden 03" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-03.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 03" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-04.jpg" alt="Garden 04" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-04.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 04" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Garden-05.jpg" alt="Garden 05" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Garden-05.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Garden 05" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Salao-principal-5.jpg" alt="Salão principal (5)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Salao-principal-5.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Salão principal (5)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Jardim-6.jpg" alt="Jardim (6)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Jardim-6.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Jardim (6)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/c291a5ee-fc42-455e-b00b-9a13baaf3abe.jpg" alt="c291a5ee-fc42-455e-b00b-9a13baaf3abe" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/c291a5ee-fc42-455e-b00b-9a13baaf3abe.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="c291a5ee-fc42-455e-b00b-9a13baaf3abe" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/4d891009-1934-44d0-82af-3da071d280a5.jpg" alt="4d891009-1934-44d0-82af-3da071d280a5" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/4d891009-1934-44d0-82af-3da071d280a5.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="4d891009-1934-44d0-82af-3da071d280a5" style="">
+
+			
+					</div>
 								</div>
 									</div>
 															<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="Anterior">
@@ -391,69 +489,82 @@ import '../styles/eventos-corporativos.css';
 					<div class="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
 				<div class="swiper-wrapper">
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-04.jpg" alt="Lounge 04" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-04.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 04" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-11.jpg" alt="Lounge 11" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-11.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 11" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-21.jpg" alt="Lounge 21" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-21.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 21" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/fachada-lounge.jpg" alt="fachada lounge" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/fachada-lounge.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="fachada lounge" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/LOUNGE-10-1.jpg" alt="LOUNGE (10)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/LOUNGE-10-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="LOUNGE (10)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/salao-lounge.jpg" alt="salão lounge" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/salao-lounge.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="salão lounge" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-01.jpg" alt="Lounge 01" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-01.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 01" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-02.jpg" alt="Lounge 02" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-02.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 02" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-03.jpg" alt="Lounge 03" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-03.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 03" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-05.jpg" alt="Lounge 05" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-05.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 05" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-1.jpg" alt="Lounge 1" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 1" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Pista-de-danca-2.jpg" alt="Pista de dança (2)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Pista-de-danca-2.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Pista de dança (2)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/42b1039b-d906-4d73-ad2d-76bac7a09e3f.jpg" alt="42b1039b-d906-4d73-ad2d-76bac7a09e3f" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/42b1039b-d906-4d73-ad2d-76bac7a09e3f.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="42b1039b-d906-4d73-ad2d-76bac7a09e3f" style="">
+
+			
+					</div>
 								</div>
 									</div>
 															<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="Anterior">
@@ -476,69 +587,82 @@ import '../styles/eventos-corporativos.css';
 					<div class="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
 				<div class="swiper-wrapper">
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-04.jpg" alt="Lounge 04" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-04.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 04" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-11.jpg" alt="Lounge 11" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-11.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 11" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-21.jpg" alt="Lounge 21" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-21.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 21" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/fachada-lounge.jpg" alt="fachada lounge" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/fachada-lounge.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="fachada lounge" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/LOUNGE-10-1.jpg" alt="LOUNGE (10)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/LOUNGE-10-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="LOUNGE (10)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/salao-lounge.jpg" alt="salão lounge" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/salao-lounge.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="salão lounge" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-01.jpg" alt="Lounge 01" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-01.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 01" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-02.jpg" alt="Lounge 02" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-02.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 02" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-03.jpg" alt="Lounge 03" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-03.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 03" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-05.jpg" alt="Lounge 05" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-05.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 05" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Lounge-1.jpg" alt="Lounge 1" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Lounge-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Lounge 1" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Pista-de-danca-2.jpg" alt="Pista de dança (2)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Pista-de-danca-2.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Pista de dança (2)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/42b1039b-d906-4d73-ad2d-76bac7a09e3f.jpg" alt="42b1039b-d906-4d73-ad2d-76bac7a09e3f" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/42b1039b-d906-4d73-ad2d-76bac7a09e3f.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="42b1039b-d906-4d73-ad2d-76bac7a09e3f" style="">
+
+			
+					</div>
 								</div>
 									</div>
 															<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="Anterior">
@@ -595,69 +719,82 @@ import '../styles/eventos-corporativos.css';
 					<div class="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
 				<div class="swiper-wrapper">
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-02.jpg" alt="Village 01" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-02.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 01" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-04.jpg" alt="Village 02" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-04.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 02" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-5.jpg" alt="Slideshow" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-5.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/hall-village.jpg" alt="Village 04" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/hall-village.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 04" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/VILLAGE-4-1.jpg" alt="Village 05" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/VILLAGE-4-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 05" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-6.jpg" alt="Village 06" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-6.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 06" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-01.jpg" alt="Village 07" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-01.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 07" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-03.jpg" alt="Village 08" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-03.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 08" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-05.jpg" alt="Village 09" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-05.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 09" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/06c85b7b-3c37-4ee1-9eed-404484574a96.jpg" alt="06c85b7b-3c37-4ee1-9eed-404484574a96" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/06c85b7b-3c37-4ee1-9eed-404484574a96.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="06c85b7b-3c37-4ee1-9eed-404484574a96" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/mesas-no-salao-3.jpg" alt="mesas no salão (3)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/mesas-no-salao-3.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="mesas no salão (3)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Pista-de-danca-1.jpg" alt="Pista de dança (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Pista-de-danca-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Pista de dança (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/a581eca7-65ce-4ab3-a6ec-688785cd98f3.jpg" alt="a581eca7-65ce-4ab3-a6ec-688785cd98f3" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/a581eca7-65ce-4ab3-a6ec-688785cd98f3.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="a581eca7-65ce-4ab3-a6ec-688785cd98f3" style="">
+
+			
+					</div>
 								</div>
 									</div>
 															<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="Anterior">
@@ -680,69 +817,82 @@ import '../styles/eventos-corporativos.css';
 					<div class="elementor-main-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Slides">
 				<div class="swiper-wrapper">
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-02.jpg" alt="Village 01" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-02.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 01" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-04.jpg" alt="Village 02" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-04.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 02" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-5.jpg" alt="Slideshow" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-5.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/hall-village.jpg" alt="Village 04" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/hall-village.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 04" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/VILLAGE-4-1.jpg" alt="Village 05" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/VILLAGE-4-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 05" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-6.jpg" alt="Village 06" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-6.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 06" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-01.jpg" alt="Village 07" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-01.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 07" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-03.jpg" alt="Village 08" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-03.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 08" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Village-05.jpg" alt="Village 09" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Village-05.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Village 09" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/06c85b7b-3c37-4ee1-9eed-404484574a96.jpg" alt="06c85b7b-3c37-4ee1-9eed-404484574a96" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/06c85b7b-3c37-4ee1-9eed-404484574a96.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="06c85b7b-3c37-4ee1-9eed-404484574a96" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/mesas-no-salao-3.jpg" alt="mesas no salão (3)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/mesas-no-salao-3.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="mesas no salão (3)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/Pista-de-danca-1.jpg" alt="Pista de dança (1)" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/Pista-de-danca-1.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="Pista de dança (1)" style="">
+
+			
+					</div>
 								</div>
 											<div class="swiper-slide" role="group" aria-roledescription="slide">
-									<div class="elementor-carousel-image" style="overflow: hidden; width: 100%; height: 100%; position: relative;">
-										<Img src="/src/assets/images/eventos-corporativos/a581eca7-65ce-4ab3-a6ec-688785cd98f3.jpg" alt="a581eca7-65ce-4ab3-a6ec-688785cd98f3" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-									</div>
+									<div data-bg="/images/eventos-corporativos/a581eca7-65ce-4ab3-a6ec-688785cd98f3.jpg" class="elementor-carousel-image rocket-lazyload" role="img" aria-label="a581eca7-65ce-4ab3-a6ec-688785cd98f3" style="">
+
+			
+					</div>
 								</div>
 									</div>
 															<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="Anterior">
@@ -1019,13 +1169,13 @@ receber nosso contato.								</div>
 								Detalhes adicionais:							</label>
 						<textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="form_fields[mensagem]" id="form-field-mensagem" rows="4"></textarea>				</div>
 								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-fonte elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-sm  elementor-field-textual" value="LP /eventos-corporativos">
+													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-sm  elementor-field-textual" value="Landing Page/eventos-corporativos">
 											</div>
 								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-url elementor-col-100">
 													<input size="1" type="hidden" name="form_fields[url]" id="form-field-url" class="elementor-field elementor-size-sm  elementor-field-textual">
 											</div>
 								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-					<button class="elementor-button elementor-size-lg" type="submit">
+					<button class="elementor-button elementor-size-lg" type="button">
 						<span class="elementor-button-content-wrapper">
 																						<span class="elementor-button-text">Enviar Solicitação</span>
 													</span>
@@ -1053,9 +1203,6 @@ receber nosso contato.								</div>
 				</div>
 		
 			
-			<link rel='stylesheet' id='ccfef-country-code-library-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/intl-tel-input/css/intlTelInput.min.css?ver=1.6.2' media='all' />
-<link rel='stylesheet' id='ccfef-country-code-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/css/country-code-style.min.css?ver=1.6.2' media='all' />
-
 
 
 
@@ -1090,14 +1237,72 @@ receber nosso contato.								</div>
 </script>
 <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script is:inline>
+  function loadDataBg() {
+    document.querySelectorAll('[data-bg]').forEach(function(el) {
+      const bg = el.getAttribute('data-bg');
+      if (bg) {
+        el.style.backgroundImage = 'url("' + bg + '")';
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    });
+  }
+
+  function initBackgroundSlideshows() {
+    const slideshowImages = [
+      '/images/eventos-corporativos/6-1-e1720706720262.jpg',
+      '/images/eventos-corporativos/Bangalo-3.jpg',
+      '/images/eventos-corporativos/Mesa-de-doces-2.jpg'
+    ];
+
+    const containers = document.querySelectorAll('.elementor-element-519ae90, .elementor-element-43f2851, .elementor-element-8632fb9');
+
+    containers.forEach(function(container) {
+      if (container.querySelector('.hero-bg-slideshow')) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'hero-bg-slideshow';
+
+      slideshowImages.forEach(function(imgUrl, idx) {
+        const slide = document.createElement('div');
+        slide.className = 'hero-bg-slide' + (idx === 0 ? ' active' : '');
+        slide.style.backgroundImage = 'url("' + imgUrl + '")';
+        wrapper.appendChild(slide);
+      });
+
+      container.prepend(wrapper);
+
+      let currentIdx = 0;
+      const slides = wrapper.querySelectorAll('.hero-bg-slide');
+
+      setInterval(function() {
+        slides[currentIdx].classList.remove('active');
+        currentIdx = (currentIdx + 1) % slides.length;
+        slides[currentIdx].classList.add('active');
+      }, 4000);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      loadDataBg();
+      initBackgroundSlideshows();
+    });
+  } else {
+    loadDataBg();
+    initBackgroundSlideshows();
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
+    loadDataBg();
+    initBackgroundSlideshows();
+
     document.querySelectorAll('.elementor-image-carousel-wrapper').forEach(function(el) {
       new Swiper(el, {
         slidesPerView: 5,
-        spaceBetween: 30,
+        spaceBetween: 8,
         loop: true,
-        autoplay: { delay: 3000, disableOnInteraction: false },
-        speed: 800,
+        autoplay: { delay: 2500, disableOnInteraction: false },
         navigation: {
           nextEl: el.querySelector('.elementor-swiper-button-next'),
           prevEl: el.querySelector('.elementor-swiper-button-prev'),
@@ -1107,9 +1312,9 @@ receber nosso contato.								</div>
           clickable: true,
         },
         breakpoints: {
-          0: { slidesPerView: 2, spaceBetween: 15 },
-          768: { slidesPerView: 3, spaceBetween: 20 },
-          1024: { slidesPerView: 5, spaceBetween: 30 }
+          0: { slidesPerView: 2, spaceBetween: 6 },
+          640: { slidesPerView: 3, spaceBetween: 8 },
+          1024: { slidesPerView: 5, spaceBetween: 8 }
         }
       });
     });
@@ -1118,8 +1323,8 @@ receber nosso contato.								</div>
       const container = el.closest('.elementor-widget') || el.parentElement;
       new Swiper(el, {
         slidesPerView: 1,
-        spaceBetween: 24,
-        speed: 1200,
+        spaceBetween: 0,
+        speed: 1000,
         loop: true,
         navigation: {
           nextEl: container.querySelector('.elementor-swiper-button-next'),
@@ -1130,11 +1335,12 @@ receber nosso contato.								</div>
           clickable: true,
         },
         breakpoints: {
-          0: { slidesPerView: 1, spaceBetween: 16 },
-          768: { slidesPerView: 1, spaceBetween: 24 }
+          0: { slidesPerView: 1, spaceBetween: 0 },
+          768: { slidesPerView: 1, spaceBetween: 0 }
         }
       });
     });
+
 
     document.querySelectorAll('.swiper').forEach(function(el) {
       if (!el.swiper) {
@@ -1147,55 +1353,6 @@ receber nosso contato.								</div>
             prevEl: container.querySelector('.elementor-swiper-button-prev, .swiper-button-prev'),
           }
         });
-      }
-    });
-
-    // Custom Background Slideshow runner
-    document.querySelectorAll('[data-settings]').forEach(function(el) {
-      try {
-        const settings = JSON.parse(el.getAttribute('data-settings'));
-        if (settings && settings.background_background === 'slideshow' && settings.background_slideshow_gallery) {
-          const images = settings.background_slideshow_gallery.map(item => item.url);
-          if (images.length === 0) return;
-
-          // Create slideshow wrapper
-          const wrapper = document.createElement('div');
-          wrapper.className = 'custom-slideshow-bg';
-          wrapper.style.position = 'absolute';
-          wrapper.style.inset = '0';
-          wrapper.style.zIndex = '0';
-          wrapper.style.pointerEvents = 'none';
-          wrapper.style.overflow = 'hidden';
-          wrapper.style.borderRadius = 'inherit';
-
-          // Create slide elements
-          const slides = [];
-          images.forEach((url, index) => {
-            const slide = document.createElement('div');
-            slide.style.position = 'absolute';
-            slide.style.inset = '0';
-            slide.style.backgroundImage = `url('${url}')`;
-            slide.style.backgroundSize = 'cover';
-            slide.style.backgroundPosition = 'center';
-            slide.style.transition = 'opacity 1.5s ease-in-out';
-            slide.style.opacity = index === 0 ? '1' : '0';
-            wrapper.appendChild(slide);
-            slides.push(slide);
-          });
-
-          // Prepend wrapper to container
-          el.insertBefore(wrapper, el.firstChild);
-
-          // Start loop
-          let current = 0;
-          setInterval(() => {
-            slides[current].style.opacity = '0';
-            current = (current + 1) % slides.length;
-            slides[current].style.opacity = '1';
-          }, 5000);
-        }
-      } catch (e) {
-        // Ignore JSON parsing errors for unrelated settings
       }
     });
   });

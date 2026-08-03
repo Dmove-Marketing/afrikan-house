@@ -30,6 +30,14 @@ const {
   class: className,
 } = Astro.props;
 
+const mimeBySrcExt: Record<string, string> = {
+  mp4: 'video/mp4',
+  webm: 'video/webm',
+  ogg: 'video/ogg',
+};
+const ext = src.split('.').pop()?.toLowerCase() ?? '';
+const mimeType = mimeBySrcExt[ext] ?? 'video/mp4';
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -52,7 +60,7 @@ const schema = {
     src={src}
     aria-label={title}
   >
-    <source src={src} type="video/mp4" />
+    <source src={src} type={mimeType} />
     Seu navegador não suporta vídeo HTML5.
   </video>
 </div>

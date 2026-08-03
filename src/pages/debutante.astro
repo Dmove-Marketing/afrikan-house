@@ -14,8 +14,68 @@ import '../styles/debutante.css';
 -->
 <Base
   title="Debutante &#8211; Afrikan House"
+  description="Celebre os 15 anos da debutante no Afrikan House. Espaços sofisticados em São Paulo para festas de debutante inesquecíveis. Solicite uma proposta."
   ogImage="/images/og-debutante.jpg"
   canonical="https://eventos.afrikanhouse.com.br/debutante/"
+  whatsAppMessage="Olá! 🌸 Que lindo que você quer celebrar seus 15 anos no Afrikan House!\nPreencha as informações abaixo e nossa equipe entrará em contato pelo WhatsApp."
+  whatsAppStep1Fields={[
+    {
+      name: 'tipo',
+      type: 'select',
+      label: 'Tipo de evento',
+      required: true,
+      options: [
+        { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+        { value: 'Casamento', label: 'Casamento' },
+        { value: 'Corporativo', label: 'Corporativo' },
+        { value: 'Debutante', label: 'Debutante' },
+        { value: 'Aniversário', label: 'Aniversário' },
+        { value: 'Bodas', label: 'Bodas' },
+        { value: 'Bar/bat mitzvah', label: 'Bar/bat mitzvah' },
+        { value: 'Formatura', label: 'Formatura' },
+      ],
+    },
+    {
+      name: 'data',
+      type: 'text',
+      label: 'Data pretendida para o evento',
+      placeholder: 'Ex: 15/11/2026',
+      required: true,
+    },
+    {
+      name: 'convidados',
+      type: 'number',
+      label: 'Número de convidados aproximado',
+      placeholder: 'Ex: 200',
+      required: true,
+    },
+    {
+      name: 'etapa',
+      type: 'select',
+      label: 'Etapa do planejamento',
+      required: true,
+      options: [
+        { value: '', label: 'Em qual etapa você está hoje?', disabled: true, selected: true },
+        { value: 'Estou iniciando as pesquisas, sem visitas realizadas', label: 'Iniciando pesquisas' },
+        { value: 'Já estou visitando espaços e pretendo definir em até 90 dias', label: 'Visitando espaços (até 90 dias)' },
+        { value: 'Já visitei algumas opções e quero definir o espaço em até 30 dias', label: 'Pronto para decidir (até 30 dias)' },
+      ],
+    },
+    {
+      name: 'budget',
+      type: 'select',
+      label: 'Budget',
+      required: true,
+      options: [
+        { value: '', label: 'Qual o investimento planejado?', disabled: true, selected: true },
+        { value: 'Até R$ 70 mil', label: 'Até R$ 70 mil' },
+        { value: 'De R$ 70 mil a R$ 90 mil', label: 'De R$ 70 mil a R$ 90 mil' },
+        { value: 'De R$ 90 mil a R$ 120 mil', label: 'De R$ 90 mil a R$ 120 mil' },
+        { value: 'De R$ 120 mil a R$ 150 mil', label: 'De R$ 120 mil a R$ 150 mil' },
+        { value: 'Acima de R$ 150 mil', label: 'Acima de R$ 150 mil' },
+      ],
+    },
+  ]}
 >
 <Fragment slot="head">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" />
@@ -76,7 +136,7 @@ import '../styles/debutante.css';
 				<div class="elementor-element elementor-element-842e67a elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-video" data-id="842e67a" data-element_type="widget" data-e-type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
 				<div class="elementor-widget-container">
 							<div class="e-hosted-video elementor-wrapper elementor-open-inline">
-					<Video src="https://eventos.afrikanhouse.com.br/wp-content/uploads/2026/03/0303-1.mp4" poster="/images/debutante/pista-de-danca-7-1.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
+					<Video src="https://media.dmove.com.br/clients/afrikan-house/videos/video_debutante.webm" poster="/images/debutante/pista-de-danca-7-1.avif" title="Vídeo" description="Vídeo" uploadDate="2026-01-01" duration="PT1M" class="elementor-video" />
 				</div>
 						</div>
 				</div>
@@ -176,7 +236,7 @@ import '../styles/debutante.css';
 				<div class="elementor-widget-container">
 							<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel" aria-label="Carrossel de imagens" dir="ltr">
 			<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
-								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 17"><figure class="swiper-slide-inner"><Img src="EHG02305-scaled.avif" alt="EHG02305" width={2560} height={1707} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 17"><figure class="swiper-slide-inner"><Img src="EHG02257-scaled.avif" alt="EHG02257" width={2560} height={1707} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 17"><figure class="swiper-slide-inner"><Img src="/src/assets/images/debutante/EHG0227.jpeg" alt="" class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 17"><figure class="swiper-slide-inner"><Img src="WhatsApp-Image-2025-04-30-at-13.54.25.avif" alt="WhatsApp Image 2025-04-30 at 13.54.25" width={1600} height={1066} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 17"><figure class="swiper-slide-inner"><Img src="EHG02357-scaled.avif" alt="EHG02357" width={2560} height={1707} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 17"><figure class="swiper-slide-inner"><Img src="Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080.jpg" alt="Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080" width={1080} height={1350} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-28.jpg" alt="Mesas no salão (28)" width={1024} height={521} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-27.jpg" alt="Mesas no salão (27)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-14.jpg" alt="Mesas no salão (14)" width={1024} height={681} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-12.jpg" alt="Mesas no salão (12)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-29-1.jpg" alt="Mesas no salão (29)" width={1282} height={858} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="12 de 17"><figure class="swiper-slide-inner"><Img src="Mesa-de-doces-8.jpg" alt="Mesa de doces (8)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="13 de 17"><figure class="swiper-slide-inner"><Img src="Mesa-de-doces-14-1.jpg" alt="Mesa de doces (14) (1)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="14 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-3.jpg" alt="Mesas no salão (3)" width={1024} height={683} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="15 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-11.jpg" alt="Mesas no salão (11)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="16 de 17"><figure class="swiper-slide-inner"><Img src="Mesa-de-doces-3-1.jpg" alt="Mesa de doces (3) (1)" width={2002} height={1153} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="17 de 17"><figure class="swiper-slide-inner"><Img src="Hall-de-entrada-7.jpg" alt="Hall de entrada (7)" width={2002} height={1130} class="swiper-slide-image" /></figure></div>			</div>
+								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 17"><figure class="swiper-slide-inner"><Img src="EHG02305-scaled.avif" alt="EHG02305" width={2560} height={1707} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 17"><figure class="swiper-slide-inner"><Img src="EHG02257-scaled.avif" alt="EHG02257" width={2560} height={1707} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 17"><figure class="swiper-slide-inner"><Img src="EHG02276-scaled.avif" alt="" class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 17"><figure class="swiper-slide-inner"><Img src="WhatsApp-Image-2025-04-30-at-13.54.25.avif" alt="WhatsApp Image 2025-04-30 at 13.54.25" width={1600} height={1066} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 17"><figure class="swiper-slide-inner"><Img src="EHG02357-scaled.avif" alt="EHG02357" width={2560} height={1707} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 17"><figure class="swiper-slide-inner"><Img src="Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080.jpg" alt="Snapinst.app_471735328_18478693246000534_5577605455058933861_n_1080" width={1080} height={1350} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-28.jpg" alt="Mesas no salão (28)" width={1024} height={521} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-27.jpg" alt="Mesas no salão (27)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-14.jpg" alt="Mesas no salão (14)" width={1024} height={681} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-12.jpg" alt="Mesas no salão (12)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-29-1.jpg" alt="Mesas no salão (29)" width={1282} height={858} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="12 de 17"><figure class="swiper-slide-inner"><Img src="Mesa-de-doces-8.jpg" alt="Mesa de doces (8)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="13 de 17"><figure class="swiper-slide-inner"><Img src="Mesa-de-doces-14-1.jpg" alt="Mesa de doces (14) (1)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="14 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-3.jpg" alt="Mesas no salão (3)" width={1024} height={683} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="15 de 17"><figure class="swiper-slide-inner"><Img src="Mesas-no-salao-11.jpg" alt="Mesas no salão (11)" width={1024} height={684} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="16 de 17"><figure class="swiper-slide-inner"><Img src="Mesa-de-doces-3-1.jpg" alt="Mesa de doces (3) (1)" width={2002} height={1153} class="swiper-slide-image" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="17 de 17"><figure class="swiper-slide-inner"><Img src="Hall-de-entrada-7.jpg" alt="Hall de entrada (7)" width={2002} height={1130} class="swiper-slide-image" /></figure></div>			</div>
 												<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
 						<i aria-hidden="true" class="eicon-chevron-left"></i>					</div>
 					<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
@@ -366,69 +426,51 @@ import '../styles/debutante.css';
 				<div class="elementor-widget-container">
 							<div class="elementor-gallery__container">
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-10-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (10)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzOCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMTAtanBnLmF2aWYiLCJzbGlkZXNob3ciOiJhZDMzZWQzIn0%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1080" data-height="1350" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-10-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-10-jpg.avif" data-width="1080" data-height="1350" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-10-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-2-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (2)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzMCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMi1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1042" data-height="679" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-2-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-2-jpg.avif" data-width="1042" data-height="679" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-2-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-3-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (3)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzMSwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMy1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1046" data-height="684" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-3-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-3-jpg.avif" data-width="1046" data-height="684" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-3-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-1-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (1)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTU0MCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMS1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1080" data-height="1350" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-1-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-1-jpg.avif" data-width="1080" data-height="1350" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-1-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-6-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (6)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNCwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtNi1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1066" data-height="711" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-6-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-6-jpg.avif" data-width="1066" data-height="711" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-6-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-8-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (8)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNiwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtOC1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1024" data-height="682" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-8-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-8-jpg.avif" data-width="1024" data-height="682" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-8-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-7-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (7)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNSwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtNy1qcGcuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1065" data-height="710" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-7-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-7-jpg.avif" data-width="1065" data-height="710" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-7-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-9-scaled.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (9)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzNywidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtOS1zY2FsZWQuYXZpZiIsInNsaWRlc2hvdyI6ImFkMzNlZDMifQ%3D%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="2560" data-height="1707" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-9-scaled.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-9-scaled.avif" data-width="2560" data-height="1707" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-9-scaled.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 							<a class="e-gallery-item elementor-gallery-item elementor-animated-content" href="/images/debutante/Galeria-afrikan-debutante-11-jpg.avif" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="ad33ed3" data-elementor-lightbox-title="Galeria-afrikan-debutante (11)" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MTUzOSwidXJsIjoiaHR0cHM6XC9cL2V2ZW50b3MuYWZyaWthbmhvdXNlLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDVcL0dhbGVyaWEtYWZyaWthbi1kZWJ1dGFudGUtMTEtanBnLmF2aWYiLCJzbGlkZXNob3ciOiJhZDMzZWQzIn0%3D">
-					<div class="e-gallery-image elementor-gallery-item__image" data-width="1080" data-height="1350" aria-label="" role="img"  style="min-height: 260px; width: 100%; display: block; overflow: hidden; display: block; position: relative;">
-					<Img src="/src/assets/images/debutante/Galeria-afrikan-debutante-11-jpg.avif" alt="Galeria" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-					</div>
+					<div class="e-gallery-image elementor-gallery-item__image" data-thumbnail="/images/debutante/Galeria-afrikan-debutante-11-jpg.avif" data-width="1080" data-height="1350" aria-label="" role="img"  style="background-image: url('/images/debutante/Galeria-afrikan-debutante-11-jpg.avif'); background-size: cover; background-position: center; min-height: 260px; width: 100%; display: block;"></div>
 											<div class="elementor-gallery-item__overlay"></div>
 														</a>
 					</div>
 					</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-8632fb9 e-flex e-con-boxed e-con e-parent" data-id="8632fb9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1821,&quot;url&quot;:&quot;https:\/\/eventos.afrikanhouse.com.br\/wp-content\/uploads\/2026\/03\/EHG02303-scaled.avif&quot;}],&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}">
+		<div class="elementor-element elementor-element-8632fb9 e-flex e-con-boxed e-con e-parent" data-id="8632fb9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:1821,&quot;url&quot;:&quot;\/images\/debutante\/EHG02303-scaled.avif&quot;}],&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_duration&quot;:5000,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_transition_duration&quot;:500}">
 					<div class="e-con-inner">
 		<div class="elementor-element elementor-element-e176ebb e-con-full e-flex e-con e-child" data-id="e176ebb" data-element_type="container" data-e-type="container">
 				<div class="elementor-element elementor-element-0f6aac4 elementor-widget elementor-widget-heading" data-id="0f6aac4" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">VENHA TRANSFORMAR <br>O SEU DIA DE DEBUTANTE NO AFRIKAN HOUSE</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default">VENHA <br />TRANSFORMAR<br />O SEU DIA DE <br />DEBUTANTE NO <br />AFRIKAN HOUSE</h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-38c5b57 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="38c5b57" data-element_type="widget" data-e-type="widget" data-widget_type="divider.default">
 				<div class="elementor-widget-container">
@@ -547,13 +589,13 @@ receber nosso contato.								</div>
 		</div>
 						</div>
 								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-fonte elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-sm  elementor-field-textual" value="LP /debutantes">
+													<input size="1" type="hidden" name="form_fields[fonte]" id="form-field-fonte" class="elementor-field elementor-size-sm  elementor-field-textual" value="Landing Page/debutantes">
 											</div>
 								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-url elementor-col-100">
 													<input size="1" type="hidden" name="form_fields[url]" id="form-field-url" class="elementor-field elementor-size-sm  elementor-field-textual">
 											</div>
 								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-					<button class="elementor-button elementor-size-lg" type="submit">
+					<button class="elementor-button elementor-size-lg" type="button">
 						<span class="elementor-button-content-wrapper">
 																						<span class="elementor-button-text">Enviar Solicitação</span>
 													</span>
@@ -581,9 +623,6 @@ receber nosso contato.								</div>
 				</div>
 		
 			
-			<link rel='stylesheet' id='ccfef-country-code-library-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/intl-tel-input/css/intlTelInput.min.css?ver=1.6.2' media='all' />
-<link rel='stylesheet' id='ccfef-country-code-style-css' href='https://eventos.afrikanhouse.com.br/wp-content/plugins/country-code-field-for-elementor-form/assets/css/country-code-style.min.css?ver=1.6.2' media='all' />
-
 
 
 
@@ -625,7 +664,6 @@ receber nosso contato.								</div>
         slidesPerView: 1,
         spaceBetween: 0,
         loop: true,
-        autoplay: { delay: 3500, disableOnInteraction: false },
         navigation: {
           nextEl: el.querySelector('.elementor-swiper-button-next'),
           prevEl: el.querySelector('.elementor-swiper-button-prev'),
@@ -649,7 +687,6 @@ receber nosso contato.								</div>
         spaceBetween: 24,
         speed: 1200,
         loop: true,
-        autoplay: { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true },
         navigation: {
           nextEl: container.querySelector('.elementor-swiper-button-next'),
           prevEl: container.querySelector('.elementor-swiper-button-prev'),
@@ -671,7 +708,6 @@ receber nosso contato.								</div>
         new Swiper(el, {
           slidesPerView: 1,
           loop: true,
-          autoplay: { delay: 4000 },
           navigation: {
             nextEl: container.querySelector('.elementor-swiper-button-next, .swiper-button-next'),
             prevEl: container.querySelector('.elementor-swiper-button-prev, .swiper-button-prev'),
