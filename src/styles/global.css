@@ -581,3 +581,19 @@ html.lenis body {
 }
 
 
+
+/* === Background-image fallback via <Img> ===
+   Used when a source image is referenced both as a CSS background (via
+   url("../assets/...")) and via the <Img> component elsewhere — Astro's
+   image pipeline claims the file and the raw CSS asset copy never gets
+   emitted, leaving the background 404. Insert an <Img class="e-con-bg-fallback">
+   as the container's first child instead of relying on background-image. */
+.e-con-bg-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
