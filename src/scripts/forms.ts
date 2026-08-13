@@ -43,6 +43,20 @@ export function initForms() {
     if ((form as any).__formsInitialized) return;
     (form as any).__formsInitialized = true;
 
+    let started = false;
+    const formId  = form.dataset.formId!;
+    const project = form.dataset.project || window.location.hostname;
+
+    const submitUrl   = form.dataset.submitUrl;
+    const redirectUrl = form.dataset.redirect;
+    const gridId      = form.dataset.gridId;
+    const successId   = form.dataset.successId;
+
+    if (!submitUrl) {
+      console.warn(`[Forms] Formulário ${formId} sem URL de webhook (data-submit-url).`);
+      return;
+    }
+
     // Injeção imediata dos campos de UTM e Rastreamento na inicialização
     injectTrackingFields(form);
 
