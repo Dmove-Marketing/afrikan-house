@@ -26,14 +26,21 @@ function injectTrackingFields(form: HTMLFormElement) {
   };
 
   Object.keys(dataToInject).forEach((key) => {
-    let input = form.querySelector<HTMLInputElement>(`input[name="${key}"], input[name="form_fields[${key}]"]`);
+    let input = form.querySelector<HTMLInputElement>(`input[name="form_fields[${key}]"], input[name="${key}"]`);
     if (!input) {
       input = document.createElement('input');
       input.type = 'hidden';
-      input.name = key;
+      input.name = `form_fields[${key}]`;
+      input.id = `form-field-${key}`;
       form.appendChild(input);
     }
     input.value = dataToInject[key];
+
+    // Se existir também um campo alternativo sem form_fields (ex: input[name="utm_source"]), atualiza-o também
+    const altInput = form.querySelector<HTMLInputElement>(`input[name="${key}"]`);
+    if (altInput && altInput !== input) {
+      altInput.value = dataToInject[key];
+    }
   });
 }
 
