@@ -85,3 +85,38 @@ Submitted with every form payload: UTM params, click IDs (`gclid`, `fbclid`, `tt
 ### GTM
 
 The GTM snippet is injected via the standard synchronous snippet (not deferred) so the Google Tag Assistant detects it correctly. The GTM ID is read from `config.tracking.gtm_id`.
+
+## CDN Image Renaming Task (Memory & Rules)
+
+This task is **COMPLETED** for all pages in the project. The images for all landing pages were audited, cleaned, copied, and renamed into flat folders `[PAGENAME]-imagens-atualizadas/` at the root of the project ready for upload to a custom CDN.
+
+### Final Status (All Pages Completed)
+- **Casamentos Page:** Completed (87 images in `casamentos-imagens-atualizadas/`).
+- **Casamentos Visitas Page:** Completed (87 images in `casamentos-visitas-imagens-atualizadas/` via `scripts/copy-rename-casamentos-visitas.mjs`).
+- **Debutante Page:** Completed (77 images in `debutante-imagens-atualizadas/` via `scripts/copy-rename-debutante.mjs` including `fundo-contato_debutante.avif`).
+- **Eventos Corporativos Page:** Completed (60 images in `eventos-corporativos-imagens-atualizadas/` via `scripts/copy-rename-eventos-corporativos.mjs` including shared `fundo-hero-contato_eventos-corporativos01.jpg` and partner logos `parceiros_eventos-corporativos01-14.png`).
+- **Home / Index Page:** Completed (12 active/clean images in `index-imagens-atualizadas/` via `scripts/copy-rename-index.mjs`; WP thumbnails/residuals safely discarded).
+- **Bio & Cadastro Manual:** Audited. Use only `Logotipo.svg` (no separate image packages needed).
+
+### Renaming Rules Overview
+- **Hero, Backgrounds & Posters:** `hero_[page].avif`, `poster-video_[page].avif`, `fundo-contato_[page].avif`, `fundo-hero-contato_[page]01`, `fundo-principal_home.jpg`
+- **Cards / Portais:** `card-casamentos_home.jpg`, `card-debutante_home.webp`, `card-corporativo_home.avif`
+- **Garden Carousel:** `espaco-garden_[page]01` up to last
+- **Lounge Carousel:** `espaco-lounge_[page]01` up to last
+- **Village Carousel:** `espaco-village_[page]01` up to last
+- **Gastronomia Carousel:** `gastronomia_[page]01` up to last
+- **Parceiros / Clientes:** `parceiros_[page]01` up to last
+- **Diferenciais / Services:**
+  - Equipe Operacional: `equipe-operacional_[page]`
+  - Alta Gastronomia: `alta-gastronomia_[page]`
+  - Bar de Drinks: `bar-drinks_[page]`
+  - Mobiliário Completo: `mobiliario_[page]`
+  - Decoração e Cenografia: `decoracao_[page]`
+  - Tecnologia de Som e Luz: `tecnologia_[page]`
+- **Galeria:** `galeria_[page]01` up to last
+
+
+
+
+
+

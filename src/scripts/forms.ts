@@ -1,22 +1,50 @@
+function injectTrackingFields(form: HTMLFormElement) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const fullUrl = window.location.href;
+  const pathName = window.location.pathname;
+  const searchParams = window.location.search;
+
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'];
+  const capturedData: Record<string, string> = {};
+
+  utmKeys.forEach((key) => {
+    const val = urlParams.get(key);
+    if (val) {
+      capturedData[key] = val;
+      try { sessionStorage.setItem(`track_${key}`, val); } catch {}
+    } else {
+      try { capturedData[key] = sessionStorage.getItem(`track_${key}`) || ''; } catch { capturedData[key] = ''; }
+    }
+  });
+
+  const dataToInject: Record<string, string> = {
+    ...capturedData,
+    landing_page: pathName,
+    landing_url: fullUrl,
+    'URL da página': fullUrl,
+    Fonte: `Landing page${pathName}${searchParams}`,
+  };
+
+  Object.keys(dataToInject).forEach((key) => {
+    let input = form.querySelector<HTMLInputElement>(`input[name="${key}"], input[name="form_fields[${key}]"]`);
+    if (!input) {
+      input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      form.appendChild(input);
+    }
+    input.value = dataToInject[key];
+  });
+}
+
 export function initForms() {
   const forms = document.querySelectorAll<HTMLFormElement>('form[data-form-id]');
   forms.forEach((form) => {
     if ((form as any).__formsInitialized) return;
     (form as any).__formsInitialized = true;
 
-    let started = false;
-    const formId  = form.dataset.formId!;
-    const project = form.dataset.project || window.location.hostname;
-
-    const submitUrl   = form.dataset.submitUrl;
-    const redirectUrl = form.dataset.redirect;
-    const gridId      = form.dataset.gridId;
-    const successId   = form.dataset.successId;
-
-    if (!submitUrl) {
-      console.warn(`[Forms] Formulário ${formId} sem URL de webhook (data-submit-url).`);
-      return;
-    }
+    // Injeção imediata dos campos de UTM e Rastreamento na inicialização
+    injectTrackingFields(form);
 
     form.addEventListener('focusin', () => {
       if (!started) {
@@ -127,18 +155,22 @@ export function initForms() {
 
       if (msgEl) msgEl.style.display = 'none';
 
+      // Atualiza/garante os campos ocultos de rastreamento antes de ler os dados
+      injectTrackingFields(form);
+
       // Chave de cada campo = texto do <label> associado (com os ":" originais do Elementor).
-      // Campos ocultos sem <label> (ex: "fonte", "url") caem no fallback: nome do campo capitalizado.
-      // "Fonte" chega aqui já com a query string de tracking anexada pelo script legado da página
-      // (cookies de UTM/click IDs) — não precisa ser remontada aqui.
+      // Campos ocultos sem <label> (ex: "fonte", "url", "utm_source") caem no fallback: nome do campo.
       const labeledFields: Record<string, string> = {};
-      form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[name^="form_fields["]').forEach((field) => {
+      form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea').forEach((field) => {
+        if (!field.name || field.name === 'website') return;
         const label = field.id ? form.querySelector<HTMLLabelElement>(`label[for="${field.id}"]`) : null;
         let key = label?.textContent?.trim() || '';
         if (!key) {
           const match = field.name.match(/^form_fields\[(.+)\]$/);
           const inner = match ? match[1] : field.name;
-          key = inner.charAt(0).toUpperCase() + inner.slice(1);
+          key = inner.startsWith('utm_') || inner === 'fbclid' || inner === 'gclid' || inner === 'landing_page' || inner === 'landing_url'
+            ? inner
+            : inner.charAt(0).toUpperCase() + inner.slice(1);
         }
         labeledFields[key] = field.value;
       });
