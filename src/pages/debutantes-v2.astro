@@ -1,0 +1,474 @@
+---
+// /debutantes-v2 — LP autoral (não-Elementor) para teste de novo layout.
+// Material: debutantes-v2.html + imagens/fontes na CDN media.dmove.com.br.
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import '../styles/debutantes-v2.css';
+
+const CDN = 'https://media.dmove.com.br/clients/afrikan-house/photos';
+const VIDEO_SRC = 'https://media.dmove.com.br/clients/afrikan-house/videos/video_debutante.webm';
+const LOGO = '/images/Logotipo.svg';
+
+const submitUrl   = config.forms['lead-form'].webhooks[0];
+const redirectUrl = config.forms['lead-form'].redirect_on_success;
+const project     = config.project_slug;
+
+// Carrosséis dos espaços
+const garden  = [1, 2, 3, 4].map((n) => `${CDN}/garden_nova-lp_debutante0${n}_resultado.webp`);
+const lounge  = [1, 2, 3, 4].map((n) => `${CDN}/lounge_nova-lp_debutante0${n}_resultado.webp`);
+const village = [1, 2, 3, 4].map((n) => `${CDN}/village_nova-lp_debutante0${n}_resultado.webp`);
+
+// Gastronomia
+const gastro = [1, 2, 3, 4].map((n) => `${CDN}/gastronomia_nova-lp_debutante0${n}_resultado.webp`);
+
+// Estrutura / diferenciais
+const estrutura = [
+  { img: `${CDN}/alta-gastronomia_nova-lp_debutante_resultado.webp`,     alt: 'Alta Gastronomia',       titulo: 'Alta Gastronomia' },
+  { img: `${CDN}/equipe-operacional_nova-lp_debutante_resultado.webp`,   alt: 'Equipe operacional',     titulo: 'Equipe Operacional' },
+  { img: `${CDN}/bar_nova-lp_debutante_resultado.webp`,                  alt: 'Bar de Drinks',          titulo: 'Bar de Drinks' },
+  { img: `${CDN}/mobiliario_nova-lp_debutante_resultado.webp`,           alt: 'Mobiliário Completo',    titulo: 'Mobiliário Completo' },
+  { img: `${CDN}/decoracao_nova-lp_debutante_resultado.webp`,            alt: 'Decoração e Cenografia', titulo: 'Decoração e Cenografia', sm: true },
+  { img: `${CDN}/tecnologia_nova-lp_debutante_resultado.webp`,           alt: 'Som e Luz',              titulo: 'Som e Luz' },
+];
+
+// Galeria (ordem/proporção herdadas do HTML original)
+const galeria = [
+  { n: 1, ar: '1.5' }, { n: 9, ar: '0.8' }, { n: 2, ar: '1.5' }, { n: 3, ar: '1.5' },
+  { n: 4, ar: '1.5' }, { n: 10, ar: '0.8' }, { n: 5, ar: '1.5' }, { n: 6, ar: '1.5' },
+  { n: 7, ar: '1.5' }, { n: 11, ar: '0.8' }, { n: 8, ar: '1.5' }, { n: 12, ar: '1.5' },
+].map(({ n, ar }) => ({ ar, src: `${CDN}/galeria_nova-lp_debutante${String(n).padStart(2, '0')}_resultado.webp` }));
+
+const tipoOptions = ['Debutante', 'Casamento', 'Corporativo', 'Aniversário', 'Bodas', 'Bar/bat mitzvah', 'Formatura'];
+const etapaOptions = [
+  'Estou iniciando as pesquisas, sem visitas realizadas',
+  'Já estou visitando espaços e pretendo definir em até 90 dias',
+  'Já visitei algumas opções e quero definir o espaço em até 30 dias',
+];
+const budgetOptions = [
+  'Até R$ 70 mil',
+  'De R$ 70 mil a R$ 90 mil',
+  'De R$ 90 mil a R$ 120 mil',
+  'De R$ 120 mil a R$ 150 mil',
+  'Acima de R$ 150 mil',
+];
+---
+
+<Base
+  title="Debutantes &#8211; Afrikan House"
+  description="Três espaços exclusivos para a festa de 15 anos em São Paulo: Garden, Lounge e Village. Gastronomia assinada e estrutura completa. Reserve sua data."
+  ogImage="/images/og-debutante.jpg"
+  canonical="https://eventos.afrikanhouse.com.br/debutantes-v2/"
+  theme="light"
+  noIndex
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="#top" aria-label="Afrikan House">
+      <img class="n-cream" src={LOGO} alt="Afrikan House" />
+      <img class="n-ink" src={LOGO} alt="Afrikan House" />
+    </a>
+    <nav class="nav-links">
+      <a class="lk" href="#sobre">A Casa</a>
+      <a class="lk" href="#espacos">Espaços</a>
+      <a class="lk" href="#gastronomia">Gastronomia</a>
+      <a class="lk" href="#estrutura">Estrutura</a>
+      <a class="lk" href="#galeria">Galeria</a>
+      <a class="btn nav-cta" href="#contato">Reserve sua data</a>
+    </nav>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <div class="m-menu" id="mmenu">
+    <button class="m-close" id="mclose" aria-label="Fechar">&times;</button>
+    <a href="#sobre"><small>01</small>A Casa</a>
+    <a href="#espacos"><small>02</small>Espaços</a>
+    <a href="#gastronomia"><small>03</small>Gastronomia</a>
+    <a href="#estrutura"><small>04</small>Estrutura</a>
+    <a href="#galeria"><small>05</small>Galeria</a>
+    <a href="#contato"><small>06</small>Reserve sua data</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <img src={`${CDN}/hero_nova-lp_debutante_resultado.webp`} alt="Festa de debutante no Afrikan House" fetchpriority="high" />
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow" data-reveal>Debutante · São Paulo</span>
+        <h1 class="display" data-reveal>Um lugar que combina com quem você está se tornando</h1>
+        <p class="hero-sub" data-reveal>Três espaços exclusivos para você<br />escolher o cenário dos seus 15 anos.</p>
+      </div>
+
+      <form
+        class="form-card"
+        id="heroForm"
+        data-form-id="lead-form"
+        data-project={project}
+        data-submit-url={submitUrl}
+        data-redirect={redirectUrl}
+        data-grid-id="heroFormGrid"
+        data-success-id="heroFormSuccess"
+        data-reveal
+        novalidate
+      >
+        <div class="hp-field" aria-hidden="true">
+          <label for="hero_website">Deixe este campo em branco</label>
+          <input type="text" id="hero_website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <input type="hidden" name="form_id" value="debutantes-v2" />
+        <input type="hidden" name="referer_title" value="Debutantes V2" />
+        <input type="hidden" name="form_fields[fonte]" value="Landing Page/debutantes-v2" />
+        <input type="hidden" name="form_fields[url]" value="" />
+
+        <div id="heroFormGrid">
+          <div class="field">
+            <label for="hero-form-field-nome">Nome:</label>
+            <input id="hero-form-field-nome" name="form_fields[nome]" type="text" placeholder="Seu nome completo" required />
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="hero-form-field-telefone">Telefone:</label>
+              <input id="hero-form-field-telefone" name="form_fields[telefone]" type="tel" placeholder="(11) 90000-0000" required />
+            </div>
+            <div class="field">
+              <label for="hero-form-field-email">E-mail:</label>
+              <input id="hero-form-field-email" name="form_fields[email]" type="email" placeholder="voce@email.com" required />
+            </div>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="hero-form-field-tipo">Selecione o tipo de evento:</label>
+              <select id="hero-form-field-tipo" name="form_fields[tipo]" required>
+                {tipoOptions.map((o) => <option value={o} selected={o === 'Debutante'}>{o}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="hero-form-field-data">Data pretendida para seu evento:</label>
+              <input id="hero-form-field-data" name="form_fields[data]" type="text" placeholder="dd/mm/aaaa" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="hero-form-field-convidados">Número de convidados aproximado:</label>
+            <input id="hero-form-field-convidados" name="form_fields[convidados]" type="number" min="1" placeholder="Ex.: 200" required />
+          </div>
+          <div class="field">
+            <label for="hero-form-field-etapa">Etapa do planejamento</label>
+            <select id="hero-form-field-etapa" name="form_fields[field_b539663]" required>
+              <option value="" disabled selected>Em qual etapa você está hoje?</option>
+              {etapaOptions.map((o) => <option value={o}>{o}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hero-form-field-budget">Budget</label>
+            <select id="hero-form-field-budget" name="form_fields[budget]" required>
+              <option value="" disabled selected>Investimento planejado</option>
+              {budgetOptions.map((o) => <option value={o}>{o}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hero-form-field-mensagem">Mensagem:</label>
+            <textarea id="hero-form-field-mensagem" name="form_fields[mensagem]" rows="2" placeholder="Conte um pouco sobre a sua festa"></textarea>
+          </div>
+          <button class="btn btn-gold form-submit" type="button" id="heroSubmitBtn">
+            <span class="btn-text">Enviar solicitação</span>
+            <span class="btn-loading" style="display:none;">Enviando...</span>
+          </button>
+          <div class="form-error" id="heroFormMsg"></div>
+          <p class="form-note">Projetos personalizados de alto padrão. Investimento médio entre<br /><b>R$ 70 mil e R$ 150 mil</b>, conforme data, convidados e proposta desejada.</p>
+        </div>
+
+        <div class="form-success-state" id="heroFormSuccess">
+          <div class="fs-icon">✓</div>
+          <h3>Solicitação recebida</h3>
+          <p>Recebemos seu pedido.<br />Em breve entraremos em contato pelo WhatsApp ou e-mail.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section class="pad" id="sobre">
+    <div class="wrap">
+      <div class="sobre-grid">
+        <div class="sobre-copy">
+          <span class="eyebrow" data-reveal>A Casa</span>
+          <h2 class="display" data-reveal>Uma casa<br />para escrever<br />sua história</h2>
+          <p data-reveal>Há 22 anos, uma temporada pela África do Sul inspirou a criação do Afrikan House, que nasceu como um refúgio de campo para reunir amigos e família. A jornada trouxe elementos nativos que hoje adornam mais de 14 mil m² de jardins, entre Itapecerica da Serra e a Chácara Santo Antônio, na zona sul de São Paulo. Dessa história, nasceram três espaços com identidade própria, cada um pronto para receber um novo capítulo: o seu.</p>
+          <div class="stats" data-reveal>
+            <div class="stat"><div class="n">22</div><div class="l">Anos de história</div></div>
+            <div class="stat"><div class="n">3</div><div class="l">Espaços autorais</div></div>
+            <div class="stat"><div class="n">14 mil</div><div class="l">m² de jardins</div></div>
+            <div class="stat stat-last"><div class="n">1</div><div class="l">Evento<br />por dia</div></div>
+          </div>
+        </div>
+        <div class="video-frame d1" data-reveal>
+          <video
+            src={VIDEO_SRC}
+            poster={`${CDN}/galeria_nova-lp_debutante03_resultado.webp`}
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"></video>
+          <button class="v-sound" id="vSound" aria-label="Ativar som"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AMBIENTES ===== -->
+  <section class="pad alt" id="espacos">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow center">Os Espaços</span>
+        <h2 class="display">Três cenários,<br />uma escolha só sua</h2>
+        <p>Cada espaço tem uma personalidade própria.<br />Escolha aquele que combina com a festa que você sempre imaginou.</p>
+      </div>
+
+      <div class="space">
+        <div class="space-media" data-reveal>
+          <div class="sg">
+            {garden.map((src, i) => (
+              <img class:list={['sg-slide', i === 0 && 'active']} src={src} alt="Garden Afrikan House" loading="lazy" />
+            ))}
+            <div class="sg-dots"></div>
+          </div>
+        </div>
+        <div class="space-copy">
+          <span class="space-num" data-reveal>I</span>
+          <h3 data-reveal>Garden</h3>
+          <div class="space-tag" data-reveal><i></i>Festa a céu aberto <em>· Itapecerica da Serra</em></div>
+          <p class="desc" data-reveal>Dance sob o céu aberto, entre jardins naturais.<br />Para quem quer sentir a festa em contato<br />com a natureza.</p>
+        </div>
+      </div>
+
+      <div class="space rev">
+        <div class="space-media" data-reveal>
+          <div class="sg">
+            {lounge.map((src, i) => (
+              <img class:list={['sg-slide', i === 0 && 'active']} src={src} alt="Lounge Afrikan House" loading="lazy" />
+            ))}
+            <div class="sg-dots"></div>
+          </div>
+        </div>
+        <div class="space-copy">
+          <span class="space-num" data-reveal>II</span>
+          <h3 data-reveal>Lounge</h3>
+          <div class="space-tag" data-reveal><i></i>Rústico com assinatura <em>· Zona Sul de São Paulo</em></div>
+          <p class="desc" data-reveal>Entre em um cenário imponente,<br />com enormes tamareiras e jardim vertical.<br />Para quem busca presença e personalidade.</p>
+        </div>
+      </div>
+
+      <div class="space">
+        <div class="space-media" data-reveal>
+          <div class="sg">
+            {village.map((src, i) => (
+              <img class:list={['sg-slide', i === 0 && 'active']} src={src} alt="Village Afrikan House" loading="lazy" />
+            ))}
+            <div class="sg-dots"></div>
+          </div>
+        </div>
+        <div class="space-copy">
+          <span class="space-num" data-reveal>III</span>
+          <h3 data-reveal>Village</h3>
+          <div class="space-tag" data-reveal><i></i>Intimista e contemporâneo <em>· Zona Sul de São Paulo</em></div>
+          <p class="desc" data-reveal>Sinta a modernidade da cidade grande.<br />Para debutantes que preferem uma festa<br />mais próxima, sem perder o requinte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GASTRONOMIA ===== -->
+  <section class="pad" id="gastronomia">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow center">À Mesa</span>
+        <h2 class="display">Sabores assinados por grandes nomes</h2>
+        <p>Encante-se com os menus autorais dos chefs <b>João Gomes</b> &amp; <b>Ricardo Paulillo</b>.</p>
+      </div>
+      <div class="gastro-grid">
+        <img data-reveal src={gastro[0]} alt="Gastronomia Afrikan House" loading="lazy" />
+        <img data-reveal class="d1" src={gastro[1]} alt="Prato autoral" loading="lazy" />
+        <img data-reveal class="d1 g-cups" src={gastro[2]} alt="Ilha gastronômica" loading="lazy" />
+        <img data-reveal class="d2" src={gastro[3]} alt="Finger food" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESTRUTURA ===== -->
+  <section class="pad alt" id="estrutura">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow center">A Experiência</span>
+        <h2 class="display">Excelência<br />em cada detalhe<br />da experiência</h2>
+        <p>Uma equipe dedicada para que sua única preocupação seja celebrar.</p>
+      </div>
+      <div class="est-grid">
+        {estrutura.map((c, i) => (
+          <div class:list={['est-card', i === 1 && 'd1', i === 2 && 'd2', i === 4 && 'd1', i === 5 && 'd2']} data-reveal>
+            <img src={c.img} alt={c.alt} loading="lazy" />
+            <div class="cap"><i></i><h4 class:list={[c.sm && 'h4-sm']}>{c.titulo}</h4></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIA ===== -->
+  <section class="pad" id="galeria">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow center">Debutantes</span>
+        <h2 class="display">A próxima página<br />da sua história<br />pode ser aqui</h2>
+        <p>Veja debutantes que escolheram o Afrikan House para escrever seu capítulo.</p>
+      </div>
+      <div class="gal">
+        {galeria.map((g) => (
+          <a data-reveal data-ar={g.ar} href={g.src} target="_blank" rel="noopener">
+            <img src={g.src} alt="Debutante no Afrikan House" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / FORM FINAL ===== -->
+  <section class="cta pad" id="contato">
+    <div class="cta-bg"><img src={`${CDN}/formulario_nova-lp_debutante_resultado.webp`} alt="Afrikan House" loading="lazy" /></div>
+    <div class="cta-scrim"></div>
+    <div class="wrap">
+      <div class="cta-grid">
+        <div class="cta-copy">
+          <span class="eyebrow" data-reveal>Reserve sua data</span>
+          <h2 class="display" data-reveal>Escolha o cenário<br />que vai receber<br />seus 15 anos</h2>
+          <p class="sub" data-reveal>Preencha o formulário e reserve uma data em<br />um dos espaços mais desejados de São Paulo.</p>
+        </div>
+
+        <form
+          class="form-card"
+          id="finalForm"
+          data-form-id="lead-form"
+          data-project={project}
+          data-submit-url={submitUrl}
+          data-redirect={redirectUrl}
+          data-grid-id="finalFormGrid"
+          data-success-id="finalFormSuccess"
+          data-reveal
+          novalidate
+        >
+          <div class="hp-field" aria-hidden="true">
+            <label for="final_website">Deixe este campo em branco</label>
+            <input type="text" id="final_website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <input type="hidden" name="form_id" value="debutantes-v2" />
+          <input type="hidden" name="referer_title" value="Debutantes V2" />
+          <input type="hidden" name="form_fields[fonte]" value="Landing Page/debutantes-v2" />
+          <input type="hidden" name="form_fields[url]" value="" />
+
+          <div id="finalFormGrid">
+            <div class="field">
+              <label for="final-form-field-nome">Nome:</label>
+              <input id="final-form-field-nome" name="form_fields[nome]" type="text" placeholder="Seu nome completo" required />
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="final-form-field-telefone">Telefone:</label>
+                <input id="final-form-field-telefone" name="form_fields[telefone]" type="tel" placeholder="(11) 90000-0000" required />
+              </div>
+              <div class="field">
+                <label for="final-form-field-email">E-mail:</label>
+                <input id="final-form-field-email" name="form_fields[email]" type="email" placeholder="voce@email.com" required />
+              </div>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="final-form-field-tipo">Selecione o tipo de evento:</label>
+                <select id="final-form-field-tipo" name="form_fields[tipo]" required>
+                  {tipoOptions.map((o) => <option value={o} selected={o === 'Debutante'}>{o}</option>)}
+                </select>
+              </div>
+              <div class="field">
+                <label for="final-form-field-data">Data pretendida para seu evento:</label>
+                <input id="final-form-field-data" name="form_fields[data]" type="text" placeholder="dd/mm/aaaa" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="final-form-field-convidados">Número de convidados aproximado:</label>
+              <input id="final-form-field-convidados" name="form_fields[convidados]" type="number" min="1" placeholder="Ex.: 200" required />
+            </div>
+            <div class="field">
+              <label for="final-form-field-etapa">Etapa do planejamento</label>
+              <select id="final-form-field-etapa" name="form_fields[field_b539663]" required>
+                <option value="" disabled selected>Em qual etapa você está hoje?</option>
+                {etapaOptions.map((o) => <option value={o}>{o}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="final-form-field-budget">Budget</label>
+              <select id="final-form-field-budget" name="form_fields[budget]" required>
+                <option value="" disabled selected>Investimento planejado</option>
+                {budgetOptions.map((o) => <option value={o}>{o}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="final-form-field-mensagem">Mensagem:</label>
+              <textarea id="final-form-field-mensagem" name="form_fields[mensagem]" rows="2" placeholder="Conte um pouco sobre a sua festa"></textarea>
+            </div>
+            <button class="btn btn-gold form-submit" type="button" id="finalSubmitBtn">
+              <span class="btn-text">Enviar solicitação</span>
+              <span class="btn-loading" style="display:none;">Enviando...</span>
+            </button>
+            <div class="form-error" id="finalFormMsg"></div>
+            <p class="form-note">Projetos personalizados de alto padrão. Investimento médio entre<br /><b>R$ 70 mil e R$ 150 mil</b>, conforme data, convidados e proposta desejada.</p>
+          </div>
+
+          <div class="form-success-state" id="finalFormSuccess">
+            <div class="fs-icon">✓</div>
+            <h3>Solicitação recebida</h3>
+            <p>Recebemos seu pedido.<br />Em breve entraremos em contato pelo WhatsApp ou e-mail.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-logo"><img src={LOGO} alt="Afrikan House" /></div>
+      <div class="foot-units">Garden · Itapecerica da Serra — SP&nbsp;&nbsp;|&nbsp;&nbsp;Lounge &amp; Village · Chácara Santo Antônio, Zona Sul — São Paulo/SP</div>
+    </div>
+    <div class="foot-bar">Copyright © 2026 Afrikan House — Todos os direitos reservados</div>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lb" id="lb" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Fechar">&times;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+    <img id="lbImg" src="" alt="" />
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Próxima">&#8250;</button>
+    <div class="lb-count" id="lbCount"></div>
+  </div>
+
+  <script>
+    import '../scripts/debutantes-v2.js';
+    import { initForms } from '../scripts/forms.ts';
+    const runForms = () => initForms();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runForms);
+    } else {
+      runForms();
+    }
+  </script>
+</Base>
