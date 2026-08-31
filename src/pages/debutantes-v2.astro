@@ -14,21 +14,21 @@ const redirectUrl = config.forms['lead-form'].redirect_on_success;
 const project     = config.project_slug;
 
 // Carrosséis dos espaços
-const garden  = [1, 2, 3, 4].map((n) => `${CDN}/garden_nova-lp_debutante0${n}_resultado.webp`);
-const lounge  = [1, 2, 3, 4].map((n) => `${CDN}/lounge_nova-lp_debutante0${n}_resultado.webp`);
-const village = [1, 2, 3, 4].map((n) => `${CDN}/village_nova-lp_debutante0${n}_resultado.webp`);
+const garden  = [1, 2, 3, 4].map((n) => `${CDN}/debutante-v2_espaco-garden-${n}.webp`);
+const lounge  = [1, 2, 3, 4].map((n) => `${CDN}/debutante-v2_espaco-lounge-${n}.webp`);
+const village = [1, 2, 3, 4].map((n) => `${CDN}/debutante-v2_espaco-village-${n}.webp`);
 
 // Gastronomia
-const gastro = [1, 2, 3, 4].map((n) => `${CDN}/gastronomia_nova-lp_debutante0${n}_resultado.webp`);
+const gastro = [1, 2, 3, 4].map((n) => `${CDN}/debutante-v2_gastronomia-${n}.webp`);
 
 // Estrutura / diferenciais
 const estrutura = [
-  { img: `${CDN}/alta-gastronomia_nova-lp_debutante_resultado.webp`,     alt: 'Alta Gastronomia',       titulo: 'Alta Gastronomia' },
-  { img: `${CDN}/equipe-operacional_nova-lp_debutante_resultado.webp`,   alt: 'Equipe operacional',     titulo: 'Equipe Operacional' },
-  { img: `${CDN}/bar_nova-lp_debutante_resultado.webp`,                  alt: 'Bar de Drinks',          titulo: 'Bar de Drinks' },
-  { img: `${CDN}/mobiliario_nova-lp_debutante_resultado.webp`,           alt: 'Mobiliário Completo',    titulo: 'Mobiliário Completo' },
-  { img: `${CDN}/decoracao_nova-lp_debutante_resultado.webp`,            alt: 'Decoração e Cenografia', titulo: 'Decoração e Cenografia', sm: true },
-  { img: `${CDN}/tecnologia_nova-lp_debutante_resultado.webp`,           alt: 'Som e Luz',              titulo: 'Som e Luz' },
+  { img: `${CDN}/debutante-v2_estrutura-alta-gastronomia.webp`, alt: 'Alta Gastronomia',       titulo: 'Alta Gastronomia' },
+  { img: `${CDN}/debutante-v2_estrutura-equipe.webp`,           alt: 'Equipe operacional',     titulo: 'Equipe Operacional' },
+  { img: `${CDN}/debutante-v2_estrutura-bar.webp`,              alt: 'Bar de Drinks',          titulo: 'Bar de Drinks' },
+  { img: `${CDN}/debutante-v2_estrutura-mobiliario.webp`,       alt: 'Mobiliário Completo',    titulo: 'Mobiliário Completo' },
+  { img: `${CDN}/debutante-v2_estrutura-decoracao.webp`,        alt: 'Decoração e Cenografia', titulo: 'Decoração e Cenografia', sm: true },
+  { img: `${CDN}/debutante-v2_estrutura-som-e-luz.webp`,        alt: 'Som e Luz',              titulo: 'Som e Luz' },
 ];
 
 // Galeria (ordem/proporção herdadas do HTML original)
@@ -36,7 +36,7 @@ const galeria = [
   { n: 1, ar: '1.5' }, { n: 9, ar: '0.8' }, { n: 2, ar: '1.5' }, { n: 3, ar: '1.5' },
   { n: 4, ar: '1.5' }, { n: 10, ar: '0.8' }, { n: 5, ar: '1.5' }, { n: 6, ar: '1.5' },
   { n: 7, ar: '1.5' }, { n: 11, ar: '0.8' }, { n: 8, ar: '1.5' }, { n: 12, ar: '1.5' },
-].map(({ n, ar }) => ({ ar, src: `${CDN}/galeria_nova-lp_debutante${String(n).padStart(2, '0')}_resultado.webp` }));
+].map(({ n, ar }) => ({ ar, src: `${CDN}/debutante-v2_galeria-${n}.webp` }));
 
 const tipoOptions = ['Debutante', 'Casamento', 'Corporativo', 'Aniversário', 'Bodas', 'Bar/bat mitzvah', 'Formatura'];
 const etapaOptions = [
@@ -100,7 +100,7 @@ const budgetOptions = [
   <!-- ===== HERO ===== -->
   <section class="hero" id="top">
     <div class="hero-bg">
-      <img src={`${CDN}/hero_nova-lp_debutante_resultado.webp`} alt="Festa de debutante no Afrikan House" fetchpriority="high" />
+      <img src={`${CDN}/debutante-v2_hero-debutante.webp`} alt="Festa de debutante no Afrikan House" fetchpriority="high" />
     </div>
     <div class="hero-scrim"></div>
     <div class="hero-inner">
@@ -215,7 +215,7 @@ const budgetOptions = [
         <div class="video-frame d1" data-reveal>
           <video
             src={VIDEO_SRC}
-            poster={`${CDN}/galeria_nova-lp_debutante03_resultado.webp`}
+            poster={`${CDN}/debutante-v2_sobre-video-poster.webp`}
             autoplay
             muted
             loop
@@ -232,8 +232,8 @@ const budgetOptions = [
     <div class="wrap">
       <div class="sec-head" data-reveal>
         <span class="eyebrow center">Os Espaços</span>
-        <h2 class="display">Três cenários,<br />uma escolha só sua</h2>
-        <p>Cada espaço tem uma personalidade própria.<br />Escolha aquele que combina com a festa que você sempre imaginou.</p>
+        <h2 class="display">Três cenários,<br />uma escolha <br class="m-br" />só sua</h2>
+        <p>Cada espaço tem uma personalidade própria. <br class="d-br" />Escolha aquele que combina com a festa que você sempre imaginou.</p>
       </div>
 
       <div class="space">
@@ -249,7 +249,7 @@ const budgetOptions = [
           <span class="space-num" data-reveal>I</span>
           <h3 data-reveal>Garden</h3>
           <div class="space-tag" data-reveal><i></i>Festa a céu aberto <em>· Itapecerica da Serra</em></div>
-          <p class="desc" data-reveal>Dance sob o céu aberto, entre jardins naturais.<br />Para quem quer sentir a festa em contato<br />com a natureza.</p>
+          <p class="desc" data-reveal>Dance sob o céu aberto, entre jardins naturais. <br />Para quem quer sentir a festa em contato <br />com a natureza.</p>
         </div>
       </div>
 
@@ -266,7 +266,7 @@ const budgetOptions = [
           <span class="space-num" data-reveal>II</span>
           <h3 data-reveal>Lounge</h3>
           <div class="space-tag" data-reveal><i></i>Rústico com assinatura <em>· Zona Sul de São Paulo</em></div>
-          <p class="desc" data-reveal>Entre em um cenário imponente,<br />com enormes tamareiras e jardim vertical.<br />Para quem busca presença e personalidade.</p>
+          <p class="desc" data-reveal>Entre em um cenário imponente, <br />com enormes tamareiras e jardim vertical. <br />Para quem busca presença e personalidade.</p>
         </div>
       </div>
 
@@ -283,7 +283,7 @@ const budgetOptions = [
           <span class="space-num" data-reveal>III</span>
           <h3 data-reveal>Village</h3>
           <div class="space-tag" data-reveal><i></i>Intimista e contemporâneo <em>· Zona Sul de São Paulo</em></div>
-          <p class="desc" data-reveal>Sinta a modernidade da cidade grande.<br />Para debutantes que preferem uma festa<br />mais próxima, sem perder o requinte.</p>
+          <p class="desc" data-reveal>Sinta a modernidade da cidade grande. <br />Para debutantes que preferem uma festa <br />mais próxima, sem perder o requinte.</p>
         </div>
       </div>
     </div>
@@ -345,14 +345,14 @@ const budgetOptions = [
 
   <!-- ===== CTA / FORM FINAL ===== -->
   <section class="cta pad" id="contato">
-    <div class="cta-bg"><img src={`${CDN}/formulario_nova-lp_debutante_resultado.webp`} alt="Afrikan House" loading="lazy" /></div>
+    <div class="cta-bg"><img src={`${CDN}/debutante-v2_formulario-fundo.webp`} alt="Afrikan House" loading="lazy" /></div>
     <div class="cta-scrim"></div>
     <div class="wrap">
       <div class="cta-grid">
         <div class="cta-copy">
           <span class="eyebrow" data-reveal>Reserve sua data</span>
           <h2 class="display" data-reveal>Escolha o cenário<br />que vai receber<br />seus 15 anos</h2>
-          <p class="sub" data-reveal>Preencha o formulário e reserve uma data em<br />um dos espaços mais desejados de São Paulo.</p>
+          <p class="sub" data-reveal>Preencha o formulário e reserve uma data em <br class="d-br" />um dos espaços mais desejados de São Paulo.</p>
         </div>
 
         <form
