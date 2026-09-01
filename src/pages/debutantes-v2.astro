@@ -7,7 +7,8 @@ import '../styles/debutantes-v2.css';
 
 const CDN = 'https://media.dmove.com.br/clients/afrikan-house/photos';
 const VIDEO_SRC = 'https://media.dmove.com.br/clients/afrikan-house/videos/video_debutante.webm';
-const LOGO = '/images/Logotipo.svg';
+const LOGO_WHITE = `${CDN}/logo-branca_resultado.webp`; // fundo escuro
+const LOGO_DARK  = `${CDN}/logo-preta_resultado.webp`;  // fundo claro
 
 const submitUrl   = config.forms['lead-form'].webhooks[0];
 const redirectUrl = config.forms['lead-form'].redirect_on_success;
@@ -73,8 +74,8 @@ const budgetOptions = [
   <!-- ===== NAV ===== -->
   <header class="nav" id="nav">
     <a class="nav-logo" href="#top" aria-label="Afrikan House">
-      <img class="n-cream" src={LOGO} alt="Afrikan House" />
-      <img class="n-ink" src={LOGO} alt="Afrikan House" />
+      <img class="n-cream" src={LOGO_WHITE} alt="Afrikan House" />
+      <img class="n-ink" src={LOGO_DARK} alt="Afrikan House" />
     </a>
     <nav class="nav-links">
       <a class="lk" href="#sobre">A Casa</a>
@@ -446,7 +447,7 @@ const budgetOptions = [
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="wrap">
-      <div class="foot-logo"><img src={LOGO} alt="Afrikan House" /></div>
+      <div class="foot-logo"><img src={LOGO_WHITE} alt="Afrikan House" /></div>
       <div class="foot-units">Garden · Itapecerica da Serra — SP&nbsp;&nbsp;|&nbsp;&nbsp;Lounge &amp; Village · Chácara Santo Antônio, Zona Sul — São Paulo/SP</div>
     </div>
     <div class="foot-bar">Copyright © 2026 Afrikan House — Todos os direitos reservados</div>

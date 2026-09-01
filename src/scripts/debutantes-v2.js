@@ -90,12 +90,15 @@
       var min=0; for(var j=1;j<cols;j++){ if(sums[j]<sums[min]-0.5) min=j; }
       colEls[min].appendChild(el); sums[min]+=h+gap;
     });
-    // Alinhar as bases: todas as colunas terminam na altura da coluna da direita (base),
-    // ajustando a moldura da última foto de cada coluna (medindo a altura real renderizada).
-    var target=colEls[cols-1].offsetHeight;
+    // Alinhar as bases: todas as colunas terminam na altura da coluna mais alta,
+    // esticando a moldura da última foto das colunas mais curtas (medindo a altura real renderizada).
+    var target=0;
+    colEls.forEach(function(c){ if(c.offsetHeight>target) target=c.offsetHeight; });
     colEls.forEach(function(c){
       var last=c.lastElementChild; if(!last) return;
-      var newH=last.offsetHeight+(target-c.offsetHeight);
+      var diff=target-c.offsetHeight;
+      if(diff<1) return; // já é a coluna base (ou está alinhada)
+      var newH=last.offsetHeight+diff;
       if(newH>60){
         last.style.height=Math.round(newH)+'px';
         var im=last.querySelector('img');
@@ -106,6 +109,11 @@
   layoutGallery();
   window.addEventListener('load',layoutGallery);
   var rz; window.addEventListener('resize',function(){ clearTimeout(rz); rz=setTimeout(layoutGallery,150); });
+  // Recalcula quando cada imagem termina de carregar (o cálculo de bases depende da altura real).
+  galItems.forEach(function(el){
+    var im=el.querySelector('img'); if(!im||im.complete) return;
+    im.addEventListener('load',function(){ clearTimeout(rz); rz=setTimeout(layoutGallery,120); });
+  });
 
   // Botão de som do vídeo (autoplay é mudo por regra dos navegadores)
   var vSoundBtn=document.getElementById('vSound');
