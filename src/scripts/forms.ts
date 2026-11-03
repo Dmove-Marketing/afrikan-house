@@ -133,7 +133,12 @@ export function initForms() {
       // Validação de formato: telefone (mínimo 10 dígitos — DDD + número)
       form.querySelectorAll<HTMLInputElement>('[name="telefone"], [name="form_fields[telefone]"]').forEach((field) => {
         if (!field.value) return;
-        const digits = field.value.replace(/\D/g, '');
+        let digits = field.value.replace(/\D/g, '');
+        // Remove o DDI 55 digitado/colado antes do DDD, para campos sem máscara
+        if (digits.length > 11 && digits.startsWith('55')) {
+          digits = digits.slice(2);
+          field.value = digits;
+        }
         if (digits.length < 10) {
           isValid = false;
           (field as HTMLElement).style.borderColor = '#ef4444';
